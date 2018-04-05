@@ -1,6 +1,8 @@
 <template>
   <div class="row flex-lg-nowrap justify-content-stretch">
     <div class="col-12 col-md-6 pr-md-0">
+
+      <!-- Form -->
       <div class="main-block__form rounded-left p-4 d-flex align-items-center justify-content-around">
         <div class="py-2 d-none d-lg-block main-block__img"><img src="../../assets/courier-window.svg" alt="main" class="mw-100"></div>
         <div class="p-md-4">
@@ -37,8 +39,12 @@
           </div> -->
         </div>
       </div>
+      <!-- /Form -->
+
     </div>
     <div class="col-12 col-md-6 pl-md-0">
+
+      <!-- Map -->
       <div class="profile-order-map relative h-100">
         <gmap-map
           :center="center"
@@ -58,6 +64,8 @@
           ></gmap-marker>
         </gmap-map>
       </div>
+      <!-- /Map -->
+
     </div>
   </div>
 </template>
