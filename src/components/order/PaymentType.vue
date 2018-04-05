@@ -101,7 +101,7 @@
 
         <!-- Balance -->
         <transition name="side-slide" mode="out-in">
-          <p v-show="+payType === 6 && isCompany">
+          <p v-show="+payType === 6" v-if="isCompany">
             <b class="d-block">{{userProfile.company.company_name}}</b>
             <span class="mr-2 d-md-block">Баланс: <b v-thousands="userProfile.company.balance"></b> руб.</span>
             <span class="mr-2 d-md-block">Лимит: <b v-thousands="userProfile.company.balance_limit"></b> руб.</span>
@@ -186,7 +186,7 @@ export default {
       return this.$store.state.profile
     },
     isCompany () {
-      return this.userProfile.company && this.userProfile.company.balance
+      return this.userProfile.is_company && this.userProfile.company
     }
   },
   watch: {
