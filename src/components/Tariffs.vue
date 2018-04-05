@@ -257,7 +257,7 @@
                     fillOpacity: showFirstZone ? '1' : '0.8',
                     zIndex: '9'
                   }"
-                  :center="{lat: m.lat, lng: m.long}"
+                  :center="{lat: +m.lat, lng: +m.lng}"
                   :radius="m.radius"
                 ></gmap-circle>
                 <gmap-polygon
@@ -464,13 +464,10 @@ export default {
       let options = {
         idt_city: 1
       }
-      this.$http.get(api.API_REST_LINK + 'web/subway', {params: options}).then((response) => {
-        if (response.data.error !== 0) {
-          this.errorMessage = response.data.error_description
-        } else {
-          this.subway = response.body.data
-          this.errorMessage = ''
-        }
+      this.$http.get(api.API_REST_LINK2 + 'web/subway', {params: options}).then((response) => {
+        this.subway = response.data.stations
+      }).catch(error => {
+        this.errorMessage = error.data.message
       })
     }
   }

@@ -32,7 +32,7 @@
               <router-link tag="li" :to="{ name: 'profile-payment'}" active-class="active" class="nav-item relative">
                 <a class="nav-link"><span class="tab-icon tab-icon--cards"></span><span class="d-none d-md-inline-block">{{$t('sidebar.cards')}}</span></a>
               </router-link>
-              <router-link tag="li" :to="{ name: 'profile-fave'}" active-class="active" class="nav-item relative">
+              <router-link tag="li" :to="{ name: 'profile-fave'}" active-class="active" class="nav-item relative" v-if="false">
                 <a class="nav-link"><span class="tab-icon tab-icon--fave"></span><span class="d-none d-md-inline-block">{{$t('sidebar.fave')}}</span></a>
               </router-link>
               <router-link tag="li" :to="{ name: 'profile-support'}" active-class="active" class="nav-item relative">
