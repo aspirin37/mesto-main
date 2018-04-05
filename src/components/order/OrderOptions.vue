@@ -70,6 +70,7 @@ export default {
   },
   mounted () {
     this.getOrderOptions()
+    console.log('tyweuitywet')
   },
   methods: {
     // toggleModal (id) {
