@@ -7,7 +7,11 @@
             <h1 class="text-white">Часто задаваемые вопросы</h1>
           </div>
           <div class="col-12 col-md-4">
-            <input type="text" class="form-control page-header-block__input ml-auto mr-auto" v-model="keyword" placeholder="Поиск" v-bind:class="{'page-header-block__input--visible' : keyword.length > 0}">
+            <input type="text"
+              class="form-control page-header-block__input ml-auto mr-auto"
+              v-bind:class="{'page-header-block__input--visible' : keyword.length > 0}"
+              v-model="keyword"
+              placeholder="Поиск">
           </div>
         </div>
       </div>
