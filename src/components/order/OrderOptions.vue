@@ -5,7 +5,7 @@
       <b>Дополнительные опции</b>
     </p>
     <div class="pl-md-4 mw-400">
-      <label v-for="(option, index) in options" class="custom-check d-flex mb-3 justify-content-between flex-wrap flex-md-nowrap" :key="index">
+      <label v-for="(option, index) in options" class="custom-check d-flex flex-row mb-3 justify-content-between flex-wrap flex-md-nowrap" :key="index">
         <span>
           <input type="checkbox" class="custom-check__input" :value="option.idt_order_options" v-model="checkedOptions" v-on:change="setOrderOptions">
           <span class="custom-check__outer"><span class="custom-check__inner"></span></span>

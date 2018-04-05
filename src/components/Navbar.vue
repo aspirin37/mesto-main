@@ -2,20 +2,31 @@
   <header class="fixed-top" v-on-click-outside="clickedOutside">
     <nav class="navbar navbar-expand-lg navbar-dark bg-theme">
       <div class="container">
+
+        <!-- Logo -->
         <router-link to="/" class="navbar-brand mr-4">
           <img src="../assets/logo.svg" alt="logo" class="navbar-logo" v-if="locale === 'ru'">
           <img src="../assets/logo-en.svg" alt="logo" class="navbar-logo" v-else>
         </router-link>
+        <!-- /Logo -->
+
+        <!-- Mobile avatar -->
         <router-link :to="{ name: 'profile'}" class="navbar-user-logo d-lg-none ml-auto" v-if="isAuth">
           <span class="navbar-user-logo__img">
             <img v-bind:src="profile.avatar_path" alt="user logo">
           </span>
         </router-link>
+        <!-- /Mobile avatar -->
+
+        <!-- Menu icon -->
         <a href="#" class="nav-trigger d-lg-none" data-toggle="collapse" v-on:click.prevent="showNavbar = !showNavbar" v-bind:class="{'nav-trigger--opened' : showNavbar}">
           <span></span>
         </a>
+        <!-- /Menu icon -->
 
         <div class="navbar-collapse pt-3 pt-sm-0" v-bind:class="{'collapse': !showNavbar}">
+
+          <!-- Navbar links -->
           <ul class="navbar-nav align-items-center">
             <li class="pr-1">
               <router-link tag="a" :to="{path: '/new-order'}" class="btn btn-light btn-sm">
@@ -39,10 +50,14 @@
               </a>
             </li>
           </ul>
+          <!-- /Navbar links -->
+
           <ul class="navbar-nav ml-auto">
             <v-select tag="li" :options="cities" v-on:selected="setNewLocation" :selectedItem="currentLocation.index" optionValue="city" v-if="false"></v-select>
             <router-link tag="li" to="/signup" v-if="!isAuth" class="nav-item text-center text-lg-left"><a class="nav-link">{{$t('signup')}}</a></router-link>
             <router-link tag="li" to="/signin" v-if="!isAuth" class="nav-item text-center text-lg-left"><a class="nav-link">{{$t('signin')}}</a></router-link>
+
+            <!-- Nav profile -->
             <li class="nav-item dropdown d-none d-lg-block navbar-hover-menu" v-if="isAuth">
               <a href="#" class="nav-link dropdown-toggle navbar-user-logo pr-0">
                 <span class="d-none d-xl-inline-block">{{profile.first_name || profile.phone_format}}</span>
@@ -52,16 +67,18 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <span class="dropdown-header" v-if="profile.company && profile.company.balance">Баланс: <span v-thousands="profile.company.balance"></span> руб.</span>
-                <!-- <router-link tag="li" :to="{ name: 'profile-new-order'}" active-class="active" class="small-center"><a>Сделать заказ</a></router-link> -->
-                <router-link :to="{ name: 'order-history'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.history')}}</router-link>
-                <router-link :to="{ name: 'profile-payment'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.cards')}}</router-link>
-                <router-link :to="{ name: 'profile-fave'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.fave')}}</router-link>
-                <router-link :to="{ name: 'profile-support'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.support')}}</router-link>
-                <div class="dropdown-divider"></div>
-                <router-link :to="{ name: 'profile-settings'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.profile')}}</router-link>
+                <router-link
+                  v-for="(item, index) in menuLinks"
+                  :key="index"
+                  :to="{ name: item.name}"
+                  active-class="active"
+                  class="dropdown-item text-center text-lg-left"
+                >{{$t('sidebar.' + item.title)}}</router-link>
                 <a href="#" class="dropdown-item" v-on:click.prevent="logout">Выход</a>
               </div>
             </li>
+            <!-- /Nav profile -->
+
           </ul>
         </div>
       </div>
@@ -95,7 +112,14 @@ export default {
     return {
       showNavbar: false,
       isLocaleShow: false,
-      user: auth.user
+      user: auth.user,
+      menuLinks: [
+        {title: 'history', name: 'order-history'},
+        {title: 'cards', name: 'profile-payment'},
+        // {title: 'fave', name: 'profile-fave'},
+        {title: 'support', name: 'profile-support'},
+        {title: 'profile', name: 'profile-settings'}
+      ]
     }
   },
   computed: {
