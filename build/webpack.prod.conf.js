@@ -1,6 +1,5 @@
 'use strict'
 const path = require('path')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -44,12 +43,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       sourceMap: config.build.productionSourceMap,
       parallel: true
     }),
-    // copy robots.txt to dist
-    new CopyWebpackPlugin([
-      {  from: 'robots.txt' },
-      {  from: 'googlee8790108520dec42.html' },
-      {  from: '300x300_piter_rainy.png' }
-    ]),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
@@ -125,7 +118,10 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
-      }
+      },
+      { from: 'robots.txt' },
+      { from: 'googlee8790108520dec42.html' },
+      { from: '300x300_piter_rainy.png' }
     ])
   ]
 })
