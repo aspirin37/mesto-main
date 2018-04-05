@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import FaqInfo from './FaqInfo'
+import FaqInfo from '../components/faq/FaqInfo'
 
 export default {
   name: 'faq',
