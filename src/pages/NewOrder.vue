@@ -85,7 +85,7 @@
         <!-- Content -->
         <div class="w-100 new-order-content" ref="main-content">
 
-          <div class="d-flex flex-wrap flex-md-nowrap align-items-stretch">
+          <div class="d-flex flex-wrap flex-md-nowrap align-items-stretch mw-800">
             <div class="w-auto pr-md-3 order-2 order-md-1 mw-100">
 
               <!-- Packet -->

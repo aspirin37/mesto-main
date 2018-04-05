@@ -1,6 +1,6 @@
 <template>
   <div class="check-tabs">
-    <label class="check-tabs__label w-50">
+    <label class="check-tabs__label">
       <input type="radio" class="check-tabs__input" value="1" name="transport-type" v-model="orderTransport" v-on:change="setValue">
       <span class="check-tabs__outer d-flex align-items-center">
         <img src="../../assets/icons/run.svg" alt="" class="mr-2">
@@ -10,7 +10,7 @@
         </span>
       </span>
     </label>
-    <label class="check-tabs__label w-50">
+    <label class="check-tabs__label">
       <input type="radio" class="check-tabs__input" value="4" name="transport-type" v-model="orderTransport" v-on:change="setValue">
       <span class="check-tabs__outer d-flex align-items-center">
         <img src="../../assets/icons/car-front.svg" alt="" class="mr-2">
