@@ -85,8 +85,8 @@
         <!-- Content -->
         <div class="w-100 new-order-content" ref="main-content">
 
-          <div class="d-flex flex-wrap flex-md-nowrap align-items-stretch mw-800">
-            <div class="w-auto pr-md-3 order-2 order-md-1 mw-100">
+          <div class="d-flex flex-wrap flex-md-nowrap align-items-stretch">
+            <div class="w-auto pr-md-3 order-2 order-md-1 mw-800">
 
               <!-- Packet -->
               <div class="bg-white rounded current-shadow p-3 p-lg-4 px-xl-5 mb-3 relative" id="transport-type">
