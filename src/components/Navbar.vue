@@ -1,0 +1,143 @@
+<template>
+  <header class="fixed-top" v-on-click-outside="clickedOutside">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-theme">
+      <div class="container">
+        <router-link to="/" class="navbar-brand mr-4">
+          <img src="../assets/logo.svg" alt="logo" class="navbar-logo" v-if="locale === 'ru'">
+          <img src="../assets/logo-en.svg" alt="logo" class="navbar-logo" v-else>
+        </router-link>
+        <router-link :to="{ name: 'profile'}" class="navbar-user-logo d-lg-none ml-auto" v-if="isAuth">
+          <span class="navbar-user-logo__img">
+            <img v-bind:src="profile.avatar_path" alt="user logo">
+          </span>
+        </router-link>
+        <a href="#" class="nav-trigger d-lg-none" data-toggle="collapse" v-on:click.prevent="showNavbar = !showNavbar" v-bind:class="{'nav-trigger--opened' : showNavbar}">
+          <span></span>
+        </a>
+
+        <div class="navbar-collapse pt-3 pt-sm-0" v-bind:class="{'collapse': !showNavbar}">
+          <ul class="navbar-nav align-items-center">
+            <li class="pr-1">
+              <router-link tag="a" :to="{path: '/new-order'}" class="btn btn-light btn-sm">
+                <img src="../assets/icons/plus-sm-icon.svg" class="mr-1 vertical-top btn-icon" alt="add">
+                <span>Заказать курьера</span>
+              </router-link>
+            </li>  <!-- v-if="!($route.path === '/')" -->
+            <router-link tag="li" to="/about" active-class="active rounded" class="nav-item relative text-center text-lg-left"><a class="nav-link px-3">{{$t('navbar.about')}}</a></router-link>
+            <router-link tag="li" to="/for-business" active-class="active rounded" class="nav-item relative text-center text-lg-left"><a class="nav-link px-3">{{$t('navbar.corporate')}}</a></router-link>
+            <router-link tag="li" to="/for-couriers" active-class="active rounded" class="nav-item relative text-center text-lg-left"><a class="nav-link px-3">{{$t('navbar.couriers')}}</a></router-link>
+            <router-link tag="li" to="/faq" active-class="active rounded" class="nav-item relative text-center text-lg-left"><a class="nav-link px-3">{{$t('navbar.faq')}}</a></router-link>
+            <router-link tag="li" to="/tariffs" active-class="active rounded" class="nav-item relative text-center text-lg-left"><a class="nav-link px-3">{{$t('navbar.tariffs')}}</a></router-link>
+            <!-- <li class="nav-item relative text-center text-lg-left">
+              <a href="tel:+78123697798" class="navbar-phone nav-link px-3">+7 (812) <strong>369-77-98</strong></a>
+            </li> -->
+            <li class="nav-item text-center text-lg-left"><a href="#" class="nav-link top-nav__link d-md-none px-3" v-on:click.prevent="logout" v-if="isAuth">{{$t('signout')}}</a></li>
+            <li class="nav-item relative text-center text-lg-left" v-if="false">
+              <a href="#" v-on:click.prevent="isLocaleShow = !isLocaleShow" class="nav-link px-3">
+                <span :class="['inline-block locale-block__item', 'locale-block__item--' + $t('alias')]"></span>
+                <!-- <b>{{$t('lang')}}</b> -->
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <v-select tag="li" :options="cities" v-on:selected="setNewLocation" :selectedItem="currentLocation.index" optionValue="city" v-if="false"></v-select>
+            <router-link tag="li" to="/signup" v-if="!isAuth" class="nav-item text-center text-lg-left"><a class="nav-link">{{$t('signup')}}</a></router-link>
+            <router-link tag="li" to="/signin" v-if="!isAuth" class="nav-item text-center text-lg-left"><a class="nav-link">{{$t('signin')}}</a></router-link>
+            <li class="nav-item dropdown d-none d-lg-block navbar-hover-menu" v-if="isAuth">
+              <a href="#" class="nav-link dropdown-toggle navbar-user-logo pr-0">
+                <span class="d-none d-xl-inline-block">{{profile.first_name || profile.phone_format}}</span>
+                <span class="navbar-user-logo__img" v-if="profile.avatar_path">
+                  <img v-bind:src="profile.avatar_path" alt="user logo">
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <span class="dropdown-header" v-if="profile.company && profile.company.balance">Баланс: <span v-thousands="profile.company.balance"></span> руб.</span>
+                <!-- <router-link tag="li" :to="{ name: 'profile-new-order'}" active-class="active" class="small-center"><a>Сделать заказ</a></router-link> -->
+                <router-link :to="{ name: 'order-history'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.history')}}</router-link>
+                <router-link :to="{ name: 'profile-payment'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.cards')}}</router-link>
+                <router-link :to="{ name: 'profile-fave'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.fave')}}</router-link>
+                <router-link :to="{ name: 'profile-support'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.support')}}</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link :to="{ name: 'profile-settings'}" active-class="active" class="dropdown-item text-center text-lg-left">{{$t('sidebar.profile')}}</router-link>
+                <a href="#" class="dropdown-item" v-on:click.prevent="logout">Выход</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Languages -->
+    <transition name="locale">
+      <div class="locale-block" v-if="isLocaleShow">
+        <div class="container text-center">
+          <ul class="list-inline list-unstyled locale-block__list">
+            <li><a href="#" class="locale-block__item locale-block__item--ru" v-bind:class="{'locale-block__item--active' : locale === 'ru'}" v-on:click="changeLang('ru')"><span class="d-none d-md-block">Русский</span></a></li>
+            <li><a href="#" class="locale-block__item locale-block__item--en" v-bind:class="{'locale-block__item--active' : locale === 'en'}" v-on:click="changeLang('en')"><span class="d-none d-md-block">English</span></a></li>
+            <li><a href="#" class="locale-block__item locale-block__item--de" v-bind:class="{'locale-block__item--active' : locale === 'de'}" v-on:click="changeLang('de')"><span class="d-none d-md-block">German</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </transition>
+    <!-- /Languages -->
+
+  </header>
+</template>
+
+<script>
+import auth from '../auth'
+import Dropdown from './utils/Dropdown'
+import vSelect from './utils/Select'
+
+export default {
+  name: 'navbar',
+  data () {
+    return {
+      showNavbar: false,
+      isLocaleShow: false,
+      user: auth.user
+    }
+  },
+  computed: {
+    currentLocation () {
+      return this.$store.state.locations[this.$store.state.currentLocation]
+    },
+    profile () {
+      return this.$store.state.profile
+    },
+    isAuth () {
+      return this.user.authenticated
+    },
+    locale () {
+      return this.$i18n.locale()
+    },
+    cities () {
+      return this.$store.state.locations
+    }
+  },
+  watch: {
+    '$route' () {
+      this.showNavbar = false
+    }
+  },
+  components: {
+    Dropdown,
+    vSelect
+  },
+  methods: {
+    logout () {
+      auth.logout(this, '/')
+    },
+    setNewLocation (loc) {
+      this.$store.commit('CHANGE_LOCATION', loc.index)
+    },
+    changeLang (lang) {
+      this.isLocaleShow = false
+      this.$i18n.set(lang)
+    },
+    clickedOutside () {
+      this.isLocaleShow = false
+    }
+  }
+}
+</script>

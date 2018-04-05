@@ -1,0 +1,30 @@
+.order-photos{
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 0;
+  &__item{
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    width: 40px;
+    transition: box-shadow 0.1s;
+    &--md{
+      width: 60px;
+      height: 60px;
+    }
+    &:hover{
+      box-shadow: 0 0 0 2px $main-color;
+    }
+    img{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      min-height: 100%;
+      min-width: 100%;
+      max-height: 200%;
+      max-width: 200%;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.courier-rating{
+  background-color: rgba($main-color, 0.1);
+  border-radius: 4px;
+  &__divider{
+    width: 1px;
+    height: 16px;
+    background-color: rgba(#000, 0.2);
+    margin: 0 8px;
+    display: inline-block;
+  }
+  &__star{
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.courier-col{
+  width: 220px;
+  padding-top: 10px;
+}
+
+.courier-best{
+  background-image: url(./assets/laurel-wreath.svg);
+  background-repeat: no-repeat;
+  background-position: top center;
+}

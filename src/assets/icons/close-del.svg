@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ico 16 close</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,7.34728605 L13.2121046,2.13518149 C13.3923465,1.9549395 13.6845765,1.9549395 13.8648185,2.13518149 C14.0450605,2.31542347 14.0450605,2.60765346 13.8648185,2.78789544 L8.65271395,8 L13.8648185,13.2121046 C14.0450605,13.3923465 14.0450605,13.6845765 13.8648185,13.8648185 C13.6845765,14.0450605 13.3923465,14.0450605 13.2121046,13.8648185 L8,8.65271395 L2.78789544,13.8648185 C2.60765346,14.0450605 2.31542347,14.0450605 2.13518149,13.8648185 C1.9549395,13.6845765 1.9549395,13.3923465 2.13518149,13.2121046 L7.34728605,8 L2.13518149,2.78789544 C1.9549395,2.60765346 1.9549395,2.31542347 2.13518149,2.13518149 C2.31542347,1.9549395 2.60765346,1.9549395 2.78789544,2.13518149 L8,7.34728605 Z" id="path-1"></path>
+    </defs>
+    <g id="ico-16-close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="#E84959">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Line-2" fill="#E84959" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="colors/brand-black" mask="url(#mask-2)" fill="#E84959">
+            <rect id="Black-Color-Copy-3" x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

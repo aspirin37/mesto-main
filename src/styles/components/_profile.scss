@@ -1,0 +1,148 @@
+.rating-stars{
+  display: inline-block;
+  vertical-align: top;
+  &__star{
+    width: 24px;
+    height: 24px;
+    svg{
+      width: 100%;
+      height: auto;
+      path{
+        fill: $gray-300;
+      }
+    }
+    &--active{
+      svg{
+        path{
+          fill: $orange;
+        }
+      }
+    }
+    &--half{
+      svg{
+        .st1{
+          fill: $orange;
+        }
+      }
+    }
+  }
+  li{
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+}
+
+.set-rating-stars{
+  &:hover{
+    .set-rating-stars__star{
+      svg{
+        path:first-child{
+          fill: rgba($orange, 0.9);
+        }
+      }
+    }
+  }
+  &__star{
+    $star-height: 24px;
+
+    width: $star-height;
+    height: $star-height;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    svg{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__item{
+    width: 20%;
+    &:hover{
+      & ~ .set-rating-stars__item > .set-rating-stars__star{
+        svg{
+          path:first-child{
+            fill: $gray-300;
+          }
+        }
+      }
+    }
+    .set-rating-stars__star--active{
+      svg{
+        path{
+          fill: $orange;
+        }
+      }
+    }
+  }
+}
+
+.fave-list{
+  &__item{
+    padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  &__star{
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    svg{
+      width: 100%;
+      height: auto;
+      path{
+        fill: $gray-300;
+      }
+    }
+    &:hover{
+      svg{
+        path{
+          fill: $orange;
+        }
+      }
+    }
+    &--active{
+      svg{
+        path{
+          fill: $orange;
+        }
+      }
+    }
+  }
+}
+
+.show-number{
+  display: inline-block;
+}
+
+.notifications-table{
+  &__type{
+    width: 40px;
+    img{
+      height: 26px;
+      width: 26px;
+      margin-bottom: 10px;
+      opacity: 0.5;
+    }
+  }
+  &__type-block{
+    width: 40px;
+    margin-left: 20px;
+    margin-top: 10px;
+    @include media-breakpoint-down(sm) {
+      margin-left: 5px;
+    }
+  }
+  &__tr{
+    &:hover{
+      td, th{
+        background-color: rgba($main-color, 0.05);
+      }
+    }
+  }
+  td{
+    height: 40px;
+  }
+}
