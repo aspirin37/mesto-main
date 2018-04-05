@@ -1,0 +1,73 @@
+$marker-size: 24px;
+
+.address-marker{
+  width: $marker-size;
+  height: $marker-size;
+  line-height: 1.5;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #4e719f;
+  border: 2px solid #4e719f;
+  color: #fff;
+  font-weight: 600;
+  &:hover{
+    color: #fff;
+    text-decoration: none;
+  }
+  &:focus{
+    text-decoration: none;
+  }
+  &--disabled{
+    opacity: 0.5;
+  }
+  &--active{
+    background-color: #fff;
+    color: #4e719f;
+    opacity: 1;
+    &:hover{
+      color: #4e719f;
+      text-decoration: none;
+    }
+  }
+  &--first{
+    background-color: $green;
+    border-color: $green;
+    &.address-marker--active{
+      background-color: #fff;
+      color: $green;
+      &:hover{
+        color: $green;
+      }
+    }
+  }
+  &--last{
+    background-color: $mesto-color;
+    border-color: $mesto-color;
+    &.address-marker--active{
+      background-color: #fff;
+      color: $mesto-color;
+      &:hover{
+        color: $mesto-color;
+      }
+    }
+  }
+}
+
+.address-point-title{
+  position: absolute;
+  left: -20px;
+  top: 5px;
+  z-index: 999;
+  @include media-breakpoint-down(sm) {
+    left: -2px;
+    top: -2px;
+  }
+}
+
+.address-point-remove{
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  z-index: 999;
+}

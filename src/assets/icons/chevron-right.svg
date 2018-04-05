@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ico 16 chevron right</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M5.13003341,2.83633943 C4.94428006,2.63201074 4.95933835,2.31578677 5.16366703,2.13003341 C5.36799572,1.94428006 5.6842197,1.95933835 5.86997305,2.16366703 L10.8699701,7.6636638 C11.0433433,7.8543743 11.0433433,8.1456257 10.8699701,8.3363362 L5.86997305,13.836333 C5.6842197,14.0406617 5.36799572,14.0557199 5.16366703,13.8699666 C4.95933835,13.6842132 4.94428006,13.3679893 5.13003341,13.1636606 L9.82427029,8 L5.13003341,2.83633943 Z" id="path-1"></path>
+    </defs>
+    <g id="ico-16-chevron-right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Stroke-48" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="colors/brand-black" mask="url(#mask-2)" fill="#333333">
+            <rect id="Black-Color-Copy-3" x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

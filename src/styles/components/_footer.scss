@@ -1,0 +1,42 @@
+.footer{
+  // background-color: desaturate(darken($main-color, 30%), 20%);
+  background-color: #383340;
+  // background-image: url(./assets/footer-bg.png);
+  // background-repeat: repeat;
+  color: #fff;
+  // padding-top: 20px;
+  // padding-bottom: 20px;
+  // font-size: 12px;
+  @include media-breakpoint-down(sm) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  a{
+    color: rgba(#fff, 0.6);
+    text-decoration: none;
+    &:hover{
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+  &__icon{
+    width: 16px;
+    height: 16px;
+  }
+  &__text{
+    @include media-breakpoint-up(lg) {
+      white-space: nowrap;
+      float: right;
+      margin-right: -30px;
+    }
+  }
+}
+
+.madeby{
+  width: 115px;
+  height: 24px;
+  vertical-align: middle;
+  display: inline-block;
+  background-image: url(./assets/a3logo.svg);
+  background-size: 115px 24px;
+}

@@ -1,0 +1,134 @@
+.slide-enter-active, .slide-leave-active {
+  transition-property: opacity;
+  transition-duration: 0;
+}
+
+.slide-enter-active {
+  transition-duration: .2s;
+}
+
+.slide-enter, .slide-leave-active {
+  opacity: 0
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: 0;
+}
+
+.fade-enter-active {
+  transition-duration: .2s;
+  transition-delay: .2s;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+.scale-enter-active, .scale-leave-active {
+  transition-property: all;
+}
+
+.scale-enter-active {
+  // @include transition-delay(.2s);
+  transition-duration: .2s;
+}
+
+.scale-enter, .scale-leave-active {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.banner-enter, .banner-leave-active {
+  display: none;
+}
+
+.modal-enter, .modal-leave-active {
+  .modal-dialog{
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+.switch-pic-enter-active, .switch-pic-leave-active {
+  .thumb-img__img{
+    transition-property: opacity;
+    transition-duration: 0;
+  }
+}
+
+.switch-pic-enter-active {
+  transition-duration: .3s;
+  .thumb-img__img{
+    transition-duration: .3s;
+  }
+}
+
+.switch-pic-enter, .switch-pic-leave-active {
+  .thumb-img__img{
+    opacity: 0;
+  }
+}
+
+.drop-enter-active, .drop-leave-active {
+  transition-property: all;
+  transition-duration: .2s;
+}
+
+.drop-enter, .drop-leave-active {
+  margin-top: -10px;
+  opacity: 0;
+}
+
+@include media-breakpoint-up(sm) {
+  .locale-enter-active,
+  .locale-leave-active {
+    @include transition(height .3s);
+  }
+  .locale-enter-active {
+    height: 60px;
+  }
+  .locale-enter,
+  .locale-leave-active {
+    height: 0;
+  }
+  .locale-leave {
+    height: 60px;
+  }
+}
+
+.side-slide-enter {
+  opacity: 0;
+  transform: translateX(10%);
+}
+
+.side-slide-enter-active {
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.side-slide-leave-active {
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  opacity: 0;
+  transform: translateX(-10%);
+}
+
+.top-slide-enter-active{
+  transition: max-height 1s;
+}
+
+.top-slide-enter-active {
+  max-height: 450px;
+}
+
+.top-slide-enter{
+  max-height: 0;
+}
+
+.alert-enter-active, .alert-leave-active{
+  transition: top .3s;
+}
+
+.alert-enter, .alert-leave-active{
+  top: 8%;
+  // opacity: 0;
+}

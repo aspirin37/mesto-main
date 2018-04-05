@@ -1,0 +1,340 @@
+.card{
+  background-color: $gray-200;
+  @include border-top-radius($border-radius-lg);
+  @include border-bottom-radius($border-radius-lg);
+  @include current-shadow;
+  border: none;
+  display: inline-block;
+  margin-bottom: 30px;
+  width: 74%;
+  z-index: 9;
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  &__title{
+    padding: 15px 20px 5px;
+  }
+  &__body{
+    padding: 10px 20px 0px;
+    .form-group .form-control{
+      border-color: #fff;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      height: 36px;
+    }
+    .has-success .form-control{
+      border-color: $green;
+    }
+    .has-error .form-control{
+      border-color: $red;
+    }
+  }
+  &__back{
+    width: 74%;
+    height: 88%;
+    padding: 55px 20px 30px;
+    background-color: $gray-600;
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    @include border-top-radius($border-radius-lg);
+    @include border-bottom-radius($border-radius-lg);
+    @include current-shadow;
+    &:before{
+      content: '';
+      height: 30px;
+      background-color: $gray-700;
+      position: absolute;
+      left: 0;
+      top: 30px;
+      width: 100%;
+    }
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+    .form-control{
+      border-color: #fff;
+    }
+    &--cvc{
+      height: 200px;
+    }
+  }
+  &__back-cvc{
+    width: 100px;
+    height: 100px;
+    padding: 30px 16px;
+    position: absolute;
+    right: -15px;
+    top: 50px;
+    border: 2px solid $red;
+    display: inline-block;
+    @include border-left-radius(50%);
+    @include border-right-radius(50%);
+    @include current-shadow;
+    background-color: $gray-600;
+    overflow: hidden;
+    z-index: 1;
+    &:before{
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      height: 14px;
+      width: 100%;
+      background-color: $gray-700;
+    }
+  }
+  &__back-cvc-code{
+    position: absolute;
+    width: 100px;
+    font-size: 12px;
+    line-height: 1;
+    left: auto;
+    right: -15px;
+    top: 106%;
+    text-align: center;
+    &:before{
+      width: 2px;
+      height: 60px;
+      left: 50%;
+      top: auto;
+      bottom: 110%;
+    }
+    &:before{
+      content: '';
+      background-color: $red;
+      display: block;
+      position: absolute;
+    }
+  }
+  &__type{
+    position: absolute;
+    right: 20px;
+    top: 8px;
+  }
+  &__buttons{
+    padding-right: 60px;
+  }
+}
+
+.cvc-done{
+  .card__back-cvc-code{
+    &:before{
+      background-color: $green;
+    }
+  }
+  .card__back-cvc{
+    border-color: $green;
+  }
+}
+
+.card-type{
+  display: inline-block;
+  width: 45px;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &--visa{
+    background-image: url(./assets/icons/visa.svg)
+  }
+  &--master-card{
+    background-image: url(./assets/icons/mastercard.svg)
+  }
+  &--visa-white{
+    background-image: url(./assets/icons/visa-white.svg)
+  }
+  &--master-card-white{
+    background-image: url(./assets/icons/mastercard-white.svg)
+  }
+  &--mir{
+    background-image: url(./assets/icons/mir.svg)
+  }
+  &--mir-white{
+    background-image: url(./assets/icons/mir-white.svg)
+  }
+  &--maestro{
+    background-image: url(./assets/icons/maestro.svg)
+  }
+  &--discover{
+    background-image: url(./assets/icons/discover.svg)
+  }
+  &--unionpay{
+    background-image: url(./assets/icons/unionpay.svg)
+  }
+  &--jcb{
+    background-image: url(./assets/icons/jcb.svg)
+  }
+  &--american-express{
+    background-image: url(./assets/icons/american-express.svg)
+  }
+}
+
+.card-outer{
+  max-width: 350px;
+  margin-bottom: 15px;
+}
+
+@keyframes add-card-anim {
+  0% {
+    transform: scale(0.8);
+    @include box-shadow(none);
+  }
+  50% {
+    transform: scale(1);
+    background-color: rgba($red, 0.1);
+    border-color: $red;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.small-card{
+  width: 180px;
+  height: 86px;
+  @include border-top-radius($border-radius-base);
+  @include border-bottom-radius($border-radius-base);
+  @include current-shadow;
+  padding: 45px 15px 18px;
+  padding-top: 3.2em;
+  background-color: rgba($blue, 0.1);
+  border: 1px solid $blue;
+  position: relative;
+  @include media-breakpoint-down(sm) {
+    width: 130px;
+    height: 73px;
+    font-size: 10px;
+  }
+  &--animate{
+    animation: add-card-anim 1s 1;
+  }
+  &__delete{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 15px;
+    top: 15px;
+    line-height: 16px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    @include media-breakpoint-down(sm) {
+      top: 10px;
+      right: 10px;
+    }
+    &:before{
+      content: '\2715';
+      color: #000;
+      font-size: 16px;
+    }
+    &:hover, &:focus{
+      text-decoration: none;
+      &:before{
+        color: $red;
+      }
+    }
+  }
+  &__pan{
+    font-size: 1.4em;
+    line-height: 1;
+  }
+  &__name{
+    font-size: 1.1em;
+    @include text-overflow;
+    opacity: 0.8;
+  }
+  &__type{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 50px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    @include media-breakpoint-down(sm) {
+      width: 30px;
+      height: 15px;
+    }
+  }
+}
+
+.cards-list{
+  margin-top: 20px;
+  margin-bottom: 0;
+  &__item{
+    margin-bottom: 10px;
+    vertical-align: top;
+  }
+}
+
+.card-list-item{
+  display: block;
+  &__input{
+    display: none;
+    opacity: 0;
+    & + .card-list-item__info{
+      padding-left: 50px;
+      &:before{
+        display: inline-block;
+      }
+    }
+    &:checked{
+      & + .card-list-item__info{
+        border-color: $main-color;
+        &:before{
+          box-shadow: inset 0 0 0 6px $main-color;
+          background-size: 10px 10px;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+  &__info{
+    display: block;
+    padding: 12px;
+    cursor: pointer;
+    @include border-top-radius($border-radius-base);
+    @include border-bottom-radius($border-radius-base);
+    position: relative;
+    border: 1px solid $gray-400;
+    width: 100%;
+    &:hover{
+      border-color: $main-color;
+    }
+    &:before{
+      content: '';
+      width: 18px;
+      height: 18px;
+      background-color: $gray-100;
+      @include border-top-radius(50%);
+      @include border-bottom-radius(50%);
+      box-shadow: inset 0 0 0 1px $gray-400;
+      display: none;
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      margin-top: -9px;
+    }
+  }
+  &__type{
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    width: 50px;
+    height: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
+}
+
+.add-card-padd-top{
+  @include media-breakpoint-up(sm) {
+    padding-top: 90px;
+  }
+}
