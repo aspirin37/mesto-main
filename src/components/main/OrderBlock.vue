@@ -27,7 +27,6 @@
             <transport-types class="mb-3 w-100" v-on:selected="moveType = $event"></transport-types>
             <div class="form-group">
               <button v-on:click.prevent="setAddressData" class="btn btn-lg btn-theme w-100">{{point.address ? 'Вызвать курьера сюда' : 'Вызвать курьера'}}</button>
-              <!-- <router-link tag="button" :to="{path: '/new-order', query: queries}" class="btn btn-lg btn-theme w-100">Вызвать курьера сюда</router-link> -->
             </div>
           </form>
           <!-- <div class="d-flex">
