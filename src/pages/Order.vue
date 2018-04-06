@@ -162,7 +162,7 @@
                 <div class="mr-3 cursor-pointer" v-on:click="setPointCenter(index)" v-bind:class="{'text-muted' : pointToShow === index}">
                   <b class="pre-wrap mr-1">{{address.address}}</b>
                   <b v-if="address.room" class="mr-1">({{address.room}})</b>
-                  <span class="small text-nowrap" v-if="address.is_payment_address">(Оплата здесь)</span>
+                  <span class="small text-nowrap" v-if="address.is_payment_address && !order.is_already_payed">(Оплата здесь)</span>
                 </div>
                 <a :href="'tel:+' + address.contact_phone" class="phone-link">{{address.contact_phone_format}}</a>
                 <span v-if="address.contact_name">, {{address.contact_name}}</span>
