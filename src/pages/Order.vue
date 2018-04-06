@@ -176,7 +176,10 @@
             <div class="d-flex justify-content-between flex-wrap flex-lg-nowrap align-items-center">
               <router-link :to="{ name: 'profile-add-ticket', query: { orderid: order.idt_order, ordernumber: order.order_number }}" class="small">Что-то пошло не так?</router-link>
               <div class="text-right mb-0 text-nowrap">
-                <span v-if="status !== 1">{{order.is_already_payed ? $t('order.payed') + '.' : $t('order.not-payed') + '.'}}</span>
+                <span v-if="status !== 1">
+                  <payment-method :type="order.idc_pay_method_type" class="inline-img align-middle"></payment-method>
+                  {{order.is_already_payed ? $t('order.payed') + '.' : $t('order.not-payed') + '.'}}
+                </span>
                 <a href="#" class="link-dotted" v-if="!order.is_already_payed && !([2, 7, 8, 12].indexOf(status) >= 0)" v-on:click.prevent="toggleModal('payment')">
                   <span v-if="status === 1">Подтвердить</span><span v-else>{{$t('order.make-pay')}}</span>
                 </a>
@@ -292,6 +295,7 @@ import Loader from '../components/utils/Loader'
 import generateMarkerIcon from '../mixins/generateMarkerIcon'
 import PaymentModal from '../components/order/PaymentModal'
 import FeedbackCourier from '../components/order/FeedbackCourier'
+import PaymentMethod from '../components/inner/PaymentMethod'
 
 export default {
   name: 'profile-order',
@@ -328,7 +332,8 @@ export default {
     Loader,
     GoBack,
     PaymentModal,
-    FeedbackCourier
+    FeedbackCourier,
+    PaymentMethod
   },
   mixins: [generateMarkerIcon],
   beforeMount () {
