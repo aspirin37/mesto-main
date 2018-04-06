@@ -10,8 +10,8 @@
             v-model="phone"
             class="form-control form-control-lg sign-input-width"
             placeholder="Телефон"
-            v-validate="'required'"
-            v-bind:class="{'border-danger' : errors.has('phone'), 'border-success' : !errors.has('phone') && formatedPhone.length > 10}"
+            v-validate="'required|verify_phone'"
+            v-bind:class="{'border-danger' : errors.has('phone')}"
           >
         </div>
         <div class="form-group relative sign-mw mr-2" title="Показать пароль">
@@ -105,6 +105,18 @@ export default {
     formatedPhone () {
       return this.phone.replace(/\+|-|_|\(|\)|\s/g, '')
     }
+  },
+  created () {
+    this.$validator.extend('verify_phone', {
+      getMessage: field => `The ${field} is not a valid.`,
+      validate: value => new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            valid: this.formatedPhone.length >= 11
+          })
+        }, 100)
+      })
+    })
   },
   methods: {
     validateBeforeSubmit () {
