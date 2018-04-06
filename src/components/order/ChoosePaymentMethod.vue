@@ -3,7 +3,7 @@
     <div class="widget--min-height relative" v-if="showLoader">
       <loader></loader>
     </div>
-    <div class="modal-scroll-body pt-1" v-if="payMethods.length && !showAddingCard && !showLoader">
+    <div v-if="payMethods.length && !showAddingCard && !showLoader">
       <ul class="list-unstyled mb-3">
         <card-item
           v-for="(card, index) in payMethods"

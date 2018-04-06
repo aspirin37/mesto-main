@@ -11,7 +11,7 @@
       <div class="text-center mb-3">
         <button type="submit" class="btn btn-theme btn-lg px-4" :disabled="payMethod === null" v-show="!showAddingCard">Оплатить <span v-if="price">{{price}} руб.</span></button>
       </div>
-      <p class="text-danger text-center">{{errorMessage}}</p>
+      <p class="text-danger text-center" v-for="(message, index) in errorMessages" :key="index">{{message}}</p>
     </form>
     <p class="text-center text-muted small mw-400 mx-auto">Оплата работает через «Альфа-Банк», защищена сертификатом SSL и соответствует стандартам безопасности PCI DSS</p>
     <div class="text-center mb-4">
@@ -33,7 +33,7 @@ export default {
     return {
       showAddingCard: false,
       payMethod: null,
-      errorMessage: '',
+      errorMessages: [],
       showLoader: false
     }
   },
@@ -61,14 +61,14 @@ export default {
         idt_pay_method: this.payMethod
       }
       this.$http.post(api.API_REST_LINK4 + 'webclient/pay', options).then(response => {
-        this.errorMessage = ''
+        this.errorMessages = []
         this.$emit('payed', response.data.order)
         this.showLoader = false
       }).catch(error => {
         let errorData = error.data
 
         this.$emit('error', errorData)
-        this.errorMessage = errorData.message
+        this.errorMessages = errorData.messages
         this.showLoader = false
       })
       this.setCurrentPayMethod()
