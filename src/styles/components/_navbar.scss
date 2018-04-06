@@ -223,3 +223,11 @@
     }
   }
 }
+
+.navbar-company{
+  margin-top: -10px;
+  margin-bottom: -10px;
+  &__name{
+    max-width: 200px;
+  }
+}

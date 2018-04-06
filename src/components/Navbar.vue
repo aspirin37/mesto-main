@@ -60,7 +60,10 @@
             <!-- Nav profile -->
             <li class="nav-item dropdown d-none d-lg-block navbar-hover-menu" v-if="isAuth">
               <a href="#" class="nav-link dropdown-toggle navbar-user-logo pr-0">
-                <span class="d-none d-xl-inline-block">{{profile.first_name || profile.phone_format}}</span>
+                <span class="d-none d-xl-inline-block align-middle navbar-company text-right line-height-one">
+                  <span class="d-block text-overflow navbar-company__name">{{profile.first_name || profile.phone_format}}</span>
+                  <span class="d-block text-overflow small navbar-company__name" v-if="profile.is_company && profile.company">{{profile.company.company_name}}</span>
+                </span>
                 <span class="navbar-user-logo__img" v-if="profile.avatar_path">
                   <img v-bind:src="profile.avatar_path" alt="user logo">
                 </span>
