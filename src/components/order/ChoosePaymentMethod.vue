@@ -55,11 +55,11 @@ export default {
   methods: {
     getPayMethods () {
       this.showLoader = true
-      this.$http.get(api.API_REST_LINK2 + 'webclient/payMethods').then((response) => {
+      this.$http.get(api.API_REST_LINK2 + 'webclient/payMethods').then(response => {
         this.showLoader = false
         this.errorMessage = ''
         this.payMethods = response.data.payMethods
-      }).catch((error) => {
+      }).catch(error => {
         this.showLoader = false
         this.errorMessage = error.data.message
       })

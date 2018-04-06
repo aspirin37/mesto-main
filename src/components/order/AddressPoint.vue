@@ -156,7 +156,7 @@ export default {
     },
     getUserLocation () {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition(position => {
           var pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
@@ -175,7 +175,7 @@ export default {
       }
     },
     getAddress (newmarker) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.geocoder.geocode({ 'location': newmarker }, (results, status) => {
           if (status === window.google.maps.GeocoderStatus.OK) {
             if (results[0]) {

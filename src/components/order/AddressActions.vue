@@ -33,12 +33,6 @@ export default {
   data () {
     return {
     }
-  },
-  computed: {
-  },
-  components: {
-  },
-  methods: {
   }
 }
 </script>
