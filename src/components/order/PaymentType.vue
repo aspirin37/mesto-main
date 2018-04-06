@@ -14,28 +14,28 @@
     <!-- /Paying cap -->
 
     <div class="bg-white rounded relative current-shadow p-3 py-md-4 px-lg-4 px-xl-5 mb-3">
-      <h2 class="mb-3">Стоимость и оплата</h2>
+      <h3 class="mb-2">Стоимость и оплата</h3>
       <h1 class="mb-3" v-if="price">{{price}} руб.</h1>
 
       <!-- Pay types -->
       <div class="mb-4 font-size-null">
         <label class="check-tabs__label h-100 mr-2 mb-2" v-for="(method, index) in Object.keys(groupedPayMethods)" :key="index">
           <input type="radio" class="check-tabs__input" :value="method" name="pay-method" :checked="payType === method" v-model="payType" v-on:change="setMethodIfOne">
-          <span class="check-tabs__outer rounded py-3">
+          <span class="check-tabs__outer rounded py-3 px-3">
             <payment-method :type="method" class="mb-2"></payment-method>
             <b class="d-block">{{groupedPayMethods[method][0].type_name}}</b>
           </span>
         </label>
         <label class="check-tabs__label h-100 mr-2 mb-2" v-if="!groupedPayMethods[2]">
           <input type="radio" class="check-tabs__input" value="2" name="pay-method" :checked="payType === 2" v-model="payType" v-on:change="emitPayType">
-          <span class="check-tabs__outer rounded py-3">
+          <span class="check-tabs__outer rounded py-3 px-3">
             <img src="../../assets/icons/fin-card-gray.svg" alt="" class="mb-2">
             <b class="d-block">Банковская карта</b>
           </span>
         </label>
         <label class="check-tabs__label h-100 mr-2 mb-2" v-if="Object.keys(groupedPayMethods).indexOf('4', '5') === -1 && !isCompany">
           <input type="radio" class="check-tabs__input" value="0" name="pay-method" :checked="payType === 0" v-model="payType" v-on:change="emitPayType">
-          <span class="check-tabs__outer rounded py-3">
+          <span class="check-tabs__outer rounded py-3 px-3">
             <img src="../../assets/icons/file-doc.svg" alt="" class="mb-2">
             <b class="d-block">Безналичная оплата</b>
           </span>
