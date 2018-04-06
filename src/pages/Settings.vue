@@ -99,7 +99,9 @@ export default {
   },
   computed: {
     userProfile () {
-      return this.$store.state.profile
+      let data = this.$store.state.profile
+      this.setEditableItems(data)
+      return data
     },
     currentPhoneMask () {
       return this.$store.state.phoneMasks[this.$store.state.currentCountry]
@@ -116,6 +118,12 @@ export default {
   },
   mixins: [subtraction],
   methods: {
+    setEditableItems (data) {
+      this.firstName = data.first_name
+      if (data.is_company && data.company) {
+        this.companyName = data.company.company_name
+      }
+    },
     toggleModal (id) {
       this.$refs[id].newIsOpen = !this.$refs[id].newIsOpen
     },
