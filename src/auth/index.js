@@ -96,7 +96,7 @@ export default {
   resetCookie () {
     document.cookie = this.user.cookieName + '=0;path=/;domain=.mesto.delivery;'
     this.user.authenticated = false
-    this.checkAuth()
+    window.location.reload()
   },
   logout (context, redirect) {
     window.localStorage.setItem('logout-event', 'logout' + Math.random())
