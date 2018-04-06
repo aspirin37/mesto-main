@@ -71,7 +71,7 @@
               v-bind:class="{'updated-bg--active': isPriceChanged}"
               v-scroll-to="setScrollOptions('#payment')"
             >
-              <div class="new-order-nav__item px-0" v-on:click="submitForms">
+              <div class="new-order-nav__item px-0">
                 <img src="../assets/icons/wallet.svg" alt="wallet">
                 <span v-if="price" class="line-height-one mt-2"><b>{{price}}</b><small class="d-block">руб.</small></span>
               </div>
