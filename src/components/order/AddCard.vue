@@ -171,13 +171,15 @@ export default {
         platform: 'web'
       }
       this.errorMessage = ''
-      this.$http.post(api.API_REST_LINK2 + 'web/bankCards/', options).then((response) => {
-        if (response.data.url) {
-          this.bankWindowLink = response.data.url
+      this.$http.post(api.API_REST_LINK2 + 'web/bankCards/', options).then(response => {
+        let data = response.data
+
+        if (data.url) {
+          this.bankWindowLink = data.url
           wi.location.href = this.bankWindowLink
-          this.checkFinishCard(response.data.id)
+          this.checkFinishCard(data.id)
         }
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
         wi.close()
       })
@@ -195,7 +197,7 @@ export default {
       }
       this.showAddingCap = true
       this.finishCardInterval = setInterval(() => {
-        this.$http.get(api.API_REST_LINK2 + 'web/finish3DS', {params: options}).then((response) => {
+        this.$http.get(api.API_REST_LINK2 + 'web/finish3DS', {params: options}).then(response => {
           let data = response.data
 
           if (data.success) {
@@ -209,7 +211,7 @@ export default {
             this.cardName = ''
             this.errorMessage = ''
           }
-        }).catch((error) => {
+        }).catch(error => {
           this.errorMessage = error.data.message
         })
       }, 3000)

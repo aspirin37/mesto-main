@@ -60,13 +60,15 @@ export default {
         idt_order: this.orderId,
         idt_pay_method: this.payMethod
       }
-      this.$http.post(api.API_REST_LINK4 + 'webclient/pay', options).then((response) => {
+      this.$http.post(api.API_REST_LINK4 + 'webclient/pay', options).then(response => {
         this.errorMessage = ''
         this.$emit('payed', response.data.order)
         this.showLoader = false
-      }).catch((error) => {
-        this.$emit('error', error.data)
-        this.errorMessage = error.data.message
+      }).catch(error => {
+        let errorData = error.data
+
+        this.$emit('error', errorData)
+        this.errorMessage = errorData.message
         this.showLoader = false
       })
       this.setCurrentPayMethod()

@@ -209,10 +209,10 @@ export default {
   },
   methods: {
     getPayMethods () {
-      return this.$http.get(api.API_REST_LINK2 + 'webclient/payMethods').then((response) => {
+      return this.$http.get(api.API_REST_LINK2 + 'webclient/payMethods').then(response => {
         this.payMethods = response.data.payMethods
         this.groupPayMethods()
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },
@@ -276,7 +276,7 @@ export default {
 
       this.$emit('adding', true)
 
-      this.$http.post(api.API_REST_LINK4 + 'webclient/order', options).then((response) => {
+      this.$http.post(api.API_REST_LINK4 + 'webclient/order', options).then(response => {
         this.errorMessage = ''
         let data = response.data.order
         let responseDone = () => {
@@ -286,9 +286,9 @@ export default {
 
         if (this.orderPhotos.length) {
           this.creatingText = 'Загрузка фото посылки'
-          this.addPhotos(data.idt_order).then((response) => {
+          this.addPhotos(data.idt_order).then(response => {
             responseDone()
-          }).catch((error) => {
+          }).catch(error => {
             this.errorMessage = error.data.message
             this.showLoader = false
           })
@@ -296,7 +296,7 @@ export default {
           responseDone()
         }
         this.$emit('adding', false)
-      }).catch((error) => {
+      }).catch(error => {
         if (error.status === 402) {
           this.$emit('error', error.data)
         }
@@ -339,8 +339,10 @@ export default {
     },
     setMethodIfOne () {
       this.emitPayType()
-      if (this.groupedPayMethods[this.payType].length === 1) {
-        this.payMethod = this.groupedPayMethods[this.payType][0].idt_pay_method
+      let thisMethods = this.groupedPayMethods[this.payType]
+
+      if (thisMethods && thisMethods.length === 1) {
+        this.payMethod = thisMethods[0].idt_pay_method
       }
     }
   }

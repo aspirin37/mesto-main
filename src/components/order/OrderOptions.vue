@@ -50,7 +50,7 @@ import api from '../../store/api'
 // import Modal from '../utils/Modal'
 
 export default {
-  name: 'order-packet',
+  name: 'order-options',
   data () {
     return {
       options: {},
@@ -70,14 +70,13 @@ export default {
   },
   mounted () {
     this.getOrderOptions()
-    console.log('tyweuitywet')
   },
   methods: {
     // toggleModal (id) {
     //   this.$refs[id].newIsOpen = !this.$refs[id].newIsOpen
     // },
     getOrderOptions () {
-      this.$http.get(api.API_REST_LINK3 + 'webclient/deliveryOptions').then((response) => {
+      this.$http.get(api.API_REST_LINK3 + 'webclient/deliveryOptions').then(response => {
         this.options = response.data.options
         this.checkedOptions = this.orderOptions
         // this.toggleModal('order-options')
