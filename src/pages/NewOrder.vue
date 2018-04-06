@@ -9,7 +9,7 @@
       <!-- Order done -->
       <div class="container" v-if="orderDone">
         <div class="container-sm mx-auto pb-5 pt-4">
-          <order-done v-on:repeat="orderDone = false" v-on:createNew="orderDone = false" :orderData="addedOrderData"></order-done>
+          <order-done v-on:repeat="repeatOrder" v-on:createNew="orderDone = false" :orderData="addedOrderData"></order-done>
         </div>
       </div>
       <!-- /Order done -->
@@ -541,6 +541,10 @@ export default {
     },
     removeStickyElements () {
       document.removeEventListener('scroll', this.stickyElements)
+    },
+    repeatOrder () {
+      this.orderDone = false
+      this.paymentError = false
     }
   }
 }
