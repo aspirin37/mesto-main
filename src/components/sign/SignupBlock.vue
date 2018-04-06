@@ -4,7 +4,7 @@
     <!-- Phone -->
     <div class="d-inline-block" v-if="!smsSended">
       <p class="lead mw-600 text-left" v-if="signText">{{signText}}</p>
-      <signup-phone-form v-on:submitted="sendSms(phone = $event)" :phone="phone"></signup-phone-form>
+      <signup-phone-form v-on:submitted="sendSms(phone = $event)" v-on:toggleSign="$emit('toggleSign')" :phone="phone"></signup-phone-form>
     </div>
     <!-- /Phone -->
 
