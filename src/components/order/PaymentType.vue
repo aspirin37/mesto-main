@@ -85,7 +85,7 @@
               </ul>
               <div class="card-list-item relative text-center" v-on:click.prevent="showAddingCard = true">
                 <span class="card-list-item__info">
-                  <b>Новая карта</b>
+                  <b>Добавить банковскую карту</b>
                 </span>
               </div>
             </div>
