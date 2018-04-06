@@ -47,7 +47,7 @@ const translationsRu = {
     'photo': 'Фотографии',
     'sizes': 'Размер (Д x Ш x В)',
     'courier-data': 'Данные курьера',
-    'cancel': 'Отменить',
+    'cancel': 'Отменить заказ',
     'confirm': 'Подтвердить',
     'order-list': 'Список заказов',
     'make-pay': 'Оплатить'
