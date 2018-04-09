@@ -144,6 +144,7 @@
               </table>
             </div>
 
+            <!-- Packets -->
             <p class="text-muted small mb-2" v-if="order.packets">Посылки:</p>
             <div class="d-flex mb-3 mr-2 flex-wrap">
               <div v-for="(packet, index) in order.packets" class="border rounded p-3 mb-3" :key="index">
@@ -152,6 +153,7 @@
                 <span class="mt-3" v-if="packet.size_x">{{+packet.size_x / 10 || '-'}} см <span class="text-muted">x</span> {{+packet.size_y / 10 || '-'}} см <span class="text-muted">x</span> {{+packet.size_z / 10 || '-'}} см</span>
               </div>
             </div>
+            <!-- /Packets -->
 
             <div class="d-flex pb-4 relative" v-for="(address, index) in order.addresses" :key="index">
               <div class="mr-3 mt-1" v-on:click="setPointCenter(index)">
