@@ -11,12 +11,8 @@
             <p class="mb-1">{{courier.name}}</p>
             <p class="mb-2" v-if="courier.phone"><a :href="'tel:+' + courier.phone" class="phone-link">{{courier.phone_format}}</a></p>
             <ul class="list-unstyled text-nowrap rating-stars mb-0">
-              <li v-for="(item, index) in [1, 2, 3, 4, 5]" class="rating-stars__star d-inline-block"
-                :key="index"
-                v-bind:class="{'rating-stars__star--active' : (+(item - courier.rate) <= 0.3) && (+(item - courier.rate) <= 1.3),
-                              'rating-stars__star--half' : (+(item - courier.rate) >= 0.3) && (+(item - courier.rate) <= 0.7)}"
-                >
-                <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              <li class="rating-stars__star d-inline-block align-middle rating-stars__star--active">
+                <svg version="1.1" id="Слой_1" class="align-middle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
                   <path class="st0" d="M23.4,8.7L15.6,8l-3.1-7.6h0C12.5,0.1,12.2,0,12,0v19.7l0,0l6.7,4.2c0.5,0.3,1-0.1,0.9-0.7l-1.8-8l5.9-5.4
                     C24.2,9.4,24,8.7,23.4,8.7z" fill="#F6F6F6"/>
@@ -25,7 +21,7 @@
                 </svg>
               </li>
             </ul>
-            <span v-if="courier.rate" class="text-muted small">{{courier.rate.toFixed(1)}}</span>
+            <span v-if="courier.rate" class="text-muted small">({{courier.rate.toFixed(1)}})</span>
             <button class="btn btn-default btn-sm d-none">Оставить отзыв</button>
           </div>
         </div>

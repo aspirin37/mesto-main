@@ -71,6 +71,7 @@
                     </svg>
                     <span v-bind:class="['status', 'status--' + (status)]" v-if="status !== 3">{{statuses[status]}}</span>
                     <span v-if="status === 3">{{statuses[status]}}</span>
+                    <span>{{$t('letters')[activePoint]}}</span>
                     <span v-if="order.finish_time_format">{{order.finish_time_format}}</span>
                   </td>
                 </tr>
@@ -104,14 +105,14 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="order.photos && order.photos.courier && order.photos.courier.length">
+                <tr v-if="order.photos && order.photos.client && order.photos.client.length">
                   <td class="align-top pr-2 text-right pb-1 small pt-1">
-                    <span class="text-muted">Фото (курьер):</span>
+                    <span class="text-muted">Фото (клиент):</span>
                   </td>
                   <td class="pb-1">
                     <thumbnails-outer>
                       <thumbnail
-                        v-for="(pic, index) in order.photos.courier"
+                        v-for="(pic, index) in order.photos.client"
                         :key="index"
                         :img="pic.thumbnail"
                         :thumb="pic.url"
@@ -122,14 +123,14 @@
                     </thumbnails-outer>
                   </td>
                 </tr>
-                <tr v-if="order.photos && order.photos.client && order.photos.client.length">
+                <tr v-if="order.photos && order.photos.courier && order.photos.courier.length">
                   <td class="align-top pr-2 text-right pb-1 small pt-1">
-                    <span class="text-muted">Фото (клиент):</span>
+                    <span class="text-muted">Фото (курьер):</span>
                   </td>
                   <td class="pb-1">
                     <thumbnails-outer>
                       <thumbnail
-                        v-for="(pic, index) in order.photos.client"
+                        v-for="(pic, index) in order.photos.courier"
                         :key="index"
                         :img="pic.thumbnail"
                         :thumb="pic.url"
@@ -235,7 +236,7 @@
       :courier="order.courier"
       :rate="order.rate"
       :isDone="status === 7"
-      :orderId="itemId"
+      :orderId="'' + itemId"
       v-if="order.courier && order.courier.idt_courier"
       v-on:added="getOrderData"
     ></feedback-courier>
@@ -352,10 +353,8 @@ export default {
         })
       }
     },
-    status (val, oldVal) {
-      if (oldVal && (val !== oldVal)) {
-        this.getInfoInterval(val)
-      }
+    status (val) {
+      this.getInfoInterval(val)
     }
   },
   computed: {
@@ -377,11 +376,16 @@ export default {
         '8': this.$t('order-status.8'),
         '9': this.$t('order-status.9'),
         '10': this.$t('order-status.10'),
-        '11': this.$t('order-status.11')
+        '11': this.$t('order-status.11'),
+        '12': this.$t('order-status.12'),
+        '13': this.$t('order-status.13')
       }
     },
     currentPhoneMask () {
       return this.$store.state.phoneMasks[this.$store.state.currentCountry]
+    },
+    activePoint () {
+      return this._.findIndex(Object.values(this.order.addresses), (item) => { return item.is_active === true })
     }
   },
   beforeDestroy () {
@@ -410,7 +414,7 @@ export default {
     },
     getInfoInterval (status) {
       clearInterval(this.interval)
-      if ([1, 2, 7, 8].indexOf(status) === -1) {
+      if ([1, 2, 7, 8, 12, 13].indexOf(status) === -1) {
         if (status === 4) {
           this.getOrderData()
         }
