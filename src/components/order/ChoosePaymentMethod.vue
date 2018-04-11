@@ -30,7 +30,7 @@
 <script>
 import api from '../../store/api'
 import CardItem from './CardItem'
-import AddCard from '../order/AddCard'
+import AddCard from '../payment/AddCard'
 import Loader from '../utils/Loader'
 
 export default {

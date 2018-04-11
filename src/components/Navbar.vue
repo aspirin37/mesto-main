@@ -69,7 +69,7 @@
                 </span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <span class="dropdown-header" v-if="profile.company && profile.company.balance">Баланс: <span v-thousands="profile.company.balance"></span> руб.</span>
+                <span class="dropdown-header" v-if="isCompany">Баланс: <span v-thousands="profile.company.balance"></span> руб.</span>
                 <router-link
                   v-for="(item, index) in menuLinks"
                   :key="index"
@@ -140,6 +140,9 @@ export default {
     },
     cities () {
       return this.$store.state.locations
+    },
+    isCompany () {
+      return this.profile.is_company
     }
   },
   watch: {
