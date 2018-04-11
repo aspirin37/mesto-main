@@ -193,6 +193,12 @@
   }
 }
 
+a.small-card{
+  &:hover{
+    background-color: rgba($blue, 0.2);
+  }
+}
+
 .small-card{
   width: 180px;
   height: 86px;
@@ -259,6 +265,20 @@
       width: 30px;
       height: 15px;
     }
+  }
+  &__plus{
+    $size: 54px;
+
+    font-size: $size;
+    text-align: center;
+    width: $size;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    line-height: $size;
+    margin-top: -$size/2;
+    margin-left: -$size/2;
+    color: $blue;
   }
 }
 
@@ -330,11 +350,5 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center right;
-  }
-}
-
-.add-card-padd-top{
-  @include media-breakpoint-up(sm) {
-    padding-top: 90px;
   }
 }

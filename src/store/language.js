@@ -61,8 +61,8 @@ const translationsRu = {
   },
   'sidebar': {
     'new': 'Новый заказ',
-    'history': 'История заказов',
-    'cards': 'Банковские карты',
+    'history': 'Заказы',
+    'cards': 'Оплата',
     'fave': 'Избранные адреса',
     'support': 'Поддержка',
     'profile': 'Настройки'

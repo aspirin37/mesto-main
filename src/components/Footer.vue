@@ -88,7 +88,7 @@
 <script>
 import config from '../store/config'
 import Modal from './utils/Modal'
-import BackCallForm from './main/BackCallForm'
+import BackCallForm from './support/BackCallForm'
 
 export default {
   name: 'main-footer',

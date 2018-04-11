@@ -1,31 +1,37 @@
 <template>
-  <div class="bg-white rounded current-shadow p-2 p-sm-3 relative mb-3 widget--min-height">
+  <div class="bg-white rounded current-shadow p-3 p-md-4 relative mb-3 widget--min-height">
 
-    <div class="text-center cap" v-if="!userCards.length && !isShowForm && !showLoader">
+    <!-- <div class="text-center cap" v-if="!cardsLength && !isShowForm && !showLoader">
       <div class="cap__noresults ml-auto mr-auto"></div>
       <p class="lead cap__text">У вас еще нет добавленных карт</p>
       <button class="btn btn-success" v-on:click="isShowForm = true">Добавить карту</button>
-    </div>
+    </div> -->
 
     <loader v-if="showLoader"></loader>
-    <div class="p-3" v-if="userCards && userCards.length">
-      <h3 class="text-center nomargin">Мои карты</h3>
-      <ul class="list-unstyled list-inline cards-list text-center">
-        <card-item
-          v-for="(card, index) in userCards"
-          :pan="card.pan"
-          :key="index"
-          v-on:deleteCard="confirmDelete(card)"
-          :animate="index === animatedCard"
-          class="mx-2"
-        ></card-item>
-      </ul>
-    </div>
+    <h3 class="mb-3">Мои карты</h3>
+    <ul class="list-unstyled list-inline cards-list mb-3">
+      <card-item
+        v-if="cardsLength"
+        v-for="(card, index) in userCards"
+        v-on:deleteCard="confirmDelete(card)"
+        :pan="card.pan"
+        :key="index"
+        :animate="index === animatedCard"
+        class="mr-3"
+      ></card-item>
+      <li class="cards-list__item d-inline-block mr-3">
+        <a href="#" class="small-card text-left d-block link-reset" v-on:click.prevent="isShowForm = !isShowForm">
+          <span class="small-card__plus">+</span>
+        </a>
+      </li>
+    </ul>
 
-    <div class="p-3" v-if="isShowForm || userCards.length && !showLoader">
-      <add-card v-on:cardAdded="getCards(true)" :showCancel="false" v-bind:class="{'add-card-padd-top' : !userCards.length}"></add-card>
+    <div class="p-3 mb-3" v-if="isShowForm && !showLoader">
+      <add-card v-on:cardAdded="getCards(true)" :showCancel="false"></add-card>
       <p class="text-danger text-center">{{errorMessage}}</p>
     </div>
+
+    <payment-balance></payment-balance>
 
     <modal
       modalSize="modal-xs"
@@ -47,8 +53,9 @@ import api from '../../store/api'
 import Modal from '../utils/Modal'
 import checkCard from '../../mixins/checkCard'
 import CardItem from './CardItem'
-import AddCard from '../order/AddCard'
+import AddCard from '../payment/AddCard'
 import Loader from '../utils/Loader'
+import PaymentBalance from '../payment/PaymentBalance'
 
 export default {
   name: 'profile-payment',
@@ -71,11 +78,17 @@ export default {
     Modal,
     CardItem,
     AddCard,
-    Loader
+    Loader,
+    PaymentBalance
   },
   mixins: [checkCard],
   beforeMount () {
     this.getCards()
+  },
+  computed: {
+    cardsLength () {
+      return this.userCards.length
+    }
   },
   methods: {
     toggleModal (id) {
