@@ -77,7 +77,7 @@ export default {
       return this.$store.state.profile
     },
     isCompany () {
-      return this.userProfile.company && this.userProfile.company.balance
+      return this.userProfile.is_company
     }
   }
 }
