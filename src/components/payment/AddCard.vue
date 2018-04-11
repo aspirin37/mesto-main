@@ -1,7 +1,7 @@
 <template>
-  <div class="relative">
+  <div class="relative pb-2">
     <form v-on:submit.prevent="validateBeforeSubmit">
-      <div class="ml-auto mr-auto card-outer relative mx-auto">
+      <div class="card-outer relative">
         <div class="card relative">
           <div class="card__type card-type" v-bind:class="['card-type--' + (cardPan.length >= 1 ? cardType : '')]"></div>
           <div class="card__title">
@@ -83,10 +83,10 @@
           <p class="card__back-cvc-code">{{$t('card.cvv-text')}}</p>
         </div>
       </div>
-      <div class="text-center form-group card__buttons">
+      <div class="form-group card__buttons">
         <button type="button" class="btn btn-default btn-sm" v-if="showCancel" v-on:click="cancelAdding">{{$t('cancel')}}</button>
         <button type="submit" class="btn btn-theme btn-sm" ref="step-4">{{$t('card.add-this')}}</button>
-        <div class="relative d-inline-block left-space mr-3">
+        <div class="relative d-inline-block left-space mr-3 text-center">
           <span class="help-circle add-card-popup__outer">
             ?
           </span>

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import BackCallForm from './main/BackCallForm'
+import BackCallForm from './support/BackCallForm'
 
 export default {
   name: 'about',
