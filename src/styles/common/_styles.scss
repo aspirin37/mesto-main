@@ -257,7 +257,7 @@
   border: none;
   cursor: pointer;
   .pac-item{
-    padding: 4px 12px;
+    padding: 4px $input-padding-x;
     border-top-color: $gray-100;
     &:hover{
       background-color: rgba($main-color, 0.05);
