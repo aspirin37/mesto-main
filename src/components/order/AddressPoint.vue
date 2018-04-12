@@ -5,6 +5,11 @@
         <div class="row align-items-center">
           <div class="col-12 col-sm-8 mb-2 pr-sm-0">
             <div class="relative">
+              <transition name="side-slide">
+                <div class="address-warning current-shadow px-3 py-2 rounded cursor-pointer bg-white" v-if="addressNotFull" v-on:click="addressNotFull = false">
+                  Адрес не содержит номер дома, возможно курьеру будет сложно вас найти.
+                </div>
+              </transition>
               <input type="text" class="form-control" placeholder="Адрес" v-if="!mapLoaded" disabled>
               <autocomplete
                 v-else
@@ -91,7 +96,8 @@ export default {
       name: '',
       comment: '',
       room: '',
-      time: ''
+      time: '',
+      addressNotFull: false
     }
   },
   components: {
@@ -243,6 +249,7 @@ export default {
         this.lat = place.geometry.location.lat()
         this.lng = place.geometry.location.lng()
         this.setAddressData()
+        this.checkAddressNotFull(place.types)
       } else {
         // this.errorMessage = 'Такой адрес не найден'
         // return
@@ -250,6 +257,9 @@ export default {
     },
     pushPacketOption (key, value) {
       this.packetOptions[key] = value
+    },
+    checkAddressNotFull (types) {
+      this.addressNotFull = this._.includes(types, 'route')
     }
   }
 }

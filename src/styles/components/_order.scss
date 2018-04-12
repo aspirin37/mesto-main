@@ -326,3 +326,26 @@ $class-slug: doc-type-size;
 .order-sign-block{
   min-height: 220px;
 }
+
+.address-warning{
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  border: 2px solid $orange;
+  &:hover{
+    opacity: 1;
+  }
+  &:before{
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $orange;
+    position: absolute;
+    left: 10px;
+    top: 100%;
+  }
+}

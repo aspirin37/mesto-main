@@ -33,10 +33,8 @@ export default {
   },
   methods: {
     setSlide (num) {
-      console.log(this.current)
       setTimeout(() => {
         this.current = num
-        console.log(this.current)
       }, (this.animSeconds / 4) * 1000)
     },
     switchSlide () {
