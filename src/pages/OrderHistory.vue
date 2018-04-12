@@ -222,7 +222,7 @@ export default {
         options.is_already_payed = false
       }
       if (this.searchStatus) {
-        options.idc_order_state = this.searchStatus
+        options.statuses = this.searchStatus
       }
       if (this.numberForFilter) {
         options.order_number = this.numberForFilter
