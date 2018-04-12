@@ -301,6 +301,7 @@ $class-slug: doc-type-size;
     min-width: 400px;
   }
   &__map{
+    min-height: 200px;
     @include media-breakpoint-up(md) {
       top: 0;
       width: inherit;
