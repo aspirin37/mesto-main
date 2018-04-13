@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Croppie from 'croppie'
+import { Croppie } from 'croppie'
 
 export default {
   props: {
