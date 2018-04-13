@@ -10,7 +10,7 @@
         <div class="col-12 col-sm d-flex flex-nowrap mb-3">
           <v-select
             class="text-nowrap"
-            :options="statuses"
+            :options="filterStatuses"
             :optionValue="'value'"
             :outerClass="['d-inline-block']"
             :dropdownClass="['dropdown-menu-right dropdown-menu-sm-fixed']"
@@ -163,7 +163,13 @@ export default {
         utc: true
       },
       dateFrom: '',
-      dateTo: ''
+      dateTo: '',
+      filterStatuses: [
+        {key: '', value: 'Все заказы'},
+        {key: '1,3,4,5,9,10,11', value: 'Текущие'},
+        {key: '7', value: 'Завершенные'},
+        {key: '2,12,13', value: 'Не выполненные'}
+      ]
     }
   },
   beforeMount () {
@@ -216,7 +222,7 @@ export default {
         options.is_already_payed = false
       }
       if (this.searchStatus) {
-        options.idc_order_state = this.searchStatus
+        options.statuses = this.searchStatus
       }
       if (this.numberForFilter) {
         options.order_number = this.numberForFilter

@@ -50,3 +50,17 @@
     float: left;
   }
 }
+
+.word-slider{
+  perspective: 200px;
+  &__item{
+    display: inline-block;
+    transition: all 0.2s;
+    transform: rotateX(0deg);
+    opacity: 1;
+    &--active{
+      opacity: 0;
+      transform: rotateX(-90deg);
+    }
+  }
+}
