@@ -1,3 +1,9 @@
+.main-form-text{
+  @include media-breakpoint-down(md) {
+    font-size: 16px;
+  }
+}
+
 .main-block{
   background-color: rgba($gray-100, 0.8);
   background-size: auto 100%;
