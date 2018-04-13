@@ -8,11 +8,12 @@
         <div class="p-md-4">
           <form class="order-form-width mb-4">
             <div class="d-flex align-items-center my-1">
-              <div class="main-block__img w-25 mr-3 d-md-none"><img src="../../assets/courier-window.svg" alt="main" class="mw-100"></div>
-              <h2 class="mb-4 w-100">
+              <div class="main-block__img w-25 mr-3 d-lg-none mb-3"><img src="../../assets/courier-window.svg" alt="main" class="mw-100"></div>
+              <h2 class="mb-4 w-100 main-form-text">
                 <span class="mr-1">Сервис</span>
-                <word-slider :words="['умных', 'заботливых', 'быстрых', 'приятных', 'вежливых', 'экономных', 'бережливых']" class="d-block d-sm-inline-block"></word-slider>
-                <br class="d-none d-sm block">доставок день в день в Санкт-Петербурге</h2>
+                <word-slider :words="['умных', 'заботливых', 'быстрых', 'приятных', 'вежливых', 'экономных', 'бережливых']"></word-slider>
+                <br>доставок день в день в Санкт-Петербурге
+              </h2>
             </div>
             <div class="form-group relative">
               <input type="text" class="form-control" placeholder="Адрес «А»" v-if="!mapLoaded" disabled>
