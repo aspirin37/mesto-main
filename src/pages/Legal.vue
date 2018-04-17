@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container">
-      <h1 class="my-3">Юридическая информация</h1>
+      <h1 class="my-3 h3">Юридическая информация</h1>
     </div>
     <hr>
     <div class="container d-flex py-4 flex-wrap flex-lg-nowrap">
