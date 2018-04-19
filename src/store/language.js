@@ -63,7 +63,7 @@ const translationsRu = {
     'new': 'Новый заказ',
     'history': 'Заказы',
     'cards': 'Оплата',
-    'fave': 'Избранные адреса',
+    'fave': 'Адреса',
     'support': 'Поддержка',
     'profile': 'Настройки'
   },
