@@ -22,7 +22,7 @@ export default {
     }
   },
   watch: {
-    orderTransport (val) {
+    orderTransport () {
       this.getPacketTypes()
     }
   },
@@ -41,7 +41,7 @@ export default {
       }
       return this.$http.get(api.API_REST_LINK2 + 'webclient/packetTypes', {params: options}).then(response => {
         this.types = response.data.packetTypes
-        this.selectedType = '' + this.types[0].idc_packet_type
+        this.selectedType = this.types[0].idc_packet_type
         this.setPacketType()
       })
     },

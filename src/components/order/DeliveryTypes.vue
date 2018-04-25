@@ -33,20 +33,20 @@ export default {
   },
   watch: {
     moveType (val) {
-      this.getPacketTypes()
+      this.getDeliveryTypes()
     }
   },
   mounted () {
-    this.getPacketTypes()
+    this.getDeliveryTypes()
   },
   methods: {
-    getPacketTypes () {
+    getDeliveryTypes () {
       let options = {
         idc_courier_transport: this.moveType
       }
       return this.$http.get(api.API_REST_LINK2 + 'webclient/deliveryTypes', {params: options}).then((response) => {
         this.types = response.data.deliveryTypes
-        this.selectedType = '' + this.types[0].idt_delivery_type
+        this.selectedType = this.types[0].idt_delivery_type
         this.setDeliveryType()
       })
     },

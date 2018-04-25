@@ -147,17 +147,11 @@ const mutations = {
   SET_ORDER_PACKET: (state, { options }) => {
     Vue.set(state.orderPackets, options.key, options.value)
   },
-  SET_TRANSPORT_TYPE: (state, value) => {
-    state.orderTransport = value
-  },
   SET_ORDER_PRICE: (state, value) => {
     state.orderPrice = value
   },
   SET_ORDER_PHOTOS: (state, value) => {
     state.orderPhotos = value
-  },
-  SET_ORDER_OPTIONS: (state, value) => {
-    state.orderOptions = value
   },
   SET_ORDER_COMMENT: (state, value) => {
     state.orderComment = value
@@ -180,6 +174,16 @@ const mutations = {
     state.orderCostDeclare = ''
     state.paymentAddress = null
     state.orderPrice = null
+  },
+  SET_STATE_VALUE: (state, { options }) => {
+    state[options.key] = options.value
+  },
+  SET_STATE_OBJECT_VALUE: (state, { options }) => {
+    if (options.value) {
+      Vue.set(state[options.vari], options.key, options.value)
+    } else {
+      Vue.delete(state[options.vari], (options.key))
+    }
   }
 }
 

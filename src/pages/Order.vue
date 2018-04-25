@@ -18,7 +18,10 @@
         <div class="col-12 col-lg-6 col-xl-5 pr-lg-0">
           <div class="p-3 p-md-4">
             <div class="form-group relative">
-              <h2 class="order-info-widget__title"><small>Заказ </small><b>{{order.order_number}}</b></h2>
+              <h2 class="order-info-widget__title">
+                <small>Заказ </small><b>{{order.order_number}}</b>
+                <repeat-order :orderData="order"></repeat-order>
+              </h2>
               <!-- <div class="order-actions" v-bind:class="{'order-actions--active' : showDrop}">
                 <a href="#" class="order-actions__link" v-on:click="showDrop = !showDrop"><img src="../assets/icons/dots-menu.svg" alt="actions" class=""></a>
                 <ul class="order-actions__menu list-unstyled" v-if="showDrop">
@@ -295,6 +298,7 @@ import NewPassword from '../components/sign/NewPassword'
 import Loader from '../components/utils/Loader'
 import generateMarkerIcon from '../mixins/generateMarkerIcon'
 import PaymentModal from '../components/order/PaymentModal'
+import RepeatOrder from '../components/order/RepeatOrder'
 import FeedbackCourier from '../components/order/FeedbackCourier'
 import PaymentMethod from '../components/inner/PaymentMethod'
 
@@ -334,7 +338,8 @@ export default {
     GoBack,
     PaymentModal,
     FeedbackCourier,
-    PaymentMethod
+    PaymentMethod,
+    RepeatOrder
   },
   mixins: [generateMarkerIcon],
   beforeMount () {

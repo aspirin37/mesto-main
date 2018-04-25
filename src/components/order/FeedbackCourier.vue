@@ -66,7 +66,7 @@
           <p class="text-danger float-right" v-if="errorMessage">{{errorMessage}}</p>
         </form>
         <div v-else>
-          <span class="text-muted mr-2">Ваш отзыв:</span>
+          <span class="text-muted mr-2" v-if="rate && (rate.feedback || rate.rate)">Ваш отзыв:</span>
           <p class="mb-2" v-if="rate && rate.feedback">«{{rate.feedback}}»</p>
           <ul class="list-unstyled text-nowrap rating-stars mb-3">
             <li v-for="(item, index) in rate.rate" class="rating-stars__star rating-stars__star--active d-inline-block" :key="index">
