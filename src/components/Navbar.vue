@@ -133,7 +133,7 @@ export default {
       return this.$store.state.profile
     },
     isAuth () {
-      return this.user.authenticated
+      return this.user.authenticated && this.profile
     },
     locale () {
       return this.$i18n.locale()

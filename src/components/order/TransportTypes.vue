@@ -36,8 +36,12 @@ export default {
   },
   methods: {
     setValue () {
+      let options = {
+        key: 'orderTransport',
+        value: this.orderTransport
+      }
+      this.$store.commit('SET_STATE_VALUE', {options})
       this.$emit('selected', this.orderTransport)
-      this.$store.commit('SET_TRANSPORT_TYPE', +this.orderTransport)
       this.$store.dispatch('CALC_ORDER_PRICE')
     }
   }

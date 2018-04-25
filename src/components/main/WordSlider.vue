@@ -1,5 +1,5 @@
 <template>
-  <span class="word-slider">
+  <span class="word-slider d-inline-block">
     <span class="word-slider__item" :class="cssClass">{{words[current]}}</span>
   </span>
 </template>
