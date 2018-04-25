@@ -1,45 +1,36 @@
 <template>
   <div class="bg-white rounded current-shadow p-3 widget--min-height relative p-3 p-md-4">
     <loader v-if="showLoader"></loader>
-    <div class="text-center cap"
-      v-if="!addresses && !showLoader"
-    >
-      <div class="cap__noresults ml-auto mr-auto"></div>
-      <p class="lead cap__text">{{$t('favorite.no-fave')}}</p>
-      <router-link :to="{ name: 'new-order'}" class="btn btn-success">{{$t('new-order')}}</router-link>
-    </div>
-    <div v-show="addresses && !showLoader">
-      <div class="form-group">
-        <h3>{{$t('fave')}}</h3>
-        <p class="text-muted">
-          {{$t('favorite.fave-subtext')}}
-        </p>
-      </div>
-      <div class="form-group mw-400">
-        <autocomplete
-          placehldr="Добавить адрес"
-          :classNames="['form-control']"
-          v-model="newAddress"
-          :value="newAddress"
-          :windowMaps="windowMaps"
-          v-on:placeChanged="addAddress($event)"
-          v-if="mapLoaded"
-        ></autocomplete>
-      </div>
-      <p v-for="(address, index) in addresses" :key="index">
-        <span class="mr-2">{{address.address}}</span>
-        <a href="#" v-on:click.prevent="removeAddress(address.idt_fave_address)" title="Удалить">
-          <img src="../assets/icons/close-del.svg" alt="X">
-        </a>
+    <div class="form-group">
+      <h3>{{$t('fave')}}</h3>
+      <p class="text-muted">
+        {{$t('favorite.fave-subtext')}}
       </p>
-      <pagination
-        class="mw-400"
-        :moreBtn="false"
-        :count="count"
-        :itemsPerPage="itemsPerPage"
-        v-on:pageChanged="getAddresses"
-      ></pagination>
     </div>
+    <div class="form-group mw-400">
+      <autocomplete
+        placehldr="Добавить адрес"
+        :classNames="['form-control']"
+        v-model="newAddress"
+        :value="newAddress"
+        :windowMaps="windowMaps"
+        v-on:placeChanged="addAddress($event)"
+        v-if="mapLoaded"
+      ></autocomplete>
+    </div>
+    <p v-for="(address, index) in addresses" :key="index">
+      <span class="mr-2">{{address.address}}</span>
+      <a href="#" v-on:click.prevent="removeAddress(address.idt_fave_address)" title="Удалить">
+        <img src="../assets/icons/close-del.svg" alt="X">
+      </a>
+    </p>
+    <pagination
+      class="mw-400"
+      :moreBtn="false"
+      :count="count"
+      :itemsPerPage="itemsPerPage"
+      v-on:pageChanged="getAddresses"
+    ></pagination>
   </div>
 </template>
 
