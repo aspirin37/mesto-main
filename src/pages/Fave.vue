@@ -26,7 +26,12 @@
           v-if="mapLoaded"
         ></autocomplete>
       </div>
-      <p v-for="(address, index) in addresses" :key="index">{{address.address}}</p>
+      <p v-for="(address, index) in addresses" :key="index">
+        <span class="mr-2">{{address.address}}</span>
+        <a href="#" v-on:click.prevent="removeAddress(address.idt_fave_address)" title="Удалить">
+          <img src="../assets/icons/close-del.svg" alt="X">
+        </a>
+      </p>
       <pagination
         class="mw-400"
         :moreBtn="false"
@@ -80,36 +85,11 @@ export default {
         offset: offset || 0,
         limit: perpage || 7
       }
-      this.$http.get(api.API_REST_LINK4 + '/webclient/fave', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK4 + 'webclient/fave', {params: options}).then((response) => {
         let data = response.data
 
         this.addresses = data.addresses
         this.count = data.count
-      })
-    },
-    getNextHistory () {
-      this.currentOffset += this.itemsPerPage
-      this.getAddresses(this.currentOffset)
-    },
-    getPrevHistory () {
-      this.currentOffset -= this.itemsPerPage
-      this.getAddresses(this.currentOffset)
-    },
-    toggleFave (item, unset) {
-      let options = {
-        idt_address: item.idt_address,
-        unset: unset || false
-      }
-      this.$http.post(api.WEBCLIENT_URL + 'setFaveAddress', options).then((response) => {
-        let data = response.data
-        if (!data) {
-          return
-        }
-        if (data.error !== 0) {
-          return
-        }
-        // this.getAddresses()
-        this.getFaveAddresses()
       })
     },
     addAddress (event) {
@@ -118,8 +98,13 @@ export default {
         lat: event.geometry.location.lat(),
         lng: event.geometry.location.lng()
       }
-      this.$http.post(api.API_REST_LINK4 + '/webclient/fave', options).then((response) => {
+      this.$http.post(api.API_REST_LINK4 + 'webclient/fave', options).then(() => {
         this.newAddress = ''
+        this.getAddresses()
+      })
+    },
+    removeAddress (id) {
+      this.$http.delete(api.API_REST_LINK4 + 'webclient/fave/' + id).then(() => {
         this.getAddresses()
       })
     }
