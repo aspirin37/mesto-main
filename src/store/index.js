@@ -57,8 +57,6 @@ const actions = {
   },
   CALC_ORDER_PRICE ({commit}) {
     let options = {
-      idt_city: 1,
-      weight: 1,
       idc_courier_transport: state.orderTransport
     }
 
@@ -68,9 +66,9 @@ const actions = {
       }
       return acc
     }, [])
-    // if (formattedAddresses.length < 2) {
-    //   return
-    // }
+    if (formattedAddresses.length < 1) {
+      return
+    }
 
     options.addresses = formattedAddresses
     if (state.orderPackets[1] && state.orderPackets[1].hasOwnProperty('idt_delivery_type')) {
@@ -83,9 +81,9 @@ const actions = {
       options['cost_declare'] = state.orderCostDeclare
     }
     if (state.orderOptions.length) {
-      options['order_options'] = state.orderOptions.join()
+      options['options'] = state.orderOptions.join()
     }
-    return Vue.http.post(api.API_REST_LINK3 + 'common/cost', options).then(response => {
+    return Vue.http.post(api.API_REST_LINK4 + 'common/cost', options).then(response => {
       let price = response.data.cost
       commit('SET_ORDER_PRICE', price)
     })
