@@ -290,7 +290,7 @@ export default {
   },
   mounted () {
     this.addressPointsNumber = this.addressesLength
-    this.$store.dispatch('CALC_ORDER_PRICE')
+    this.calPrice()
     document.addEventListener('scroll', this.stickyElements)
   },
   destroyed () {
@@ -333,6 +333,13 @@ export default {
     }
   },
   methods: {
+    calPrice () {
+      this.$store.dispatch('CALC_ORDER_PRICE').then(() => {
+        this.$alert.hide()
+      }).catch(error => {
+        this.showAreaAlertError(error)
+      })
+    },
     pushError (event) {
       let errors = this.addressesErrors
 
@@ -425,11 +432,7 @@ export default {
           value: addressData
         }
         this.$store.commit('SET_ORDER_ADDRESS_CORDS', {options})
-        this.$store.dispatch('CALC_ORDER_PRICE').then(() => {
-          this.$alert.hide()
-        }).catch(error => {
-          this.showAreaAlertError(error)
-        })
+        this.calPrice()
       }
     },
     setPoint (pos) {
