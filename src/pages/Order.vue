@@ -141,29 +141,31 @@
 
                 <div v-if="address.photosClient && address.photosClient.length" class="mt-2">
                   <!-- <span class="text-muted">Фото (клиент):</span> -->
-                  <thumbnails-outer>
+                  <thumbnails-outer class="d-inline-block mr-2">
                     <thumbnail
                       v-for="(pic, index) in address.photosClient"
                       :key="index"
                       :img="pic.thumbnail"
                       :thumb="pic.url"
-                      :thumbClasses="['d-inline-block', 'mr-2']"
-                      :linkClasses="['order-photos__item']"
+                      :thumbClasses="['d-inline-block']"
+                      :linkClasses="['order-photos__item', 'mr-1']"
                       :index="index"
+                      title="Фото клиента"
                     ></thumbnail>
                   </thumbnails-outer>
                 </div>
                 <div v-if="address.photosCourier && address.photosCourier.length" class="mt-2">
                   <!-- <span class="text-muted">Фото (курьер):</span> -->
-                  <thumbnails-outer>
+                  <thumbnails-outer class="d-inline-block mr-2">
                     <thumbnail
                       v-for="(pic, index) in address.photosCourier"
                       :key="index"
                       :img="pic.thumbnail"
                       :thumb="pic.url"
-                      :thumbClasses="['d-inline-block', 'mr-2']"
-                      :linkClasses="['order-photos__item']"
+                      :thumbClasses="['d-inline-block']"
+                      :linkClasses="['order-photos__item', 'mr-1']"
                       :index="index"
+                      title="Фото курьера"
                     ></thumbnail>
                   </thumbnails-outer>
                 </div>
