@@ -24,25 +24,25 @@
           <!-- /Mobile path -->
 
           <!-- Nav -->
-          <div class="profile-nav rounded mb-3 relative clearfix">
-            <ul class="nav flex-md-column nav-pills small-center py-md-3 justify-content-center">
-              <router-link tag="li" :to="{ name: 'order-history'}" active-class="active" class="nav-item relative">
-                <a class="nav-link"><span class="tab-icon tab-icon--list"></span><span class="d-none d-md-inline-block">{{$t('sidebar.history')}}</span></a>
+          <aside class="profile-nav rounded mb-3 relative clearfix">
+            <nav class="nav flex-md-column nav-pills small-center py-md-3 justify-content-center">
+              <router-link :to="{ name: 'order-history'}" active-class="active" class="nav-link relative text-white">
+                <span class="tab-icon tab-icon--list"></span><span class="d-none d-md-inline-block">{{$t('sidebar.history')}}</span>
               </router-link>
-              <router-link tag="li" :to="{ name: 'profile-payment'}" active-class="active" class="nav-item relative">
-                <a class="nav-link"><span class="tab-icon tab-icon--cards"></span><span class="d-none d-md-inline-block">{{$t('sidebar.cards')}}</span></a>
+              <router-link :to="{ name: 'profile-payment'}" active-class="active" class="nav-link relative text-white">
+                <span class="tab-icon tab-icon--cards"></span><span class="d-none d-md-inline-block">{{$t('sidebar.cards')}}</span>
               </router-link>
-              <router-link tag="li" :to="{ name: 'profile-fave'}" active-class="active" class="nav-item relative">
-                <a class="nav-link"><span class="tab-icon tab-icon--fave"></span><span class="d-none d-md-inline-block">{{$t('sidebar.fave')}}</span></a>
+              <router-link :to="{ name: 'profile-fave'}" active-class="active" class="nav-link relative text-white">
+                <span class="tab-icon tab-icon--fave"></span><span class="d-none d-md-inline-block">{{$t('sidebar.fave')}}</span>
               </router-link>
-              <router-link tag="li" :to="{ name: 'profile-support'}" active-class="active" class="nav-item relative">
-                <a class="nav-link"><span class="tab-icon tab-icon--support"></span><span class="d-none d-md-inline-block">{{$t('sidebar.support')}}</span></a>
+              <router-link :to="{ name: 'profile-support'}" active-class="active" class="nav-link relative text-white">
+                <span class="tab-icon tab-icon--support"></span><span class="d-none d-md-inline-block">{{$t('sidebar.support')}}</span>
               </router-link>
-              <router-link tag="li" :to="{ name: 'profile-settings'}" active-class="active" class="nav-item relative">
-                <a class="nav-link"><span class="tab-icon tab-icon--settings"></span><span class="d-none d-md-inline-block">{{$t('sidebar.profile')}}</span></a>
+              <router-link :to="{ name: 'profile-settings'}" active-class="active" class="nav-link relative text-white">
+                <span class="tab-icon tab-icon--settings"></span><span class="d-none d-md-inline-block">{{$t('sidebar.profile')}}</span>
               </router-link>
-            </ul>
-          </div>
+            </nav>
+          </aside>
           <!-- /Nav -->
 
         </div>
