@@ -8,7 +8,7 @@
     <div>
       <div class="mr-3 cursor-pointer" v-on:click="toggleActive" v-bind:class="{'text-muted' : isClicked}">
         <b class="pre-wrap mr-1">{{address.address}}</b>
-        <b v-if="address.room" class="mr-1">({{address.room}})</b>
+        <b v-if="address.room" class="mr-1">(Офис/кварира: {{address.room}})</b>
         <span class="small text-nowrap" v-if="address.is_payment_address && !payed">(Оплата здесь)</span>
       </div>
       <a :href="'tel:+' + address.contact_phone" class="phone-link">{{address.contact_phone_format}}</a>
