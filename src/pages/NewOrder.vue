@@ -329,9 +329,9 @@ export default {
   },
   methods: {
     calPrice () {
-      this.$store.dispatch('CALC_ORDER_PRICE').then(() => {
-        this.$alert.hide()
-      }).catch(error => this.showAreaAlertError(error))
+      this.$store.dispatch('CALC_ORDER_PRICE')
+        .then(() => this.$alert.hide())
+        .catch(error => this.showAreaAlertError(error))
     },
     pushError (event) {
       let errors = this.addressesErrors

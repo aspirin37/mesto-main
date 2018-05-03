@@ -81,7 +81,7 @@ const actions = {
       options['cost_declare'] = state.orderCostDeclare
     }
     if (state.orderOptions.length) {
-      options['options'] = state.orderOptions.join()
+      options['options'] = state.orderOptions
     }
     return Vue.http.post(api.API_REST_LINK4 + 'common/cost', options).then(response => {
       let price = response.data.cost

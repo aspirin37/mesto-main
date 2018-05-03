@@ -234,7 +234,7 @@ export default {
         this.earn = data.earn
         this.showLoader = false
         return data
-      }).catch((error) => {
+      }).catch(error => {
         this.showLoader = false
         this.errorMessage = error.data.message
       })
