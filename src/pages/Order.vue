@@ -108,42 +108,6 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="order.photos && order.photos.client && order.photos.client.length">
-                  <td class="align-top pr-2 text-right pb-1 small pt-1">
-                    <span class="text-muted">Фото (клиент):</span>
-                  </td>
-                  <td class="pb-1">
-                    <thumbnails-outer>
-                      <thumbnail
-                        v-for="(pic, index) in order.photos.client"
-                        :key="index"
-                        :img="pic.thumbnail"
-                        :thumb="pic.url"
-                        :thumbClasses="['d-inline-block', 'mr-2']"
-                        :linkClasses="['order-photos__item']"
-                        :index="index"
-                      ></thumbnail>
-                    </thumbnails-outer>
-                  </td>
-                </tr>
-                <tr v-if="order.photos && order.photos.courier && order.photos.courier.length">
-                  <td class="align-top pr-2 text-right pb-1 small pt-1">
-                    <span class="text-muted">Фото (курьер):</span>
-                  </td>
-                  <td class="pb-1">
-                    <thumbnails-outer>
-                      <thumbnail
-                        v-for="(pic, index) in order.photos.courier"
-                        :key="index"
-                        :img="pic.thumbnail"
-                        :thumb="pic.url"
-                        :thumbClasses="['d-inline-block', 'mr-2']"
-                        :linkClasses="['order-photos__item']"
-                        :index="index"
-                      ></thumbnail>
-                    </thumbnails-outer>
-                  </td>
-                </tr>
               </table>
             </div>
 
@@ -174,6 +138,35 @@
                   {{address.contact_time_format || ''}}
                 </span>
                 <span class="d-block px-2 mt-2 border-left border-success small" v-if="address.description">«{{address.description}}»</span>
+
+                <div v-if="address.photosClient && address.photosClient.length" class="mt-2">
+                  <!-- <span class="text-muted">Фото (клиент):</span> -->
+                  <thumbnails-outer>
+                    <thumbnail
+                      v-for="(pic, index) in address.photosClient"
+                      :key="index"
+                      :img="pic.thumbnail"
+                      :thumb="pic.url"
+                      :thumbClasses="['d-inline-block', 'mr-2']"
+                      :linkClasses="['order-photos__item']"
+                      :index="index"
+                    ></thumbnail>
+                  </thumbnails-outer>
+                </div>
+                <div v-if="address.photosCourier && address.photosCourier.length" class="mt-2">
+                  <!-- <span class="text-muted">Фото (курьер):</span> -->
+                  <thumbnails-outer>
+                    <thumbnail
+                      v-for="(pic, index) in address.photosCourier"
+                      :key="index"
+                      :img="pic.thumbnail"
+                      :thumb="pic.url"
+                      :thumbClasses="['d-inline-block', 'mr-2']"
+                      :linkClasses="['order-photos__item']"
+                      :index="index"
+                    ></thumbnail>
+                  </thumbnails-outer>
+                </div>
               </div>
             </div>
             <hr>
