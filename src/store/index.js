@@ -142,17 +142,11 @@ const mutations = {
       Vue.set(state.orderAddresses[options.key], item, opts[item])
     }
   },
-  SET_ORDER_PACKET: (state, { options }) => {
-    Vue.set(state.orderPackets, options.key, options.value)
-  },
   SET_ORDER_PRICE: (state, value) => {
     state.orderPrice = value
   },
   SET_ORDER_PHOTOS: (state, value) => {
     state.orderPhotos = value
-  },
-  SET_ORDER_COMMENT: (state, value) => {
-    state.orderComment = value
   },
   SET_ORDER_INSURANCE: (state, value) => {
     state.orderCostDeclare = value

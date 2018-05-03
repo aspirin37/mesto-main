@@ -99,8 +99,7 @@
                 <order-packet></order-packet>
               </div>
               <!-- /Packet -->
-<!--               <pre>{{$store.state.orderPackets}}</pre>
-<pre>{{$store.state.orderAddresses}}</pre> -->
+
               <!-- Addresses -->
               <transition-group name="side-slide" mode="out-in">
                 <div class="bg-white rounded relative current-shadow mb-3"

@@ -1,7 +1,12 @@
 <template>
   <div>
     <label class="check-tabs__label" v-for="(type, index) in types" :key="index">
-      <input type="radio" class="check-tabs__input" :value="type.idc_packet_type" name="packet-type" :checked="+selectedType === type.idc_packet_type" v-on:change="setPacketType(selectedType = type.idc_packet_type)">
+      <input type="radio" class="check-tabs__input"
+        :value="type.idc_packet_type"
+        :checked="+selectedType === type.idc_packet_type"
+        name="packet-type"
+        v-on:change="setPacketType(selectedType = type.idc_packet_type)"
+      >
       <span class="check-tabs__outer rounded mr-2 mb-2">
         <b class="d-block">{{type.alias}}</b>
         <span class="text-muted small">{{type.description}}</span>
@@ -18,7 +23,8 @@ export default {
   data () {
     return {
       types: [],
-      selectedType: null
+      selectedType: null,
+      storeValue: null
     }
   },
   watch: {
@@ -26,8 +32,15 @@ export default {
       this.getPacketTypes()
     }
   },
+  beforeMount () {
+    this.storeValue = this.$store.state.orderPackets.idc_packet_type
+  },
   mounted () {
-    this.getPacketTypes()
+    this.getPacketTypes().then(() => {
+      if (this.storeValue) {
+        this.selectedType = this.storeValue
+      }
+    })
   },
   computed: {
     orderTransport () {

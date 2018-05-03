@@ -48,11 +48,11 @@ export default {
       }
 
       let options = {
-        key: 1,
+        key: 'orderPackets',
         value: packetData
       }
 
-      this.$store.commit('SET_ORDER_PACKET', {options})
+      this.$store.commit('SET_STATE_VALUE', {options})
       this.$store.dispatch('CALC_ORDER_PRICE')
     }
   }
