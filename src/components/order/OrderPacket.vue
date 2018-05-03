@@ -49,7 +49,7 @@ export default {
 
       let options = {
         key: 'orderPackets',
-        value: packetData
+        value: [packetData]
       }
 
       this.$store.commit('SET_STATE_VALUE', {options})

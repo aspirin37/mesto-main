@@ -33,7 +33,7 @@ const state = {
   },
   orderTransport: 1,
   orderAddresses: {},
-  orderPackets: {},
+  orderPackets: [],
   orderPrice: null,
   orderPhotos: [],
   orderOptions: [],
@@ -159,7 +159,7 @@ const mutations = {
   },
   CLEAR_ORDER_DATA: (state) => {
     state.orderAddresses = {}
-    state.orderPackets = {}
+    state.orderPackets = []
     state.orderPhotos = []
     state.orderOptions = []
     state.orderComment = ''
