@@ -45,11 +45,11 @@ const state = {
 
 const actions = {
   LOAD_PROFILE ({commit}) {
-    Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then((response) => {
+    Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then(response => {
       let data = response.data
 
       commit('SET_PROFILE_DATA', { profileData: data.profile })
-    }).catch((error) => {
+    }).catch(error => {
       if (error.status === 403) {
         auth.resetCookie()
       }

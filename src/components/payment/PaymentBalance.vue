@@ -77,7 +77,7 @@ export default {
         phone: this.userProfile.phone_format
       }
       if (this.userProfile.email) { options.email = this.userProfile.email }
-      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then((response) => {
+      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then(response => {
         this.messageSended = true
         this.toggleModal('get-bill')
       })

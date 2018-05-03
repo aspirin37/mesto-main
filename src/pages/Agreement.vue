@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     getAreement () {
-      this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then((response) => {
+      this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then(response => {
         this.agreement = response.body
       })
     }

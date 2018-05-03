@@ -148,7 +148,7 @@ export default {
           message: 'Информация сохранена',
           duration: 1500
         })
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },
@@ -169,10 +169,10 @@ export default {
             _this.uploadProgress = (e.loaded / e.total * 100)
           }
         }
-      }).then((response) => {
+      }).then(response => {
         this.toggleModal('crop-modal')
         this.$store.dispatch('LOAD_PROFILE')
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },

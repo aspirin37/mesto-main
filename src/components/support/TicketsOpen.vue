@@ -86,7 +86,7 @@ export default {
         offset: offset || 0,
         states: '1,2,3'
       }
-      return this.$http.get(api.API_REST_LINK2 + 'web/tickets', {params: options}).then((response) => {
+      return this.$http.get(api.API_REST_LINK2 + 'web/tickets', {params: options}).then(response => {
         let data = response.data
 
         this.sum = data.cost
