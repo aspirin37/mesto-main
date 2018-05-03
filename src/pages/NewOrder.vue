@@ -283,9 +283,7 @@ export default {
     }
   },
   beforeMount () {
-    this.initMap().then(() => {
-      this.showMapEls()
-    })
+    this.initMap().then(() => this.showMapEls())
   },
   mounted () {
     this.addressPointsNumber = this.addressesLength
@@ -310,9 +308,7 @@ export default {
       deep: true
     },
     orderTransport (val, oldVal) {
-      if (val !== oldVal) {
-        this.isMarkersSetted(this.addresses)
-      }
+      if (val !== oldVal) this.isMarkersSetted(this.addresses)
     },
     price (val, oldVal) {
       if (val !== oldVal) {
@@ -335,9 +331,7 @@ export default {
     calPrice () {
       this.$store.dispatch('CALC_ORDER_PRICE').then(() => {
         this.$alert.hide()
-      }).catch(error => {
-        this.showAreaAlertError(error)
-      })
+      }).catch(error => this.showAreaAlertError(error))
     },
     pushError (event) {
       let errors = this.addressesErrors
@@ -436,9 +430,7 @@ export default {
     },
     setPoint (pos) {
       this.point = pos
-      this.getAddress(pos).then(() => {
-        this.setAddressData()
-      })
+      this.getAddress(pos).then(() => this.setAddressData())
     },
     getAddress (newmarker) {
       return new Promise(resolve => {

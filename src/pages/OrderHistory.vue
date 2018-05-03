@@ -247,7 +247,7 @@ export default {
     },
     pushOrders (offset, per) {
       this.getOrders(offset, per).then((data) => {
-        this.orders = this._.union(this.orders, data.orders)
+        this.orders = [...new Set([...this.orders, ...data.orders])]
         this.count = data.count
       })
     },

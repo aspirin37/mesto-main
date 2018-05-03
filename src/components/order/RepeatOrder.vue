@@ -28,7 +28,7 @@ export default {
     },
     setAddresses () {
       let addresses = {}
-      this._.forEach(this.orderData.addresses, (address, index) => {
+      this.orderData.addresses.forEach((address, index) => {
         delete address.a_time
         delete address.a_time_format
         delete address.contact_time
