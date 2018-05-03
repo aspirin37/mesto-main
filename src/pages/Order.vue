@@ -120,57 +120,18 @@
               </div>
             </div>
 
-            <div class="d-flex pb-4 relative" v-for="(address, index) in order.addresses" :key="index">
-              <div class="mr-3 mt-1" v-on:click="setPointCenter(index)">
-                <span class="address-marker d-inline-block cursor-pointer"
-                  v-bind:class="{'address-marker--first': index === 0, 'address-marker--last': (index + 1) === order.addresses.length}"
-                >{{$t('letters')[index]}}</span>
-              </div>
-              <div>
-                <div class="mr-3 cursor-pointer" v-on:click="setPointCenter(index)" v-bind:class="{'text-muted' : pointToShow === index}">
-                  <b class="pre-wrap mr-1">{{address.address}}</b>
-                  <b v-if="address.room" class="mr-1">({{address.room}})</b>
-                  <span class="small text-nowrap" v-if="address.is_payment_address && !order.is_already_payed">(Оплата здесь)</span>
-                </div>
-                <a :href="'tel:+' + address.contact_phone" class="phone-link">{{address.contact_phone_format}}</a>
-                <span v-if="address.contact_name">, {{address.contact_name}}</span>
-                <span class="d-block" v-if="address.contact_time_format">
-                  {{address.contact_time_format || ''}}
-                </span>
-                <span class="d-block px-2 mt-2 border-left border-success small" v-if="address.description">«{{address.description}}»</span>
+            <!-- Addresses -->
+            <address-point
+              v-for="(address, index) in order.addresses"
+              v-on:clicked="setPointCenter(index)"
+              :key="`address-${index}`"
+              :address="address"
+              :index="index"
+              :length="order.addresses.length"
+              :payed="order.is_already_payed"
+            ></address-point>
+            <!-- /Addresses -->
 
-                <div v-if="address.photosClient && address.photosClient.length" class="mt-2">
-                  <!-- <span class="text-muted">Фото (клиент):</span> -->
-                  <thumbnails-outer class="d-inline-block mr-2">
-                    <thumbnail
-                      v-for="(pic, index) in address.photosClient"
-                      :key="index"
-                      :img="pic.thumbnail"
-                      :thumb="pic.url"
-                      :thumbClasses="['d-inline-block']"
-                      :linkClasses="['order-photos__item', 'mr-1']"
-                      :index="index"
-                      title="Фото клиента"
-                    ></thumbnail>
-                  </thumbnails-outer>
-                </div>
-                <div v-if="address.photosCourier && address.photosCourier.length" class="mt-2">
-                  <!-- <span class="text-muted">Фото (курьер):</span> -->
-                  <thumbnails-outer class="d-inline-block mr-2">
-                    <thumbnail
-                      v-for="(pic, index) in address.photosCourier"
-                      :key="index"
-                      :img="pic.thumbnail"
-                      :thumb="pic.url"
-                      :thumbClasses="['d-inline-block']"
-                      :linkClasses="['order-photos__item', 'mr-1']"
-                      :index="index"
-                      title="Фото курьера"
-                    ></thumbnail>
-                  </thumbnails-outer>
-                </div>
-              </div>
-            </div>
             <hr>
             <div class="d-flex justify-content-between flex-wrap flex-lg-nowrap align-items-center">
               <router-link :to="{ name: 'profile-add-ticket', query: { orderid: order.idt_order, ordernumber: order.order_number }}" class="small">Что-то пошло не так?</router-link>
@@ -287,8 +248,6 @@ import Modal from '../components/utils/Modal'
 import gMapsInit from '../store/gmaps-init'
 import Alert from '../components/utils/Alert'
 import GoBack from '../components/inner/GoBack'
-import Thumbnail from '../components/utils/Thumbnail'
-import ThumbnailsOuter from '../components/utils/ThumbnailsOuter'
 import NewPassword from '../components/sign/NewPassword'
 import Loader from '../components/utils/Loader'
 import generateMarkerIcon from '../mixins/generateMarkerIcon'
@@ -296,6 +255,7 @@ import PaymentModal from '../components/order/PaymentModal'
 import RepeatOrder from '../components/order/RepeatOrder'
 import FeedbackCourier from '../components/order/FeedbackCourier'
 import PaymentMethod from '../components/inner/PaymentMethod'
+import AddressPoint from '../components/order/AddressPoint'
 
 export default {
   name: 'profile-order',
@@ -326,15 +286,14 @@ export default {
     'GmapMap': gMapsInit.Map,
     'GmapMarker': gMapsInit.Marker,
     Alert,
-    Thumbnail,
-    ThumbnailsOuter,
     NewPassword,
     Loader,
     GoBack,
     PaymentModal,
     FeedbackCourier,
     PaymentMethod,
-    RepeatOrder
+    RepeatOrder,
+    AddressPoint
   },
   mixins: [generateMarkerIcon],
   beforeMount () {
