@@ -7,12 +7,10 @@
       </span>
     </label>
   </div>
-  <!-- <v-select tag="a" :linkClass="['form-control']" :outerClass="['form-group']" :options="types" v-on:selected="setDeliveryType($event.idt_delivery_type)" optionValue="alias" :selectedItem="selectedType" v-if="types"></v-select> -->
 </template>
 
 <script>
 import api from '../../store/api'
-import vSelect from '../utils/Select'
 
 export default {
   name: 'delivery-types',
@@ -28,9 +26,6 @@ export default {
       type: Number,
       default: 1
     }
-  },
-  components: {
-    vSelect
   },
   watch: {
     moveType (val) {
@@ -52,7 +47,7 @@ export default {
       let options = {
         idc_courier_transport: this.moveType
       }
-      return this.$http.get(api.API_REST_LINK2 + 'webclient/deliveryTypes', {params: options}).then((response) => {
+      return this.$http.get(api.API_REST_LINK2 + 'webclient/deliveryTypes', {params: options}).then(response => {
         this.types = response.data.deliveryTypes
         this.selectedType = this.types[0].idt_delivery_type
         this.setDeliveryType()

@@ -100,20 +100,20 @@ export default {
       let options = {
         target: 'client'
       }
-      this.$http.get(api.API_REST_LINK2 + 'web/bankCards/', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK2 + 'web/bankCards/', {params: options}).then(response => {
         let data = response.data.cards
 
         this.showLoader = false
         this.userCards = data
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },
     deleteCard (item) {
-      this.$http.delete(api.API_REST_LINK2 + 'web/bankCards/' + item.idt_pay_method + '/target/client').then((response) => {
+      this.$http.delete(api.API_REST_LINK2 + 'web/bankCards/' + item.idt_pay_method + '/target/client').then(response => {
         this.getCards()
         this.toggleModal('confirm')
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },

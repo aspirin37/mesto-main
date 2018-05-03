@@ -464,7 +464,7 @@ export default {
       let options = {
         idt_city: 1
       }
-      this.$http.get(api.API_REST_LINK2 + 'web/subway', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK2 + 'web/subway', {params: options}).then(response => {
         this.subway = response.data.stations
       }).catch(error => {
         this.errorMessage = error.data.message

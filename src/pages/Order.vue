@@ -437,21 +437,21 @@ export default {
       let options = {
         idt_order: this.itemId
       }
-      this.$http.get(api.API_REST_LINK4 + 'webclient/order', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK4 + 'webclient/order', {params: options}).then(response => {
         let data = response.data
 
         this.showLoader = false
         this.order = data
 
         this.status = this.order.idc_order_state
-        this.markers = this.order.addresses.map((item) => {
+        this.markers = this.order.addresses.map(item => {
           let newItem = {}
           newItem.lat = item.lat
           newItem.lng = item.lng
           return newItem
         })
         this.showMap = true
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },

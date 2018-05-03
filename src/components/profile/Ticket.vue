@@ -102,7 +102,7 @@ export default {
         limit: this.messagesPerPage,
         offset: 0
       }
-      this.$http.get(api.API_REST_LINK2 + 'web/tickets/', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK2 + 'web/tickets/', {params: options}).then(response => {
         let data = response.data
 
         this.count = data.message_count

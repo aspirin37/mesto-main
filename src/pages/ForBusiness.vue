@@ -294,7 +294,7 @@ export default {
         phone: this.phone,
         text: 'Перезвоните мне ' + this.question
       }
-      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then((response) => {
+      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then(response => {
         this.messageSended = true
         this.errorMessage = ''
       }).catch(error => {

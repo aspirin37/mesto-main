@@ -76,7 +76,7 @@ export default {
         offset: offset || 0,
         limit: perpage || 7
       }
-      this.$http.get(api.API_REST_LINK4 + 'webclient/fave', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK4 + 'webclient/fave', {params: options}).then(response => {
         let data = response.data
 
         this.addresses = data.addresses

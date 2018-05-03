@@ -227,7 +227,7 @@ export default {
       if (this.numberForFilter) {
         options.order_number = this.numberForFilter
       }
-      return this.$http.get(api.API_REST_LINK2 + 'webclient/history', {params: options}).then((response) => {
+      return this.$http.get(api.API_REST_LINK2 + 'webclient/history', {params: options}).then(response => {
         let data = response.data
 
         this.sum = data.cost
