@@ -259,7 +259,7 @@ export default {
       this.packetOptions[key] = value
     },
     checkAddressNotFull (types) {
-      this.addressNotFull = this._.includes(types, 'route')
+      this.addressNotFull = types.includes('route')
     }
   }
 }

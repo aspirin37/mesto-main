@@ -102,7 +102,7 @@ export default {
     },
     pushTickets (offset, per) {
       this.getTickets(offset, per).then((data) => {
-        this.tickets = this._.union(this.tickets, data.tickets)
+        this.tickets = [...new Set([...this.tickets, ...data.tickets])]
         this.count = data.count
       })
     }

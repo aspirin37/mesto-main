@@ -390,7 +390,7 @@ export default {
       return this.$store.state.phoneMasks[this.$store.state.currentCountry]
     },
     activePoint () {
-      return this._.findIndex(Object.values(this.order.addresses), (item) => { return item.is_active === true })
+      return Object.values(this.order.addresses).findIndex(item => { return item.is_active === true })
     }
   },
   beforeDestroy () {

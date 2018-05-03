@@ -110,7 +110,7 @@ export default {
       }
     },
     setQuery (val) {
-      let options = this._.pickBy(Object.assign({}, this.$route.query, val))
+      let options = Object.assign({}, this.$route.query, val)
       this.$router.push({query: options})
     },
     // setItemsNumber (value) {
