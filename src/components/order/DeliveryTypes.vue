@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       types: [],
-      selectedType: null
+      selectedType: null,
+      storeValue: null
     }
   },
   props: {
@@ -36,8 +37,15 @@ export default {
       this.getDeliveryTypes()
     }
   },
+  beforeMount () {
+    this.storeValue = this.$store.state.orderPackets.idt_delivery_type
+  },
   mounted () {
-    this.getDeliveryTypes()
+    this.getDeliveryTypes().then(() => {
+      if (this.storeValue) {
+        this.selectedType = this.storeValue
+      }
+    })
   },
   methods: {
     getDeliveryTypes () {
