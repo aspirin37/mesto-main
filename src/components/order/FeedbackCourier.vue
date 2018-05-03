@@ -129,11 +129,9 @@ export default {
         rate: this.reviewRate,
         target: 'client'
       }
-      if (this.reviewText) { options.feedback = this.reviewText }
+      if (this.reviewText) options.feedback = this.reviewText
 
-      this.$http.post(api.API_REST_LINK2 + 'web/rate', options).then(response => {
-        this.$emit('added')
-      })
+      this.$http.post(api.API_REST_LINK2 + 'web/rate', options).then(() => this.$emit('added'))
     }
   }
 }
