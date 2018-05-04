@@ -70,12 +70,14 @@ const actions = {
       return
     }
 
+    console.log(state.orderPackets)
+
     options.addresses = formattedAddresses
-    if (state.orderPackets[1] && state.orderPackets[1].hasOwnProperty('idt_delivery_type')) {
-      options['idt_delivery_type'] = state.orderPackets[1]['idt_delivery_type']
+    if (state.orderPackets[0] && state.orderPackets[0].hasOwnProperty('idt_delivery_type')) {
+      options['idt_delivery_type'] = state.orderPackets[0]['idt_delivery_type']
     }
-    if (state.orderPackets[1] && state.orderPackets[1].hasOwnProperty('idc_packet_type')) {
-      options['idc_packet_type'] = state.orderPackets[1]['idc_packet_type']
+    if (state.orderPackets[0] && state.orderPackets[0].hasOwnProperty('idc_packet_type')) {
+      options['idc_packet_type'] = state.orderPackets[0]['idc_packet_type']
     }
     if (state.orderCostDeclare) {
       options['cost_declare'] = state.orderCostDeclare
