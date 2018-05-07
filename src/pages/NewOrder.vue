@@ -392,10 +392,6 @@ export default {
       this.addressPointsNumber++
       this.currentPoint = this.addressPointsNumber
     },
-    setOrderTransport (key, value) {
-      if (this.mapLoaded) { this.isMarkersSetted(this.addresses) }
-      this.setOrderTransport(key, value)
-    },
     setScrollOptions (el) {
       return {
         el: el,

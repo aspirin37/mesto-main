@@ -59,17 +59,16 @@ const actions = {
     let options = {
       idc_courier_transport: state.orderTransport
     }
-
     let formattedAddresses = Object.values(state.orderAddresses).reduce((acc, item) => {
       if (item.lat) {
         acc.push(item)
       }
       return acc
     }, [])
+
     if (formattedAddresses.length < 1) {
       formattedAddresses.push(state.locations[state.currentLocation].center)
     }
-
     options.addresses = formattedAddresses
     if (state.orderPackets[0] && state.orderPackets[0].hasOwnProperty('idt_delivery_type')) {
       options['idt_delivery_type'] = state.orderPackets[0]['idt_delivery_type']
@@ -83,6 +82,7 @@ const actions = {
     if (state.orderOptions.length) {
       options['options'] = state.orderOptions
     }
+
     return Vue.http.post(api.API_REST_LINK4 + 'common/cost', options).then(response => {
       let price = response.data.cost
       commit('SET_ORDER_PRICE', price)
