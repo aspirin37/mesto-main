@@ -8,11 +8,11 @@ Vue.use(VueResource)
 Vue.use(Vuex)
 
 const state = {
-  locations: [
-    {index: 0, city: 'Санкт-Петербург', center: {lat: 59.940527, lng: 30.323284}},
-    {index: 1, city: 'Москва', center: {lat: 55.753215, lng: 37.622504}}
-  ],
-  currentLocation: 0,
+  locations: {
+    1: {id: 1, city: 'Санкт-Петербург', center: {lat: 59.940527, lng: 30.323284}},
+    2: {id: 2, city: 'Москва', center: {lat: 55.753215, lng: 37.622504}}
+  },
+  currentLocation: 1,
   currentCountry: 'ru',
   profile: {},
   phoneMasks: {
@@ -55,7 +55,7 @@ const actions = {
       }
     })
   },
-  CALC_ORDER_PRICE ({commit}) {
+  CALC_ORDER_PRICE ({commit, state}) {
     let options = {
       idc_courier_transport: state.orderTransport
     }
@@ -67,10 +67,8 @@ const actions = {
       return acc
     }, [])
     if (formattedAddresses.length < 1) {
-      return
+      formattedAddresses.push(state.locations[state.currentLocation].center)
     }
-
-    console.log(state.orderPackets)
 
     options.addresses = formattedAddresses
     if (state.orderPackets[0] && state.orderPackets[0].hasOwnProperty('idt_delivery_type')) {
