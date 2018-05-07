@@ -50,7 +50,7 @@ export default {
   methods: {
     createNew () {
       this.clearData()
-      this.$emit('createNew')
+      this.$router.push({query: {done: false}})
     },
     clearData () {
       this.$store.commit('CLEAR_ORDER_DATA')
