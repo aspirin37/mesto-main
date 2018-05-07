@@ -153,7 +153,7 @@
               <div class="order-fixed-map__map h-100 current-shadow rounded overflow-hidden" ref="order-map">
                 <div class="profile-order-map relative h-100 w-100">
                   <gmap-map
-                    :center="center"
+                    :center="center.lat ? center : currentCenter"
                     :zoom="11"
                     ref="mmap"
                     class="h-100 profile-order-map"
@@ -207,7 +207,7 @@ export default {
   name: 'order-block',
   data () {
     return {
-      center: {lat: 59.936, lng: 30.352},
+      center: {},
       mapLoaded: false,
       windowMaps: {},
       point: {
@@ -255,11 +255,14 @@ export default {
     'scroll-to': VueScrollTo
   },
   computed: {
-    isAuth () {
-      return auth.user.authenticated
-    },
     currentLocation () {
       return this.$store.state.locations[this.$store.state.currentLocation]
+    },
+    currentCenter () {
+      return this.currentLocation.center
+    },
+    isAuth () {
+      return auth.user.authenticated
     },
     addresses () {
       return this.$store.state.orderAddresses
@@ -377,7 +380,6 @@ export default {
         this.directionsDisplay = new this.windowMaps.DirectionsRenderer()
         this.directionsService = new this.windowMaps.DirectionsService()
         this.mapLoaded = true
-        this.center = this.currentLocation.center
       })
     },
     showMapEls () {

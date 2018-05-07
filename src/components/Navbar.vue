@@ -49,11 +49,20 @@
                 <!-- <b>{{$t('lang')}}</b> -->
               </a>
             </li>
+            <v-select
+              tag="li"
+              class="nav-item relative text-center text-lg-left"
+              v-on:selected="setNewLocation"
+              optionValue="city"
+              v-if="false"
+              :linkClass="['nav-link px-3']"
+              :selectedItem="+currentLocation.id - 1"
+              :options="cities"
+            ></v-select>
           </ul>
           <!-- /Navbar links -->
 
           <ul class="navbar-nav ml-auto">
-            <v-select tag="li" :options="cities" v-on:selected="setNewLocation" :selectedItem="currentLocation.index" optionValue="city" v-if="false"></v-select>
             <router-link tag="li" to="/signup" v-if="!isAuth" class="nav-item text-center text-lg-left"><a class="nav-link">{{$t('signup')}}</a></router-link>
             <router-link tag="li" to="/signin" v-if="!isAuth" class="nav-item text-center text-lg-left"><a class="nav-link">{{$t('signin')}}</a></router-link>
 
@@ -139,7 +148,7 @@ export default {
       return this.$i18n.locale()
     },
     cities () {
-      return this.$store.state.locations
+      return Object.values(this.$store.state.locations)
     },
     isCompany () {
       return this.profile.is_company
@@ -159,7 +168,7 @@ export default {
       auth.logout(this, '/')
     },
     setNewLocation (loc) {
-      this.$store.commit('CHANGE_LOCATION', loc.index)
+      this.$store.commit('CHANGE_LOCATION', loc.id)
     },
     changeLang (lang) {
       this.isLocaleShow = false

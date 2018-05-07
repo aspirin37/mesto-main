@@ -39,8 +39,11 @@ export default {
   methods: {
     setPacketData () {
       let packetData = {
-        weight: 1,
-        idc_packet_type: this.packetType
+        weight: 1
+      }
+
+      if (this.packetType) {
+        packetData.idc_packet_type = this.packetType
       }
 
       if (this.deliveryType) {
