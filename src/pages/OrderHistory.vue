@@ -59,11 +59,11 @@
         <table class="table table-hover nomargin small-orders-table">
           <thead>
             <tr class="d-none d-lg-table-row">
-              <th><span class="pl-lg-2 show">{{$t('order-number')}}</span></th>
-              <th>{{$t('order.status')}}</th>
-              <th class="d-none d-lg-table-cell hidden-sm">{{$t('order.created')}}</th>
-              <th class="d-none d-lg-table-cell">{{$t('order.route')}}</th>
-              <th>{{$t('price')}}</th>
+              <th class="border-top-0"><span class="pl-lg-2 show">{{$t('order-number')}}</span></th>
+              <th class="border-top-0">{{$t('order.status')}}</th>
+              <th class="d-none d-lg-table-cell hidden-sm border-top-0">{{$t('order.created')}}</th>
+              <th class="d-none d-lg-table-cell border-top-0">{{$t('order.route')}}</th>
+              <th class="border-top-0">{{$t('price')}}</th>
             </tr>
           </thead>
           <tbody>
