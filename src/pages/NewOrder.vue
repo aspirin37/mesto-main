@@ -9,7 +9,7 @@
       <!-- Order done -->
       <div class="container" v-if="orderDone">
         <div class="container-sm mx-auto pb-5 pt-4">
-          <order-done v-on:repeat="repeatOrder" v-on:createNew="orderDone = false" :orderData="addedOrderData"></order-done>
+          <order-done v-on:repeat="repeatOrder" :orderData="addedOrderData"></order-done>
         </div>
       </div>
       <!-- /Order done -->
@@ -32,7 +32,7 @@
             <div class="new-order-nav__block mb-3 bg-white current-shadow text-center cursor-pointer" v-scroll-to="setScrollOptions('#transport-type')">
               <div class="new-order-nav__item">
                 <img src="../assets/icons/run-color.svg" alt="run" v-if="orderTransport === 1" class="new-order-nav__icon">
-                <img src="../assets/icons/car-front-color.svg" alt="run" v-else class="new-order-nav__icon">
+                <img src="../assets/icons/car-front-color.svg" alt="car" v-else class="new-order-nav__icon">
               </div>
             </div>
             <!-- /Transport -->
@@ -45,7 +45,7 @@
                   v-for="(point, index) in addressPointsNumber"
                   :key="index"
                 >
-                  <img src="../assets/icons/drag.svg" alt="" class="new-order-nav__drag">
+                  <img src="../assets/icons/drag.svg" alt="|" class="new-order-nav__drag">
                   <a href="#"
                     :key="point"
                     class="address-marker d-inline-block cursor-move"
@@ -128,7 +128,7 @@
               <!-- /Addresses -->
 
               <button class="btn btn-light bg-white w-100 mb-3" :disabled="addressPointsNumber > 9 || isDisabled" v-on:click="addAddressPoint">
-                <img src="../assets/icons/plus-circle.svg" alt="" class="mr-2">Добавить адрес
+                <img src="../assets/icons/plus-circle.svg" alt="add" class="mr-2">Добавить адрес
               </button>
               <p class="text-right text-muted" v-if="distances.distance">{{orderTransport === 1 ? 'Пешком ' : 'На авто '}}{{distances.distance}}, ~{{distances.duration}}</p>
 
@@ -221,7 +221,6 @@ export default {
       currentPoint: 1,
       addressPointsNumber: 2,
       startValidation: false,
-      orderDone: false,
       paymentError: false,
       isPaymentShow: false,
       addressesErrors: {},
@@ -255,6 +254,9 @@ export default {
     'scroll-to': VueScrollTo
   },
   computed: {
+    orderDone () {
+      return this.$route.query.done
+    },
     currentLocation () {
       return this.$store.state.locations[this.$store.state.currentLocation]
     },
@@ -499,9 +501,14 @@ export default {
         }
       })
     },
+    setDoneQuery (val) {
+      this.$router.push({query: {done: val}})
+    },
     setOrderDone (event) {
+      this.$router.push({query: {done: true}})
       this.removeStickyElements()
-      this.orderDone = true
+      this.paymentError = false
+      this.setDoneQuery(true)
       this.addedOrderData = event
       window.scrollTo(0, 0)
     },
@@ -537,7 +544,7 @@ export default {
       document.removeEventListener('scroll', this.stickyElements)
     },
     repeatOrder () {
-      this.orderDone = false
+      this.setDoneQuery(false)
       this.paymentError = false
     }
   }
