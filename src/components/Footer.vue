@@ -24,7 +24,7 @@
         <div class="pr-4 pr-lg-5 mb-3">
           <p class="mb-2">Сервис</p>
           <router-link to="/about" class="d-block mb-2 text-nowrap">О сервисе</router-link>
-          <router-link to="/for-corporate" class="d-block mb-2 text-nowrap">Бизнесу</router-link>
+          <router-link to="/for-business" class="d-block mb-2 text-nowrap">Бизнесу</router-link>
           <router-link to="/for-couriers" class="d-block mb-2 text-nowrap">Курьерам</router-link>
           <router-link to="/tariffs" class="d-block mb-2 text-nowrap">Тарифы</router-link>
         </div>
@@ -62,10 +62,10 @@
         <div>
           <span class="mr-3 half-opacity"><small>© 2016–{{ year }} Курьерская служба «Место»</small></span>
           <!-- <router-link to="/legal" class="mr-2"><small>Юридическая информация</small></router-link> -->
-          <router-link to="/agreement" class="mr-2"><small>{{$t('agreement')}}</small></router-link>
-          <router-link to="/confidential" class="mr-2"><small>{{$t('confidential')}}</small></router-link>
-          <router-link to="/dogovor" class="mr-2"><small>Договор</small></router-link>
-          <router-link to="/requisites" class="mr-2"><small>{{$t('requisites')}}</small></router-link>
+          <router-link :to="{name: 'agreement'}" class="mr-2"><small>{{$t('agreement')}}</small></router-link>
+          <router-link :to="{name: 'confidential'}" class="mr-2"><small>{{$t('confidential')}}</small></router-link>
+          <router-link :to="{name: 'agency-contract'}" class="mr-2"><small>Договор</small></router-link>
+          <router-link :to="{name: 'requisites'}" class="mr-2"><small>{{$t('requisites')}}</small></router-link>
         </div>
         <a href="http://a3technology.ru/" target="_blank" class="small d-none d-md-block text-nowrap">
           <span class="d-none d-lg-inline-block">Сделано в </span><span class="madeby align-bottom ml-2"></span>
