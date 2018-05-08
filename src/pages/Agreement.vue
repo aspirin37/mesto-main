@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import api from '../store/api'
+// import api from '../store/api'
 
 export default {
   name: 'agreement',
@@ -17,12 +17,13 @@ export default {
   },
   methods: {
     getAreement () {
-      this.$http.get('https://mesto.a3technology.ru/terms/confidential').then(response => {
+      this.$http.get('https://mesto.a3technology.ru/static/agreement.html').then(response => {
         console.log(response)
-      })
-      this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then(response => {
         this.agreement = response.body
       })
+      // this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then(response => {
+      //   this.agreement = response.body
+      // })
     }
   }
 }
