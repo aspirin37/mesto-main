@@ -121,7 +121,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       { from: 'robots.txt' },
       { from: 'googlee8790108520dec42.html' },
-      { from: '300x300_piter_rainy.png' }
+      { from: '300x300_piter_rainy.png' },
+      {
+        from: path.resolve(__dirname, '../terms'),
+        to: 'terms'
+      }
     ])
   ]
 })
