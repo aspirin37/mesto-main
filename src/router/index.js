@@ -58,27 +58,27 @@ var router = new Router({
     { path: '/signup', name: 'signup', component: SignUp },
     { path: '/signin', name: 'signin', component: SignIn },
     { path: '/faq', name: 'faq', component: Faq },
-    { path: '/legal',
+    { path: '/terms',
       name: 'legal',
       component: Legal,
       children: [
         {
-          path: '/agreement',
+          path: '/terms/agreement',
           name: 'agreement',
           component: Agreement
         },
         {
-          path: '/requisites',
+          path: '/terms/requisites',
           name: 'requisites',
           component: Requisites
         },
         {
-          path: '/confidential',
+          path: '/terms/confidential',
           name: 'confidential',
           component: Confidential
         },
         {
-          path: '/dogovor',
+          path: '/terms/dogovor',
           name: 'agency-contract',
           component: AgencyContract
         }
