@@ -13,8 +13,6 @@ import SignIn from '@/pages/SignIn'
 import Requisites from '@/pages/Requisites'
 import Agreement from '@/pages/Agreement'
 import Confidential from '@/pages/Confidential'
-import AgreementView from '@/components/terms/AgreementView'
-import ConfidentialView from '@/components/terms/ConfidentialView'
 import Contacts from '@/pages/Contacts'
 import Tariffs from '@/pages/Tariffs'
 import ForCuriers from '@/pages/ForCouriers'
@@ -149,16 +147,6 @@ var router = new Router({
           component: AddTicket
         }
       ]
-    },
-    {
-      path: '/terms/agreement',
-      name: 'agreement-view',
-      component: AgreementView
-    },
-    {
-      path: '/terms/confidential',
-      name: 'confidential-view',
-      component: ConfidentialView
     },
     { path: '*', redirect: '/' }
   ]
