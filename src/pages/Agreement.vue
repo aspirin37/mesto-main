@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     getAreement () {
-      this.$http.get('https://mesto.a3technology.ru/terms/confidential').then(response => {
+      this.$http.get('https://mesto.a3technology.ru/terms/confidential/').then(response => {
         console.log(response)
       })
       this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then(response => {
