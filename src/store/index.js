@@ -40,10 +40,19 @@ const state = {
   orderComment: '',
   orderCostDeclare: '',
   paymentAddress: null,
-  groupedPayMethods: {}
+  groupedPayMethods: {},
+  orders: {}
 }
 
+var resource = Vue.resource(`${api.API_REST_LINK2}webclient/history`)
+
 const actions = {
+  fetchData ({commit}, opts) {
+    return resource.get(opts.options).then(response => {
+      let options = { key: opts.path, value: response.data }
+      commit('SET_STATE_VALUE', {options})
+    })
+  },
   LOAD_PROFILE ({commit}) {
     Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then(response => {
       let data = response.data
