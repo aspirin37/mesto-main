@@ -41,7 +41,8 @@ const state = {
   orderCostDeclare: '',
   paymentAddress: null,
   groupedPayMethods: {},
-  orders: {}
+  orders: {},
+  addedOrderData: {}
 }
 
 var resource = Vue.resource(`${api.API_REST_LINK2}webclient/history`)

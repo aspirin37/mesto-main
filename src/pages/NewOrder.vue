@@ -1,21 +1,13 @@
 <template>
   <section>
     <div class="container">
-      <h1 class="my-3 h3">{{orderDone ? 'Заказ оформлен' : paymentError ? 'Ошибка оплаты' : 'Новый заказ'}}</h1>
+      <h1 class="my-3 h3">{{paymentError ? 'Ошибка оплаты' : 'Новый заказ'}}</h1>
     </div>
     <hr class="my-0">
     <div class="bg-light">
 
-      <!-- Order done -->
-      <div class="container" v-if="orderDone">
-        <div class="container-sm mx-auto pb-5 pt-4">
-          <order-done v-on:repeat="repeatOrder" :orderData="addedOrderData"></order-done>
-        </div>
-      </div>
-      <!-- /Order done -->
-
       <!-- Payment error -->
-      <div class="container" v-else-if="paymentError && !orderDone">
+      <div class="container" v-if="paymentError">
         <div class="container-sm mx-auto pb-5 pt-4">
           <payment-error v-on:payed="setOrderDone" :orderData="errorOrderData"></payment-error>
         </div>
@@ -196,7 +188,6 @@ import AddressPoint from '../components/new-order/AddressPoint'
 import PaymentType from '../components/order/PaymentType'
 import PaymentModal from '../components/order/PaymentModal'
 import OrderPacket from '../components/order/OrderPacket'
-import OrderDone from '../components/order/OrderDone'
 import PaymentError from '../components/order/PaymentError'
 import TransportTypes from '../components/order/TransportTypes'
 import OrderSign from '../components/order/OrderSign'
@@ -224,7 +215,6 @@ export default {
       paymentError: false,
       isPaymentShow: false,
       addressesErrors: {},
-      addedOrderData: {},
       errorOrderData: {},
       isPriceChanged: false,
       isMarkerAnim: false,
@@ -240,7 +230,6 @@ export default {
     AddressPoint,
     PaymentType,
     TransportTypes,
-    OrderDone,
     'GmapMap': gMapsInit.Map,
     'GmapMarker': gMapsInit.Marker,
     OrderPacket,
@@ -254,9 +243,6 @@ export default {
     'scroll-to': VueScrollTo
   },
   computed: {
-    orderDone () {
-      return this.$route.query.done
-    },
     currentLocation () {
       return this.$store.state.locations[this.$store.state.currentLocation]
     },
@@ -291,19 +277,13 @@ export default {
     this.initMap().then(() => this.showMapEls())
   },
   mounted () {
+    document.addEventListener('scroll', this.stickyElements)
     this.addressPointsNumber = this.addressesLength
     this.calPrice()
-    document.addEventListener('scroll', this.stickyElements)
   },
   destroyed () {
     this.$alert.hide()
     this.removeStickyElements()
-  },
-  beforeRouteLeave (to, from, next) {
-    if (this.orderDone) {
-      this.$store.commit('CLEAR_ORDER_DATA')
-    }
-    next()
   },
   watch: {
     addresses: {
@@ -501,15 +481,15 @@ export default {
         }
       })
     },
-    setDoneQuery (val) {
-      this.$router.push({query: {done: val}})
-    },
     setOrderDone (event) {
-      this.$router.push({query: {done: true}})
-      this.removeStickyElements()
+      let options = {
+        key: 'addedOrderData',
+        value: event
+      }
+
+      this.$store.commit('SET_STATE_VALUE', {options})
       this.paymentError = false
-      this.setDoneQuery(true)
-      this.addedOrderData = event
+      this.$router.push({name: 'order-done'})
       window.scrollTo(0, 0)
     },
     setPaymentError (event) {
@@ -542,10 +522,6 @@ export default {
     },
     removeStickyElements () {
       document.removeEventListener('scroll', this.stickyElements)
-    },
-    repeatOrder () {
-      this.setDoneQuery(false)
-      this.paymentError = false
     }
   }
 }
