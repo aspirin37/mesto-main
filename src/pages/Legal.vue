@@ -30,7 +30,9 @@
         </nav>
       </aside>
       <article class="mw-100">
-        <router-view></router-view>
+        <transition name="fade">
+          <router-view></router-view>
+        </transition>
       </article>
     </div>
   </section>
