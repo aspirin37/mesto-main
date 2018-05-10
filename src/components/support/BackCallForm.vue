@@ -53,7 +53,7 @@ export default {
       }
       if (this.phone) { options.phone = this.phone }
       if (this.email) { options.email = this.email }
-      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then((response) => {
+      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then(response => {
         this.messageSended = true
         this.errorMessage = ''
       }).catch(error => {

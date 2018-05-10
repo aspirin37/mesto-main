@@ -59,11 +59,11 @@
         <table class="table table-hover nomargin small-orders-table">
           <thead>
             <tr class="d-none d-lg-table-row">
-              <th><span class="pl-lg-2 show">{{$t('order-number')}}</span></th>
-              <th>{{$t('order.status')}}</th>
-              <th class="d-none d-lg-table-cell hidden-sm">{{$t('order.created')}}</th>
-              <th class="d-none d-lg-table-cell">{{$t('order.route')}}</th>
-              <th>{{$t('price')}}</th>
+              <th class="border-top-0"><span class="pl-lg-2 show">{{$t('order-number')}}</span></th>
+              <th class="border-top-0">{{$t('order.status')}}</th>
+              <th class="d-none d-lg-table-cell hidden-sm border-top-0">{{$t('order.created')}}</th>
+              <th class="d-none d-lg-table-cell border-top-0">{{$t('order.route')}}</th>
+              <th class="border-top-0">{{$t('price')}}</th>
             </tr>
           </thead>
           <tbody>
@@ -227,14 +227,16 @@ export default {
       if (this.numberForFilter) {
         options.order_number = this.numberForFilter
       }
-      return this.$http.get(api.API_REST_LINK2 + 'webclient/history', {params: options}).then((response) => {
+
+      // this.$store.dispatch('fetchData', {path: 'orders', options: options})
+      return this.$http.get(api.API_REST_LINK2 + 'webclient/history', {params: options}).then(response => {
         let data = response.data
 
         this.sum = data.cost
         this.earn = data.earn
         this.showLoader = false
         return data
-      }).catch((error) => {
+      }).catch(error => {
         this.showLoader = false
         this.errorMessage = error.data.message
       })
@@ -247,7 +249,7 @@ export default {
     },
     pushOrders (offset, per) {
       this.getOrders(offset, per).then((data) => {
-        this.orders = this._.union(this.orders, data.orders)
+        this.orders = [...new Set([...this.orders, ...data.orders])]
         this.count = data.count
       })
     },

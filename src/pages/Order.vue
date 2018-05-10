@@ -18,7 +18,10 @@
         <div class="col-12 col-lg-6 col-xl-5 pr-lg-0">
           <div class="p-3 p-md-4">
             <div class="form-group relative">
-              <h2 class="order-info-widget__title"><small>Заказ </small><b>{{order.order_number}}</b></h2>
+              <h2 class="order-info-widget__title">
+                <small>Заказ </small><b>{{order.order_number}}</b>
+                <repeat-order :orderData="order"></repeat-order>
+              </h2>
               <!-- <div class="order-actions" v-bind:class="{'order-actions--active' : showDrop}">
                 <a href="#" class="order-actions__link" v-on:click="showDrop = !showDrop"><img src="../assets/icons/dots-menu.svg" alt="actions" class=""></a>
                 <ul class="order-actions__menu list-unstyled" v-if="showDrop">
@@ -105,42 +108,6 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="order.photos && order.photos.client && order.photos.client.length">
-                  <td class="align-top pr-2 text-right pb-1 small pt-1">
-                    <span class="text-muted">Фото (клиент):</span>
-                  </td>
-                  <td class="pb-1">
-                    <thumbnails-outer>
-                      <thumbnail
-                        v-for="(pic, index) in order.photos.client"
-                        :key="index"
-                        :img="pic.thumbnail"
-                        :thumb="pic.url"
-                        :thumbClasses="['d-inline-block', 'mr-2']"
-                        :linkClasses="['order-photos__item']"
-                        :index="index"
-                      ></thumbnail>
-                    </thumbnails-outer>
-                  </td>
-                </tr>
-                <tr v-if="order.photos && order.photos.courier && order.photos.courier.length">
-                  <td class="align-top pr-2 text-right pb-1 small pt-1">
-                    <span class="text-muted">Фото (курьер):</span>
-                  </td>
-                  <td class="pb-1">
-                    <thumbnails-outer>
-                      <thumbnail
-                        v-for="(pic, index) in order.photos.courier"
-                        :key="index"
-                        :img="pic.thumbnail"
-                        :thumb="pic.url"
-                        :thumbClasses="['d-inline-block', 'mr-2']"
-                        :linkClasses="['order-photos__item']"
-                        :index="index"
-                      ></thumbnail>
-                    </thumbnails-outer>
-                  </td>
-                </tr>
               </table>
             </div>
 
@@ -155,26 +122,18 @@
             </div>
             <!-- /Packets -->
 
-            <div class="d-flex pb-4 relative" v-for="(address, index) in order.addresses" :key="index">
-              <div class="mr-3 mt-1" v-on:click="setPointCenter(index)">
-                <span class="address-marker d-inline-block cursor-pointer"
-                  v-bind:class="{'address-marker--first': index === 0, 'address-marker--last': (index + 1) === order.addresses.length}"
-                >{{$t('letters')[index]}}</span>
-              </div>
-              <div>
-                <div class="mr-3 cursor-pointer" v-on:click="setPointCenter(index)" v-bind:class="{'text-muted' : pointToShow === index}">
-                  <b class="pre-wrap mr-1">{{address.address}}</b>
-                  <b v-if="address.room" class="mr-1">({{address.room}})</b>
-                  <span class="small text-nowrap" v-if="address.is_payment_address && !order.is_already_payed">(Оплата здесь)</span>
-                </div>
-                <a :href="'tel:+' + address.contact_phone" class="phone-link">{{address.contact_phone_format}}</a>
-                <span v-if="address.contact_name">, {{address.contact_name}}</span>
-                <span class="d-block" v-if="address.contact_time_format">
-                  {{address.contact_time_format || ''}}
-                </span>
-                <span class="d-block px-2 mt-2 border-left border-success small" v-if="address.description">«{{address.description}}»</span>
-              </div>
-            </div>
+            <!-- Addresses -->
+            <address-point
+              v-for="(address, index) in order.addresses"
+              v-on:clicked="setPointCenter(index)"
+              :key="`address-${index}`"
+              :address="address"
+              :index="index"
+              :length="order.addresses.length"
+              :payed="order.is_already_payed"
+            ></address-point>
+            <!-- /Addresses -->
+
             <hr>
             <div class="d-flex justify-content-between flex-wrap flex-lg-nowrap align-items-center">
               <router-link :to="{ name: 'profile-add-ticket', query: { orderid: order.idt_order, ordernumber: order.order_number }}" class="small">Что-то пошло не так?</router-link>
@@ -291,14 +250,14 @@ import Modal from '../components/utils/Modal'
 import gMapsInit from '../store/gmaps-init'
 import Alert from '../components/utils/Alert'
 import GoBack from '../components/inner/GoBack'
-import Thumbnail from '../components/utils/Thumbnail'
-import ThumbnailsOuter from '../components/utils/ThumbnailsOuter'
 import NewPassword from '../components/sign/NewPassword'
 import Loader from '../components/utils/Loader'
 import generateMarkerIcon from '../mixins/generateMarkerIcon'
 import PaymentModal from '../components/order/PaymentModal'
+import RepeatOrder from '../components/order/RepeatOrder'
 import FeedbackCourier from '../components/order/FeedbackCourier'
 import PaymentMethod from '../components/inner/PaymentMethod'
+import AddressPoint from '../components/order/AddressPoint'
 
 export default {
   name: 'profile-order',
@@ -329,14 +288,14 @@ export default {
     'GmapMap': gMapsInit.Map,
     'GmapMarker': gMapsInit.Marker,
     Alert,
-    Thumbnail,
-    ThumbnailsOuter,
     NewPassword,
     Loader,
     GoBack,
     PaymentModal,
     FeedbackCourier,
-    PaymentMethod
+    PaymentMethod,
+    RepeatOrder,
+    AddressPoint
   },
   mixins: [generateMarkerIcon],
   beforeMount () {
@@ -387,7 +346,7 @@ export default {
       return this.$store.state.phoneMasks[this.$store.state.currentCountry]
     },
     activePoint () {
-      return this._.findIndex(Object.values(this.order.addresses), (item) => { return item.is_active === true })
+      return Object.values(this.order.addresses).findIndex(item => item.is_active === true)
     }
   },
   beforeDestroy () {
@@ -434,21 +393,21 @@ export default {
       let options = {
         idt_order: this.itemId
       }
-      this.$http.get(api.API_REST_LINK4 + 'webclient/order', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK4 + 'webclient/order', {params: options}).then(response => {
         let data = response.data
 
         this.showLoader = false
         this.order = data
 
         this.status = this.order.idc_order_state
-        this.markers = this.order.addresses.map((item) => {
+        this.markers = this.order.addresses.map(item => {
           let newItem = {}
           newItem.lat = item.lat
           newItem.lng = item.lng
           return newItem
         })
         this.showMap = true
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },

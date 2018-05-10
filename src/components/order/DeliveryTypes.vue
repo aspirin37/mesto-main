@@ -7,19 +7,18 @@
       </span>
     </label>
   </div>
-  <!-- <v-select tag="a" :linkClass="['form-control']" :outerClass="['form-group']" :options="types" v-on:selected="setDeliveryType($event.idt_delivery_type)" optionValue="alias" :selectedItem="selectedType" v-if="types"></v-select> -->
 </template>
 
 <script>
 import api from '../../store/api'
-import vSelect from '../utils/Select'
 
 export default {
   name: 'delivery-types',
   data () {
     return {
       types: [],
-      selectedType: null
+      selectedType: null,
+      storeValue: null
     }
   },
   props: {
@@ -28,25 +27,29 @@ export default {
       default: 1
     }
   },
-  components: {
-    vSelect
-  },
   watch: {
     moveType (val) {
-      this.getPacketTypes()
+      this.getDeliveryTypes()
     }
   },
+  beforeMount () {
+    this.storeValue = this.$store.state.orderPackets.idt_delivery_type
+  },
   mounted () {
-    this.getPacketTypes()
+    this.getDeliveryTypes().then(() => {
+      if (this.storeValue) {
+        this.selectedType = this.storeValue
+      }
+    })
   },
   methods: {
-    getPacketTypes () {
+    getDeliveryTypes () {
       let options = {
         idc_courier_transport: this.moveType
       }
-      return this.$http.get(api.API_REST_LINK2 + 'webclient/deliveryTypes', {params: options}).then((response) => {
+      return this.$http.get(api.API_REST_LINK2 + 'webclient/deliveryTypes', {params: options}).then(response => {
         this.types = response.data.deliveryTypes
-        this.selectedType = '' + this.types[0].idt_delivery_type
+        this.selectedType = this.types[0].idt_delivery_type
         this.setDeliveryType()
       })
     },

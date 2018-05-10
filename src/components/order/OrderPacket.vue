@@ -39,17 +39,23 @@ export default {
   methods: {
     setPacketData () {
       let packetData = {
-        weight: 1,
-        idc_packet_type: this.packetType,
-        idt_delivery_type: this.deliveryType
+        weight: 1
+      }
+
+      if (this.packetType) {
+        packetData.idc_packet_type = this.packetType
+      }
+
+      if (this.deliveryType) {
+        packetData.idt_delivery_type = this.deliveryType
       }
 
       let options = {
-        key: 1,
-        value: packetData
+        key: 'orderPackets',
+        value: [packetData]
       }
 
-      this.$store.commit('SET_ORDER_PACKET', {options})
+      this.$store.commit('SET_STATE_VALUE', {options})
       this.$store.dispatch('CALC_ORDER_PRICE')
     }
   }
