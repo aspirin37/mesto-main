@@ -18,8 +18,11 @@ export default {
   methods: {
     getAreement () {
       // 'https://mesto.a3technology.ru/terms/agreement/'
+      let url = `${window.location.origin}/terms/agreement/`
 
-      this.$http.get('https://mesto.a3technology.ru/terms/agreement/').then(response => {
+      console.log(url)
+
+      this.$http.get(url).then(response => {
         this.agreement = response.body
       })
       // this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then(response => {
