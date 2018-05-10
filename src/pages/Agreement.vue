@@ -17,8 +17,8 @@ export default {
   },
   methods: {
     getAreement () {
-      // process.env.SITE_URL + 'terms/agreement/'
-      this.$http.get('https://mesto.a3technology.ru/terms/agreement/').then(response => {
+      // 'https://mesto.a3technology.ru/terms/agreement/'
+      this.$http.get(process.env.SITE_URL + 'terms/agreement/').then(response => {
         this.agreement = response.body
       })
       // this.$http.get(api.API_LINK + '/webview/terms/actual/agreement-client.php').then(response => {
