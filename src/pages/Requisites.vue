@@ -49,12 +49,12 @@
               :clickable="true"
               :draggable="false"
               :scrollable="false"
+              :icon="generateMarkerIcon('M', '#7846C3')"
             ></gmap-marker>
           </gmap-map>
         </div>
       </div>
     </div>
-    <hr>
     <h4 class="mt-5">Правила оплаты и безопасность платежей, конфиденциальность информации</h4>
     <p>Оплата банковскими картами осуществляется через АО «АЛЬФА-БАНК»</p>
     <img src="../assets/icons/logo-alfabank.svg" alt="" class="text-logo bottom-space">
@@ -95,6 +95,7 @@
 
 <script>
 import gMapsInit from '../store/gmaps-init'
+import generateMarkerIcon from '../mixins/generateMarkerIcon'
 
 export default {
   name: 'requisites',
@@ -103,6 +104,7 @@ export default {
       point: {lat: 59.9582111, lng: 30.3002063}
     }
   },
+  mixins: [generateMarkerIcon],
   components: {
     'GmapMap': gMapsInit.Map,
     'GmapMarker': gMapsInit.Marker
