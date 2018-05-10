@@ -107,7 +107,7 @@ export default {
       if (this.orderId) {
         options.idt_order = this.orderId
       }
-      this.$http.post(api.API_REST_LINK2 + 'web/tickets', options).then((response) => {
+      this.$http.post(api.API_REST_LINK2 + 'web/tickets', options).then(response => {
         this.showLoader = false
         this.messageSended = true
       })

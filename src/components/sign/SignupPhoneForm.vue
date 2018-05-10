@@ -134,7 +134,7 @@ export default {
       }
     },
     loadrules () {
-      this.$http.get(api.API_LINK + '/webview/terms/1/agreement-client.php').then((response) => {
+      this.$http.get(api.API_LINK + '/webview/terms/1/agreement-client.php').then(response => {
         this.rules = response.body
       })
     }

@@ -110,8 +110,16 @@ export default {
       }
     },
     setQuery (val) {
-      let options = this._.pickBy(Object.assign({}, this.$route.query, val))
-      this.$router.push({query: options})
+      let options = Object.assign({}, this.$route.query, val)
+      let newopts = val => {
+        let newObj = {}
+        Object.keys(val).forEach(prop => {
+          if (val[prop]) newObj[prop] = val[prop]
+        })
+        return newObj
+      }
+
+      this.$router.push({query: newopts(options)})
     },
     // setItemsNumber (value) {
     //   let oldPerPage = this.defaultPerPage

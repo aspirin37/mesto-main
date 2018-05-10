@@ -49,13 +49,13 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import Modal from '../utils/Modal'
-import checkCard from '../../mixins/checkCard'
-import CardItem from './CardItem'
-import AddCard from '../payment/AddCard'
-import Loader from '../utils/Loader'
-import PaymentBalance from '../payment/PaymentBalance'
+import api from '../store/api'
+import Modal from '../components/utils/Modal'
+import checkCard from '../mixins/checkCard'
+import CardItem from '../components/profile/CardItem'
+import AddCard from '../components/payment/AddCard'
+import Loader from '../components/utils/Loader'
+import PaymentBalance from '../components/payment/PaymentBalance'
 
 export default {
   name: 'profile-payment',
@@ -100,20 +100,20 @@ export default {
       let options = {
         target: 'client'
       }
-      this.$http.get(api.API_REST_LINK2 + 'web/bankCards/', {params: options}).then((response) => {
+      this.$http.get(api.API_REST_LINK2 + 'web/bankCards/', {params: options}).then(response => {
         let data = response.data.cards
 
         this.showLoader = false
         this.userCards = data
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },
     deleteCard (item) {
-      this.$http.delete(api.API_REST_LINK2 + 'web/bankCards/' + item.idt_pay_method + '/target/client').then((response) => {
+      this.$http.delete(api.API_REST_LINK2 + 'web/bankCards/' + item.idt_pay_method + '/target/client').then(response => {
         this.getCards()
         this.toggleModal('confirm')
-      }).catch((error) => {
+      }).catch(error => {
         this.errorMessage = error.data.message
       })
     },

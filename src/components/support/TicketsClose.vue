@@ -85,7 +85,7 @@ export default {
         offset: offset || 0,
         states: '4'
       }
-      return this.$http.get(api.API_REST_LINK2 + 'web/tickets', {params: options}).then((response) => {
+      return this.$http.get(api.API_REST_LINK2 + 'web/tickets', {params: options}).then(response => {
         let data = response.data
 
         this.sum = data.cost
@@ -102,7 +102,7 @@ export default {
     },
     pushTickets (offset, per) {
       this.getTickets(offset, per).then((data) => {
-        this.tickets = this._.union(this.tickets, data.tickets)
+        this.tickets = [...new Set([...this.tickets, ...data.tickets])]
         this.count = data.count
       })
     }

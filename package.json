@@ -77,7 +77,6 @@
     "vee-validate": "^2.0.6",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
-    "vue-lodash": "^2.0.0",
     "vue-on-click-outside": "^1.0.3",
     "vue-resource": "^1.5.0",
     "vue-scrollto": "^2.11.0",

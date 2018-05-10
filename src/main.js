@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueLodash from 'vue-lodash'
 import VueAlert from './plugins/alert'
 import VeeValidate from 'vee-validate'
 import App from './App'
@@ -14,7 +13,6 @@ import MaskedInput from './directives/maskedInput'
 import { directive as onClickOutside } from 'vue-on-click-outside'
 auth.checkAuth()
 
-Vue.use(VueLodash)
 Vue.use(VueAlert)
 Vue.use(VeeValidate)
 Vue.directive('on-click-outside', onClickOutside)

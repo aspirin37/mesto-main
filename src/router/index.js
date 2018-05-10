@@ -1,33 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainPage from '../pages/Main'
-import NewOrder from '../pages/NewOrder'
-import Support from '../pages/Support'
-import Settings from '../pages/Settings'
-import Profile from '../pages/Profile'
-import About from '../pages/About'
-import Faq from '../pages/Faq'
-import Order from '../pages/Order'
-import SignUp from '../pages/SignUp'
-import SignIn from '../pages/SignIn'
+import MainPage from '@/pages/Main'
+import NewOrder from '@/pages/NewOrder'
+import Support from '@/pages/Support'
+import Settings from '@/pages/Settings'
+import Profile from '@/pages/Profile'
+import About from '@/pages/About'
+import Faq from '@/pages/Faq'
+import Order from '@/pages/Order'
+import SignUp from '@/pages/SignUp'
+import SignIn from '@/pages/SignIn'
+import Requisites from '@/pages/Requisites'
+import Agreement from '@/pages/Agreement'
+import Confidential from '@/pages/Confidential'
+import Contacts from '@/pages/Contacts'
+import Tariffs from '@/pages/Tariffs'
+import ForCuriers from '@/pages/ForCouriers'
+import Payment from '@/pages/Payment'
+import ForBusiness from '@/pages/ForBusiness'
+import OrderHistory from '@/pages/OrderHistory'
+import Legal from '@/pages/Legal'
+import AgencyContract from '@/pages/AgencyContract'
+import Fave from '@/pages/Fave'
 import TicketsClose from '../components/support/TicketsClose'
 import TicketsOpen from '../components/support/TicketsOpen'
-import ForCuriers from '../components/ForCuriers'
-import ForBusiness from '../pages/ForBusiness'
-import OrderHistory from '../pages/OrderHistory'
-import Payment from '../components/profile/Payment'
-import Fave from '../components/profile/Fave'
 import Ticket from '../components/profile/Ticket'
 import AddTicket from '../components/profile/AddTicket'
-import Legal from '../pages/Legal'
-import Agreement from '../components/Agreement'
-import Requisites from '../components/Requisites'
-import Confidential from '../components/Confidential'
-import AgencyContract from '../pages/AgencyContract'
 import Feedback from '../components/Feedback'
-import Contacts from '../components/Contacts'
 import Privacy from '../components/Privacy'
-import Tariffs from '../components/Tariffs'
 import auth from '../auth'
 import analytics from '../store/analytics.js'
 
@@ -61,22 +61,22 @@ var router = new Router({
       component: Legal,
       children: [
         {
-          path: '/agreement',
+          path: '/legal/agreement',
           name: 'agreement',
           component: Agreement
         },
         {
-          path: '/requisites',
+          path: '/legal/requisites',
           name: 'requisites',
           component: Requisites
         },
         {
-          path: '/confidential',
+          path: '/legal/confidential',
           name: 'confidential',
           component: Confidential
         },
         {
-          path: '/dogovor',
+          path: '/legal/dogovor',
           name: 'agency-contract',
           component: AgencyContract
         }

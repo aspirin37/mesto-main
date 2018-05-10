@@ -5,9 +5,11 @@ export default {
   },
   methods: {
     showAreaAlertError (error) {
-      if (error.data.message) {
+      let messages = error.data.messages
+
+      if (messages) {
         this.$alert.show({
-          message: error.data.message,
+          message: messages.join(', '),
           classes: 'border-danger',
           link: {
             to: {name: 'faq', query: {question: 8}},

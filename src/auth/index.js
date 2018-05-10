@@ -12,7 +12,7 @@ const PASSWORD_URL = API_REST_LINK + 'webclient/password'
 
 Vue.http.options.credentials = true
 
-window.addEventListener('storage', (event) => {
+window.addEventListener('storage', event => {
   if (event.key === 'logout-event') {
     window.location.reload()
   }
@@ -40,9 +40,7 @@ export default {
       if (redirect) {
         router.push(redirect)
       }
-    }).catch(error => {
-      context.errorMessage = error.data.message
-    })
+    }).catch(error => (context.errorMessage = error.data.message))
   },
   login (context, creds, redirect) {
     context.$http.post(SESSION_URL, creds).then(success => {
@@ -51,21 +49,15 @@ export default {
         context.errorCode = ''
         this.user.authenticated = true
         store.dispatch('LOAD_PROFILE')
-        if (redirect) {
-          router.push(redirect)
-        }
+        if (redirect) router.push(redirect)
       }
-    }).catch(error => {
-      context.errorMessage = error.data.message
-    })
+    }).catch(error => (context.errorMessage = error.data.message))
   },
   sendSms (context, creds) {
     return context.$http.get(VERIFY_URL, {params: creds}).then(() => {
       context.smsSended = true
       context.errorMessage = ''
-    }).catch(error => {
-      context.errorMessage = error.data.message
-    })
+    }).catch(error => (context.errorMessage = error.data.message))
   },
   setPassword (context, creds, redirect) {
     return context.$http.put(PASSWORD_URL, creds).then(success => {
@@ -107,8 +99,6 @@ export default {
       if (redirect) {
         router.push(redirect)
       }
-    }).catch(error => {
-      context.errorMessage = error.data.message
-    })
+    }).catch(error => (context.errorMessage = error.data.message))
   }
 }

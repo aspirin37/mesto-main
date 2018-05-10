@@ -8,11 +8,11 @@ Vue.use(VueResource)
 Vue.use(Vuex)
 
 const state = {
-  locations: [
-    {index: 0, city: 'Санкт-Петербург', center: {lat: 59.940527, lng: 30.323284}},
-    {index: 1, city: 'Москва', center: {lat: 55.753215, lng: 37.622504}}
-  ],
-  currentLocation: 0,
+  locations: {
+    1: {id: 1, city: 'Санкт-Петербург', center: {lat: 59.940527, lng: 30.323284}},
+    2: {id: 2, city: 'Москва', center: {lat: 55.753215, lng: 37.622504}}
+  },
+  currentLocation: 1,
   currentCountry: 'ru',
   profile: {},
   phoneMasks: {
@@ -33,59 +33,66 @@ const state = {
   },
   orderTransport: 1,
   orderAddresses: {},
-  orderPackets: {},
+  orderPackets: [],
   orderPrice: null,
   orderPhotos: [],
   orderOptions: [],
   orderComment: '',
   orderCostDeclare: '',
   paymentAddress: null,
-  groupedPayMethods: {}
+  groupedPayMethods: {},
+  orders: {}
 }
 
+var resource = Vue.resource(`${api.API_REST_LINK2}webclient/history`)
+
 const actions = {
+  fetchData ({commit}, opts) {
+    return resource.get(opts.options).then(response => {
+      let options = { key: opts.path, value: response.data }
+      commit('SET_STATE_VALUE', {options})
+    })
+  },
   LOAD_PROFILE ({commit}) {
-    Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then((response) => {
+    Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then(response => {
       let data = response.data
 
       commit('SET_PROFILE_DATA', { profileData: data.profile })
-    }).catch((error) => {
+    }).catch(error => {
       if (error.status === 403) {
         auth.resetCookie()
       }
     })
   },
-  CALC_ORDER_PRICE ({commit}) {
+  CALC_ORDER_PRICE ({commit, state}) {
     let options = {
-      idt_city: 1,
-      weight: 1,
       idc_courier_transport: state.orderTransport
     }
-
     let formattedAddresses = Object.values(state.orderAddresses).reduce((acc, item) => {
       if (item.lat) {
         acc.push(item)
       }
       return acc
     }, [])
-    // if (formattedAddresses.length < 2) {
-    //   return
-    // }
 
-    options.addresses = formattedAddresses
-    if (state.orderPackets[1] && state.orderPackets[1].hasOwnProperty('idt_delivery_type')) {
-      options['idt_delivery_type'] = state.orderPackets[1]['idt_delivery_type']
+    if (formattedAddresses.length < 1) {
+      formattedAddresses.push(state.locations[state.currentLocation].center)
     }
-    if (state.orderPackets[1] && state.orderPackets[1].hasOwnProperty('idc_packet_type')) {
-      options['idc_packet_type'] = state.orderPackets[1]['idc_packet_type']
+    options.addresses = formattedAddresses
+    if (state.orderPackets[0] && state.orderPackets[0].hasOwnProperty('idt_delivery_type')) {
+      options['idt_delivery_type'] = state.orderPackets[0]['idt_delivery_type']
+    }
+    if (state.orderPackets[0] && state.orderPackets[0].hasOwnProperty('idc_packet_type')) {
+      options['idc_packet_type'] = state.orderPackets[0]['idc_packet_type']
     }
     if (state.orderCostDeclare) {
       options['cost_declare'] = state.orderCostDeclare
     }
     if (state.orderOptions.length) {
-      options['order_options'] = state.orderOptions.join()
+      options['options'] = state.orderOptions
     }
-    return Vue.http.post(api.API_REST_LINK3 + 'common/cost', options).then(response => {
+
+    return Vue.http.post(api.API_REST_LINK4 + 'common/cost', options).then(response => {
       let price = response.data.cost
       commit('SET_ORDER_PRICE', price)
     })
@@ -144,23 +151,11 @@ const mutations = {
       Vue.set(state.orderAddresses[options.key], item, opts[item])
     }
   },
-  SET_ORDER_PACKET: (state, { options }) => {
-    Vue.set(state.orderPackets, options.key, options.value)
-  },
-  SET_TRANSPORT_TYPE: (state, value) => {
-    state.orderTransport = value
-  },
   SET_ORDER_PRICE: (state, value) => {
     state.orderPrice = value
   },
   SET_ORDER_PHOTOS: (state, value) => {
     state.orderPhotos = value
-  },
-  SET_ORDER_OPTIONS: (state, value) => {
-    state.orderOptions = value
-  },
-  SET_ORDER_COMMENT: (state, value) => {
-    state.orderComment = value
   },
   SET_ORDER_INSURANCE: (state, value) => {
     state.orderCostDeclare = value
@@ -173,13 +168,23 @@ const mutations = {
   },
   CLEAR_ORDER_DATA: (state) => {
     state.orderAddresses = {}
-    state.orderPackets = {}
+    state.orderPackets = []
     state.orderPhotos = []
     state.orderOptions = []
     state.orderComment = ''
     state.orderCostDeclare = ''
     state.paymentAddress = null
     state.orderPrice = null
+  },
+  SET_STATE_VALUE: (state, { options }) => {
+    state[options.key] = options.value
+  },
+  SET_STATE_OBJECT_VALUE: (state, { options }) => {
+    if (options.value) {
+      Vue.set(state[options.vari], options.key, options.value)
+    } else {
+      Vue.delete(state[options.vari], (options.key))
+    }
   }
 }
 

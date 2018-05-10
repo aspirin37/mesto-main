@@ -34,7 +34,12 @@ export default {
   },
   methods: {
     setOrderComment () {
-      this.$store.commit('SET_ORDER_COMMENT', this.orderComment)
+      let options = {
+        key: 'orderComment',
+        value: this.orderComment
+      }
+
+      this.$store.commit('SET_STATE_VALUE', {options})
     },
     removeOrderComment () {
       this.orderComment = ''

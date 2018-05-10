@@ -9,67 +9,53 @@
 .profile-nav{
   overflow: hidden;
   background-color: $main-color;
-  ul{
-    font-size: 1rem;
-  }
-  li{
-    &>a{
-      padding-left: 40px;
+
+  $active-bg: rgba(#000, 0.25);
+
+  .nav-link{
+    padding-left: 40px;
+    .tab-icon{
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      margin-top: -8px;
+      margin-bottom: -2px;
+    }
+    @include media-breakpoint-down(sm) {
+      padding-left: 15px;
       .tab-icon{
-        position: absolute;
-        left: 13px;
-        top: 50%;
-        margin-top: -8px;
-      }
-      @include media-breakpoint-down(sm) {
-        padding-left: 15px;
-        .tab-icon{
-          position: relative;
-          top: 0;
-          left: 0;
-        }
+        position: relative;
+        top: 0;
+        left: 0;
       }
     }
     &:hover, {
-      & > a{
-        background-color: rgba(#000, 0.1);
-        &:focus{
-          background-color: inherit;
-          outline: none;
-        }
-      }
-    }
-    &.active{
-      &:hover{
-        & > a {
-          background-color: rgba(#000, 0.25);
-        }
-      }
-      & > a {
-        background-color: rgba(#000, 0.25);
-        &:focus{
-          background-color: rgba(#000, 0.25);
-        }
-      }
-    }
-    & > a {
-      color: #fff;
+      background-color: rgba(#000, 0.1);
       &:focus{
         background-color: inherit;
         outline: none;
       }
     }
+    &.active{
+      background-color: $active-bg;
+      &:hover{
+        background-color: $active-bg;
+      }
+      &:focus{
+        background-color: $active-bg;
+      }
+    }
+  }
+  & > a {
+    color: #fff;
+    &:focus{
+      background-color: inherit;
+      outline: none;
+    }
   }
   @include media-breakpoint-down(sm) {
     padding-top: 0;
     padding-bottom: 0;
-    li{
-      display: inline-block;
-      margin-bottom: -4px;
-      & + li{
-        margin-top: 0;
-      }
-    }
   }
   &__name{
     position: absolute;
@@ -172,8 +158,8 @@
     margin-left: 10px;
     margin-top: -9px;
     margin-bottom: -9px;
-    @include border-top-radius(50%);
-    @include border-bottom-radius(50%);
+    border-radius: 50%;
+    background-color: rgba(#000, 0.2);
     @include media-breakpoint-down(sm) {
       margin-left: 0;
     }
@@ -186,8 +172,6 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      @include border-top-radius(50%);
-      @include border-bottom-radius(50%);
     }
   }
 }
