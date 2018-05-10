@@ -17,7 +17,9 @@ export default {
   },
   methods: {
     getAreement () {
-      this.$http.get('https://mesto.a3technology.ru/terms/confidential/').then(response => {
+      let url = `${window.location.origin}/terms/confidential/`
+
+      this.$http.get(url).then(response => {
         this.confidential = response.body
       })
       // this.$http.get(api.API_LINK + '/webview/terms/actual/confidential.php').then(response => {
