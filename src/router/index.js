@@ -22,6 +22,7 @@ import OrderHistory from '@/pages/OrderHistory'
 import Legal from '@/pages/Legal'
 import AgencyContract from '@/pages/AgencyContract'
 import Fave from '@/pages/Fave'
+import OrderDone from '../components/order/OrderDone'
 import TicketsClose from '../components/support/TicketsClose'
 import TicketsOpen from '../components/support/TicketsOpen'
 import Ticket from '../components/profile/Ticket'
@@ -148,6 +149,7 @@ var router = new Router({
         }
       ]
     },
+    { path: '/order-done', name: 'order-done', component: OrderDone },
     { path: '*', redirect: '/' }
   ]
 })
