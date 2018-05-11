@@ -6,7 +6,7 @@
       fillColor: colors[polygon.level],
       strokeColor: colors[polygon.level],
       strokeOpacity:'1',
-      strokeWeight: '6',
+      strokeWeight: '4',
       fillOpacity: '0.2',
       zIndex: polygon.level
     }"
