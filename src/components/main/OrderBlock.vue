@@ -52,6 +52,9 @@
         <gmap-map
           :center="center"
           :zoom="11"
+          :options="{
+            styles: mapStyles
+          }"
           ref="mmap"
           class="h-100 profile-order-map rounded-right overflow-hidden"
           v-on:click="setMarkerByClick"
@@ -76,9 +79,10 @@
 <script>
 import gMapsInit from '../../store/gmaps-init'
 import Autocomplete from '../utils/Autocomplete'
-import TransportTypes from '../order/TransportTypes'
+import TransportTypes from '../new-order/TransportTypes'
 import generateMarkerIcon from '../../mixins/generateMarkerIcon'
-import WordSlider from './WordSlider'
+import mapStyles from '../../mixins/mapStyles'
+import WordSlider from '../inner/WordSlider'
 
 export default {
   name: 'order-block',
@@ -106,7 +110,7 @@ export default {
     TransportTypes,
     WordSlider
   },
-  mixins: [generateMarkerIcon],
+  mixins: [generateMarkerIcon, mapStyles],
   beforeMount () {
     gMapsInit.loaded.then(() => {
       this.windowMaps = window.google.maps

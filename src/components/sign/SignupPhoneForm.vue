@@ -34,7 +34,7 @@
       :clickedBack="true"
     >
       <div slot="modalBody">
-        <div class="modal-scroll-body modal-scroll-body--md">
+        <div class="modal-scroll-body modal-scroll-body--md px-3">
           <div v-html="rules" class="rules-pre"></div>
         </div>
       </div>
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import api from '../../store/api'
 import maskedInput from '../../directives/maskedInput'
 import Modal from '../utils/Modal'
 import Privacy from '../Privacy'
@@ -77,7 +76,6 @@ export default {
     }
   },
   components: {
-    // NewPassword,
     Modal,
     Privacy
   },
@@ -134,7 +132,9 @@ export default {
       }
     },
     loadrules () {
-      this.$http.get(api.API_LINK + '/webview/terms/1/agreement-client.php').then(response => {
+      let url = `${window.location.origin}/terms/agreement/`
+
+      this.$http.get(url).then(response => {
         this.rules = response.body
       })
     }

@@ -77,8 +77,8 @@
                   </div>
                   <div class="d-lg-none float-right text-right clearfix">
                     <div class="text-large">
-                      <img src="../assets/icons/credit-card.svg" alt="" v-if="item.idt_pay_method" class="order-table-pay-type">
-                      <img src="../assets/icons/funds.svg" alt="" v-else class="order-table-pay-type">
+                      <img src="../../assets/icons/credit-card.svg" alt="" v-if="item.idt_pay_method" class="order-table-pay-type">
+                      <img src="../../assets/icons/funds.svg" alt="" v-else class="order-table-pay-type">
                       {{item.cost}} руб.
                     </div>
                     <span class="small text-muted d-block">({{item.is_already_payed ? 'Оплачен' : 'Не оплачен'}})</span>
@@ -131,12 +131,12 @@
 </template>
 
 <script>
-import api from '../store/api'
-import Pagination from '../components/utils/Pagination'
-import Loader from '../components/utils/Loader'
-import Datepicker from '../components/utils/Datepicker'
-import vSelect from '../components/utils/Select'
-import PaymentMethod from '../components/inner/PaymentMethod'
+import api from '../../store/api'
+import Pagination from '../../components/utils/Pagination'
+import Loader from '../../components/utils/Loader'
+import Datepicker from '../../components/utils/Datepicker'
+import vSelect from '../../components/utils/Select'
+import PaymentMethod from '../../components/inner/PaymentMethod'
 
 export default {
   name: 'order-history',

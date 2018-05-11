@@ -49,13 +49,13 @@
 </template>
 
 <script>
-import api from '../store/api'
-import Modal from '../components/utils/Modal'
-import checkCard from '../mixins/checkCard'
-import CardItem from '../components/profile/CardItem'
-import AddCard from '../components/payment/AddCard'
-import Loader from '../components/utils/Loader'
-import PaymentBalance from '../components/payment/PaymentBalance'
+import api from '../../store/api'
+import Modal from '../../components/utils/Modal'
+import checkCard from '../../mixins/checkCard'
+import CardItem from '../../components/profile/CardItem'
+import AddCard from '../../components/payment/AddCard'
+import Loader from '../../components/utils/Loader'
+import PaymentBalance from '../../components/payment/PaymentBalance'
 
 export default {
   name: 'profile-payment',

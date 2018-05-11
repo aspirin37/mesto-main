@@ -11,22 +11,22 @@
             :to="{name: 'agreement'}"
             active-class="text-dark"
             class="my-2 d-block text-nowrap"
-          ><img src="../assets/icons/doc.svg" class="mr-2" alt="doc">{{$t('agreement')}}</router-link>
+          ><img src="../../assets/icons/doc.svg" class="mr-2" alt="doc">{{$t('agreement')}}</router-link>
           <router-link
             :to="{name: 'confidential'}"
             active-class="text-dark"
             class="my-2 d-block text-nowrap"
-          ><img src="../assets/icons/doc.svg" class="mr-2" alt="doc">{{$t('confidential')}}</router-link>
+          ><img src="../../assets/icons/doc.svg" class="mr-2" alt="doc">{{$t('confidential')}}</router-link>
           <router-link
             :to="{name: 'requisites'}"
             active-class="text-dark"
             class="my-2 d-block text-nowrap"
-          ><img src="../assets/icons/doc.svg" class="mr-2" alt="doc">{{$t('requisites')}}</router-link>
+          ><img src="../../assets/icons/doc.svg" class="mr-2" alt="doc">{{$t('requisites')}}</router-link>
           <router-link
             :to="{name: 'agency-contract'}"
             active-class="text-dark"
             class="my-2 d-block text-nowrap"
-          ><img src="../assets/icons/doc.svg" class="mr-2" alt="doc">Агентский договор</router-link>
+          ><img src="../../assets/icons/doc.svg" class="mr-2" alt="doc">Агентский договор</router-link>
         </nav>
       </aside>
       <article class="mw-100">

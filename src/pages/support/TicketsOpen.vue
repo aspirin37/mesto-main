@@ -45,8 +45,8 @@
 <script>
 import api from '../../store/api'
 import dtFormat from '../../directives/formatDateTime'
-import Pagination from '../utils/Pagination'
-import Loader from '../utils/Loader'
+import Pagination from '../../components/utils/Pagination'
+import Loader from '../../components/utils/Loader'
 
 export default {
   name: 'support-open',

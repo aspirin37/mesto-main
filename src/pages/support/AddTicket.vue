@@ -56,8 +56,8 @@
 <script>
 import api from '../../store/api'
 import dtFormat from '../../directives/formatDateTime'
-import vSelect from '../utils/Select'
-import Loader from '../utils/Loader'
+import vSelect from '../../components/utils/Select'
+import Loader from '../../components/utils/Loader'
 
 export default {
   name: 'profile-add-ticket',
