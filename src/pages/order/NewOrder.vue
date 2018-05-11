@@ -183,20 +183,20 @@
 </template>
 
 <script>
-import auth from '../../auth'
-import gMapsInit from '../../store/gmaps-init'
 import draggable from 'vuedraggable'
 import VueScrollTo from 'vue-scrollto'
-import AddressPoint from '../../components/new-order/AddressPoint'
-import PaymentType from '../../components/new-order/PaymentType'
-import PaymentModal from '../../components/new-order/PaymentModal'
-import OrderPacket from '../../components/new-order/OrderPacket'
-import PaymentError from '../../components/new-order/PaymentError'
-import TransportTypes from '../../components/new-order/TransportTypes'
-import OrderSign from '../../components/new-order/OrderSign'
-import generateMarkerIcon from '../../mixins/generateMarkerIcon'
-import areaErrorAlert from '../../mixins/areaErrorAlert'
-import mapStyles from '../../mixins/mapStyles'
+import auth from '@/auth'
+import gMapsInit from '@/store/gmaps-init'
+import AddressPoint from '@/components/new-order/AddressPoint'
+import PaymentType from '@/components/new-order/PaymentType'
+import PaymentModal from '@/components/new-order/PaymentModal'
+import OrderPacket from '@/components/new-order/OrderPacket'
+import PaymentError from '@/components/new-order/PaymentError'
+import TransportTypes from '@/components/new-order/TransportTypes'
+import OrderSign from '@/components/new-order/OrderSign'
+import generateMarkerIcon from '@/mixins/generateMarkerIcon'
+import areaErrorAlert from '@/mixins/areaErrorAlert'
+import mapStyles from '@/mixins/mapStyles'
 
 export default {
   name: 'order-block',

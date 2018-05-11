@@ -77,12 +77,12 @@
 </template>
 
 <script>
-import gMapsInit from '../../store/gmaps-init'
-import Autocomplete from '../utils/Autocomplete'
-import TransportTypes from '../new-order/TransportTypes'
-import generateMarkerIcon from '../../mixins/generateMarkerIcon'
-import mapStyles from '../../mixins/mapStyles'
-import WordSlider from '../inner/WordSlider'
+import gMapsInit from '@/store/gmaps-init'
+import Autocomplete from '@/components/utils/Autocomplete'
+import TransportTypes from '@/components/new-order/TransportTypes'
+import generateMarkerIcon from '@/mixins/generateMarkerIcon'
+import mapStyles from '@/mixins/mapStyles'
+import WordSlider from '@/components/inner/WordSlider'
 
 export default {
   name: 'order-block',

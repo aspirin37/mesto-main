@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import subtraction from '../../mixins/subtraction'
+import subtraction from '@/mixins/subtraction'
 
 export default {
   name: 'sms-input',

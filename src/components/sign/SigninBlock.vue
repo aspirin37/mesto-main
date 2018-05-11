@@ -55,9 +55,9 @@
 </template>
 
 <script>
-import auth from '../../auth'
+import auth from '@/auth'
 import NewPassword from './NewPassword'
-import maskedInput from '../../directives/maskedInput'
+import maskedInput from '@/directives/maskedInput'
 
 export default {
   name: 'signin-block',

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import checkCard from '../../mixins/checkCard'
+import checkCard from '@/mixins/checkCard'
 
 export default {
   data () {

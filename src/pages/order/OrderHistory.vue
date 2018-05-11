@@ -131,12 +131,12 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import Pagination from '../../components/utils/Pagination'
-import Loader from '../../components/utils/Loader'
-import Datepicker from '../../components/utils/Datepicker'
-import vSelect from '../../components/utils/Select'
-import PaymentMethod from '../../components/inner/PaymentMethod'
+import api from '@/store/api'
+import Pagination from '@/components/utils/Pagination'
+import Loader from '@/components/utils/Loader'
+import Datepicker from '@/components/utils/Datepicker'
+import vSelect from '@/components/utils/Select'
+import PaymentMethod from '@/components/inner/PaymentMethod'
 
 export default {
   name: 'order-history',

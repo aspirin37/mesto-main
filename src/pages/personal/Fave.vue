@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import Pagination from '../../components/utils/Pagination'
-import Loader from '../../components/utils/Loader'
-import Autocomplete from '../../components/utils/Autocomplete'
-import gMapsInit from '../../store/gmaps-init'
+import api from '@/store/api'
+import Pagination from '@/components/utils/Pagination'
+import Loader from '@/components/utils/Loader'
+import Autocomplete from '@/components/utils/Autocomplete'
+import gMapsInit from '@/store/gmaps-init'
 
 export default {
   name: 'profile-fave',

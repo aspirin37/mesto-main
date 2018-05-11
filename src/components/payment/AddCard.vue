@@ -110,11 +110,11 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import checkCard from '../../mixins/checkCard'
-import cardMask from '../../directives/cardMask'
-import charactersReplace from '../../directives/charactersReplace'
-import Loader from '../utils/Loader'
+import api from '@/store/api'
+import checkCard from '@/mixins/checkCard'
+import cardMask from '@/directives/cardMask'
+import charactersReplace from '@/directives/charactersReplace'
+import Loader from '@/components/utils/Loader'
 
 export default {
   name: 'add-card',

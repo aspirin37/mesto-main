@@ -71,12 +71,12 @@
 </template>
 
 <script>
-import Autocomplete from '../utils/Autocomplete'
-import gMapsInit from '../../store/gmaps-init'
+import Autocomplete from '@/components/utils/Autocomplete'
+import gMapsInit from '@/store/gmaps-init'
 import AddressTime from './AddressTime'
 import AddressActions from './AddressActions'
-import areaErrorAlert from '../../mixins/areaErrorAlert'
-import maskedInput from '../../directives/maskedInput'
+import areaErrorAlert from '@/mixins/areaErrorAlert'
+import maskedInput from '@/directives/maskedInput'
 
 export default {
   name: 'address-point',

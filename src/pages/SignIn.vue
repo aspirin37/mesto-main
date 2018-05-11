@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import SigninBlock from '../components/sign/SigninBlock'
+import SigninBlock from '@/components/sign/SigninBlock'
 
 export default {
   name: 'signin',

@@ -193,11 +193,11 @@
 </template>
 
 <script>
-import OrderBlock from '../components/main/OrderBlock'
-import HowWork from '../components/main/HowWork'
-import Modal from '../components/utils/Modal'
-import config from '../store/config'
-import FaqInfo from '../components/faq/FaqInfo'
+import OrderBlock from '@/components/main/OrderBlock'
+import HowWork from '@/components/main/HowWork'
+import Modal from '@/components/utils/Modal'
+import config from '@/store/config'
+import FaqInfo from '@/components/faq/FaqInfo'
 
 export default {
   name: 'main-page',

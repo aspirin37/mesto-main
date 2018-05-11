@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import auth from '../../auth'
+import auth from '@/auth'
 import SignupPhoneForm from './SignupPhoneForm'
 
 export default {

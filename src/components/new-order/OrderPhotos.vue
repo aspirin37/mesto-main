@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import Thumbnail from '../utils/Thumbnail'
-import ThumbnailsOuter from '../utils/ThumbnailsOuter'
+import Thumbnail from '@/components/utils/Thumbnail'
+import ThumbnailsOuter from '@/components/utils/ThumbnailsOuter'
 
 export default {
   name: 'order-photos',
