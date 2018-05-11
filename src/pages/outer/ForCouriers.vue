@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import config from '../../store/config'
+import config from '@/store/config'
 
 export default {
   name: 'for-couriers',

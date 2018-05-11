@@ -94,8 +94,8 @@
 </template>
 
 <script>
-import gMapsInit from '../../store/gmaps-init'
-import generateMarkerIcon from '../../mixins/generateMarkerIcon'
+import gMapsInit from '@/store/gmaps-init'
+import generateMarkerIcon from '@/mixins/generateMarkerIcon'
 
 export default {
   name: 'requisites',

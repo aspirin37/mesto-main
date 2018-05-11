@@ -56,9 +56,9 @@
 </template>
 
 <script>
-import maskedInput from '../../directives/maskedInput'
-import Modal from '../utils/Modal'
-import Privacy from '../Privacy'
+import maskedInput from '@/directives/maskedInput'
+import Modal from '@/components/utils/Modal'
+import Privacy from '@/components/Privacy'
 
 export default {
   name: 'signup-phone-form',

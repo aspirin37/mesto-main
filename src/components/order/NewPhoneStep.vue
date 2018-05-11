@@ -53,11 +53,11 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import auth from '../../auth'
-import Modal from '../utils/Modal'
-import Privacy from '../Privacy'
-import maskedInput from '../../directives/maskedInput'
+import api from '@/store/api'
+import auth from '@/auth'
+import Modal from '@/components/utils/Modal'
+import Privacy from '@/components/Privacy'
+import maskedInput from '@/directives/maskedInput'
 
 export default {
   name: 'sms-confirm-step',

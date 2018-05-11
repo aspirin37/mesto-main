@@ -4,14 +4,6 @@
 
 <script>
 export default {
-  name: 'loader',
-  data () {
-    return {
-    }
-  },
-  props: {
-  },
-  methods: {
-  }
+  name: 'loader'
 }
 </script>

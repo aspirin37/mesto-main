@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import api from '../../store/api'
+import api from '@/store/api'
 
 export default {
   name: 'delivery-types',

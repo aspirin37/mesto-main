@@ -126,13 +126,13 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import auth from '../../auth'
+import api from '@/store/api'
+import auth from '@/auth'
 import CardItem from './CardItem'
-import AddCard from '../payment/AddCard'
-import Loader from '../utils/Loader'
+import AddCard from '@/components/payment/AddCard'
+import Loader from '@/components/utils/Loader'
 import PaymentAddress from './PaymentAddress'
-import PaymentMethod from '../inner/PaymentMethod'
+import PaymentMethod from '@/components/inner/PaymentMethod'
 
 export default {
   name: 'payment-type',

@@ -23,9 +23,9 @@
 </template>
 
 <script>
-import api from '../../store/api'
+import api from '@/store/api'
 import ChoosePaymentMethod from './ChoosePaymentMethod'
-import Loader from '../utils/Loader'
+import Loader from '@/components/utils/Loader'
 
 export default {
   name: 'payment-modal',

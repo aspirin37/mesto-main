@@ -246,10 +246,10 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import FaqInfo from '../../components/faq/FaqInfo'
 import VueScrollto from 'vue-scrollto'
-import maskedInput from '../../directives/maskedInput'
+import api from '@/store/api'
+import FaqInfo from '@/components/faq/FaqInfo'
+import maskedInput from '@/directives/maskedInput'
 
 export default {
   name: 'for-business',

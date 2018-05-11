@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Accordion from '../utils/Accordion'
 import VueScrollTo from 'vue-scrollto'
+import Accordion from '@/components/utils/Accordion'
 
 export default {
   name: 'faq-info',

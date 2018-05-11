@@ -51,10 +51,10 @@
 </template>
 
 <script>
-import auth from '../../auth'
-import subtraction from '../../mixins/subtraction'
-import SmsInput from '../inner/SmsInput'
-import maskedInput from '../../directives/maskedInput'
+import auth from '@/auth'
+import subtraction from '@/mixins/subtraction'
+import SmsInput from '@/components/inner/SmsInput'
+import maskedInput from '@/directives/maskedInput'
 
 export default {
   name: 'new-password',

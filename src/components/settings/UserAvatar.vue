@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import Modal from '../utils/Modal'
-import Crop from '../utils/Crop'
+import api from '@/store/api'
+import Modal from '@/components/utils/Modal'
+import Crop from '@/components/utils/Crop'
 
 export default {
   name: 'user-avatar',

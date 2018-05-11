@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import Modal from '../utils/Modal'
-import api from '../../store/api'
+import Modal from '@/components/utils/Modal'
+import api from '@/store/api'
 
 export default {
   name: 'payment-balance',

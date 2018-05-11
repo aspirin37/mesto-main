@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import SignupBlock from '../sign/SignupBlock'
-import SigninBlock from '../sign/SigninBlock'
+import SignupBlock from '@/components/sign/SignupBlock'
+import SigninBlock from '@/components/sign/SigninBlock'
 
 export default {
   name: 'order-sign',

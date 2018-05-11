@@ -248,20 +248,20 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import Modal from '../../components/utils/Modal'
-import gMapsInit from '../../store/gmaps-init'
-import Alert from '../../components/utils/Alert'
-import GoBack from '../../components/inner/GoBack'
-import NewPassword from '../../components/sign/NewPassword'
-import Loader from '../../components/utils/Loader'
-import generateMarkerIcon from '../../mixins/generateMarkerIcon'
-import mapStyles from '../../mixins/mapStyles'
-import PaymentModal from '../../components/new-order/PaymentModal'
-import RepeatOrder from '../../components/order/RepeatOrder'
-import FeedbackCourier from '../../components/order/FeedbackCourier'
-import PaymentMethod from '../../components/inner/PaymentMethod'
-import AddressPoint from '../../components/order/AddressPoint'
+import api from '@/store/api'
+import Modal from '@/components/utils/Modal'
+import gMapsInit from '@/store/gmaps-init'
+import Alert from '@/components/utils/Alert'
+import GoBack from '@/components/inner/GoBack'
+import NewPassword from '@/components/sign/NewPassword'
+import Loader from '@/components/utils/Loader'
+import generateMarkerIcon from '@/mixins/generateMarkerIcon'
+import mapStyles from '@/mixins/mapStyles'
+import PaymentModal from '@/components/new-order/PaymentModal'
+import RepeatOrder from '@/components/order/RepeatOrder'
+import FeedbackCourier from '@/components/order/FeedbackCourier'
+import PaymentMethod from '@/components/inner/PaymentMethod'
+import AddressPoint from '@/components/order/AddressPoint'
 
 export default {
   name: 'profile-order',

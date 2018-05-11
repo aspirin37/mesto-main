@@ -47,7 +47,9 @@
 
         </div>
         <div class="col-12 col-md">
-          <router-view></router-view>
+          <transition name="fade">
+            <router-view></router-view>
+          </transition>
         </div>
       </div>
     </div>

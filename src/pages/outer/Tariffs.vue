@@ -115,9 +115,9 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import gMapsInit from '../../store/gmaps-init'
-import mapStyles from '../../mixins/mapStyles'
+import api from '@/store/api'
+import gMapsInit from '@/store/gmaps-init'
+import mapStyles from '@/mixins/mapStyles'
 
 export default {
   name: 'tariffs',

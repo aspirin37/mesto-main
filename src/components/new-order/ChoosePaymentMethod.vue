@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import api from '../../store/api'
+import api from '@/store/api'
 import CardItem from './CardItem'
-import AddCard from '../payment/AddCard'
-import Loader from '../utils/Loader'
+import AddCard from '@/components/payment/AddCard'
+import Loader from '@/components/utils/Loader'
 
 export default {
   name: 'choose-payment-method',

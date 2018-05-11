@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Datepicker from '../utils/Datepicker'
+import Datepicker from '@/components/utils/Datepicker'
 
 export default {
   name: 'address-time',

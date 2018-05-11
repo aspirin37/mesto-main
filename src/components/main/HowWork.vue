@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import pic1 from '../../assets/how1.png'
-import pic2 from '../../assets/how2.png'
-import pic3 from '../../assets/how3.png'
+import pic1 from '@/assets/how1.png'
+import pic2 from '@/assets/how2.png'
+import pic3 from '@/assets/how3.png'
 
 export default {
   name: 'how-work',

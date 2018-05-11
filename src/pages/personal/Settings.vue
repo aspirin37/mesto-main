@@ -53,13 +53,13 @@
 </template>
 
 <script>
-import api from '../../store/api'
-import NewPassword from '../../components/sign/NewPassword'
-import UserAvatar from '../../components/settings/UserAvatar'
-import Modal from '../../components/utils/Modal'
-import subtraction from '../../mixins/subtraction'
-import maskedInput from '../../directives/maskedInput'
-import NotificationsSettings from '../../components/settings/NotificationsSettings'
+import api from '@/store/api'
+import NewPassword from '@/components/sign/NewPassword'
+import UserAvatar from '@/components/settings/UserAvatar'
+import Modal from '@/components/utils/Modal'
+import subtraction from '@/mixins/subtraction'
+import maskedInput from '@/directives/maskedInput'
+import NotificationsSettings from '@/components/settings/NotificationsSettings'
 
 export default {
   name: 'profile-settings',

@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import auth from '../auth'
+import auth from '@/auth'
 import Dropdown from './utils/Dropdown'
 import vSelect from './utils/Select'
 
