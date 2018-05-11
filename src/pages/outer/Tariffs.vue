@@ -6,15 +6,12 @@
     <hr class="my-0">
     <div class="container py-5">
       <p class="mb-0 text-xlarge text-muted">Стоимость доставки расчитывается автоматически при совершении заказа на сайте и является окончательной.</p>
-      <p class="text-xlarge text-muted mb-5">Скрытые платежи и абонентская плата отсутствуют.</p>
+      <p class="text-xlarge text-muted mb-4">Скрытые платежи и абонентская плата отсутствуют.</p>
       <div class="row">
         <div class="col-12 col-lg-4" style="min-height: 600px;">
-          {{tariffsIds}}
-          <div v-for="(tariff, index) in tariffs" :key="`tariff-${index}`" class="rounded current-shadow mb-3 p-3">
-            <pre>{{tariff}}</pre>
-          </div>
+          <tariffs-item v-for="(tariff, index) in tariffsIds" :key="`tariff-${index}`" class="rounded current-shadow mt-3 p-3" :id="tariff"></tariffs-item>
         </div>
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8 pt-3">
           <div class="profile-order-map relative h-100" v-if="showMap">
             <gmap-map
               class="h-100 profile-order-map rounded overflow-hidden current-shadow"
@@ -57,6 +54,7 @@ import api from '@/store/api'
 import gMapsInit from '@/store/gmaps-init'
 import mapStyles from '@/mixins/mapStyles'
 import PolygonsItem from '@/components/tariffs/PolygonsItem'
+import TariffsItem from '@/components/tariffs/TariffsItem'
 
 export default {
   name: 'tariffs',
@@ -73,12 +71,12 @@ export default {
   },
   components: {
     'GmapMap': gMapsInit.Map,
-    PolygonsItem
+    PolygonsItem,
+    TariffsItem
   },
   mixins: [mapStyles],
   beforeMount () {
     this.getAllPolygons().then(() => {
-      this.getTariffs()
       this.getSubway()
     })
     gMapsInit.loaded.then(() => {
@@ -120,17 +118,6 @@ export default {
           // Page shaking fix
           this.showMap = true
         }, 600)
-      })
-    },
-    getTariffs () {
-      let options = {
-        limit: 50,
-        tariffs: this.tariffsIds,
-        cities: this.currentLocation.id
-      }
-
-      this.$http.get(api.API_REST_LINK4 + 'common/tariff', {params: options}).then(response => {
-        this.tariffs = response.data
       })
     }
   }
