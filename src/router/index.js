@@ -1,33 +1,38 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainPage from '@/pages/Main'
-import NewOrder from '@/pages/NewOrder'
-import Support from '@/pages/Support'
-import Settings from '@/pages/Settings'
-import Profile from '@/pages/Profile'
-import About from '@/pages/About'
-import Faq from '@/pages/Faq'
-import Order from '@/pages/Order'
 import SignUp from '@/pages/SignUp'
 import SignIn from '@/pages/SignIn'
-import Requisites from '@/pages/Requisites'
-import Agreement from '@/pages/Agreement'
-import Confidential from '@/pages/Confidential'
-import Contacts from '@/pages/Contacts'
-import Tariffs from '@/pages/Tariffs'
-import ForCuriers from '@/pages/ForCouriers'
-import Payment from '@/pages/Payment'
-import ForBusiness from '@/pages/ForBusiness'
-import OrderHistory from '@/pages/OrderHistory'
-import Legal from '@/pages/Legal'
-import AgencyContract from '@/pages/AgencyContract'
-import Fave from '@/pages/Fave'
-import OrderDone from '../components/order/OrderDone'
-import TicketsClose from '../components/support/TicketsClose'
-import TicketsOpen from '../components/support/TicketsOpen'
-import Ticket from '../components/profile/Ticket'
-import AddTicket from '../components/profile/AddTicket'
-import Feedback from '../components/Feedback'
+
+import NewOrder from '@/pages/order/NewOrder'
+import Order from '@/pages/order/Order'
+import OrderHistory from '@/pages/order/OrderHistory'
+
+import Support from '@/pages/support/Support'
+import TicketsClose from '@/pages/support/TicketsClose'
+import TicketsOpen from '@/pages/support/TicketsOpen'
+import AddTicket from '@/pages/support/AddTicket'
+import Ticket from '@/pages/support/Ticket'
+
+import Settings from '@/pages/personal/Settings'
+import Profile from '@/pages/personal/Profile'
+import Payment from '@/pages/personal/Payment'
+import Fave from '@/pages/personal/Fave'
+
+import About from '@/pages/outer/About'
+import Faq from '@/pages/outer/Faq'
+import Contacts from '@/pages/outer/Contacts'
+import Tariffs from '@/pages/outer/Tariffs'
+import ForCuriers from '@/pages/outer/ForCouriers'
+import ForBusiness from '@/pages/outer/ForBusiness'
+
+import Requisites from '@/pages/legal/Requisites'
+import Agreement from '@/pages/legal/Agreement'
+import Confidential from '@/pages/legal/Confidential'
+import Legal from '@/pages/legal/Legal'
+import AgencyContract from '@/pages/legal/AgencyContract'
+
+import OrderDone from '../components/new-order/OrderDone'
 import Privacy from '../components/Privacy'
 import auth from '../auth'
 import analytics from '../store/analytics.js'
@@ -84,7 +89,6 @@ var router = new Router({
       ]
     },
     { path: '/contacts', name: 'contacts', component: Contacts },
-    { path: '/feedback', name: 'feedback', component: Feedback },
     { path: '/privacy', name: 'privacy', component: Privacy },
     { path: '/profile',
       name: 'profile',

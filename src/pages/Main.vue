@@ -189,14 +189,11 @@
       </div>
     </section>
 
-    <main-reviews v-if="false"></main-reviews>
-
   </div>
 </template>
 
 <script>
 import OrderBlock from '../components/main/OrderBlock'
-import MainReviews from '../components/main/MainReviews'
 import HowWork from '../components/main/HowWork'
 import Modal from '../components/utils/Modal'
 import config from '../store/config'
@@ -207,7 +204,6 @@ export default {
   components: {
     OrderBlock,
     Modal,
-    MainReviews,
     HowWork,
     FaqInfo
   },

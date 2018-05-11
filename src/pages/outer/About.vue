@@ -17,7 +17,7 @@
           <div class="row align-items-center">
             <div class="col-12 col-md-5 col-lg-5 col-lg-offset-1">
               <div class="about-block__img ml-auto mr-auto">
-                <img src="../assets/devices.png" alt="" class="mw-100">
+                <img src="../../assets/devices.png" alt="" class="mw-100">
               </div>
             </div>
             <div class="col-12 col-md-7 col-lg-5">
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import config from '../store/config'
+import config from '../../store/config'
 
 export default {
   name: 'about',

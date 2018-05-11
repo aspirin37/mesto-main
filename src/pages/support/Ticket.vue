@@ -56,7 +56,7 @@
 <script>
 import api from '../../store/api'
 import dtFormat from '../../directives/formatDateTime'
-import Modal from '../utils/Modal'
+import Modal from '../../components/utils/Modal'
 
 export default {
   name: 'profile-ticket',

@@ -24,7 +24,7 @@
 
 <script>
 import api from '../../store/api'
-import ChoosePaymentMethod from '../order/ChoosePaymentMethod'
+import ChoosePaymentMethod from './ChoosePaymentMethod'
 import Loader from '../utils/Loader'
 
 export default {

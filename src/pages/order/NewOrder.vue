@@ -23,8 +23,8 @@
             <!-- Transport -->
             <div class="new-order-nav__block mb-3 bg-white current-shadow text-center cursor-pointer" v-scroll-to="setScrollOptions('#transport-type')">
               <div class="new-order-nav__item">
-                <img src="../assets/icons/run-color.svg" alt="run" v-if="orderTransport === 1" class="new-order-nav__icon">
-                <img src="../assets/icons/car-front-color.svg" alt="car" v-else class="new-order-nav__icon">
+                <img src="../../assets/icons/run-color.svg" alt="run" v-if="orderTransport === 1" class="new-order-nav__icon">
+                <img src="../../assets/icons/car-front-color.svg" alt="car" v-else class="new-order-nav__icon">
               </div>
             </div>
             <!-- /Transport -->
@@ -37,7 +37,7 @@
                   v-for="(point, index) in addressPointsNumber"
                   :key="index"
                 >
-                  <img src="../assets/icons/drag.svg" alt="|" class="new-order-nav__drag">
+                  <img src="../../assets/icons/drag.svg" alt="|" class="new-order-nav__drag">
                   <a href="#"
                     :key="point"
                     class="address-marker d-inline-block cursor-move"
@@ -64,7 +64,7 @@
               v-scroll-to="setScrollOptions('#payment')"
             >
               <div class="new-order-nav__item px-0">
-                <img src="../assets/icons/wallet.svg" alt="wallet">
+                <img src="../../assets/icons/wallet.svg" alt="wallet">
                 <span v-if="price" class="line-height-one mt-2"><b>{{price}}</b><small class="d-block">руб.</small></span>
               </div>
             </div>
@@ -120,7 +120,7 @@
               <!-- /Addresses -->
 
               <button class="btn btn-light bg-white w-100 mb-3" :disabled="addressPointsNumber > 9 || isDisabled" v-on:click="addAddressPoint">
-                <img src="../assets/icons/plus-circle.svg" alt="add" class="mr-2">Добавить адрес
+                <img src="../../assets/icons/plus-circle.svg" alt="add" class="mr-2">Добавить адрес
               </button>
               <p class="text-right text-muted" v-if="distances.distance">{{orderTransport === 1 ? 'Пешком ' : 'На авто '}}{{distances.distance}}, ~{{distances.duration}}</p>
 
@@ -147,6 +147,9 @@
                   <gmap-map
                     :center="center.lat ? center : currentCenter"
                     :zoom="11"
+                    :options="{
+                      styles: mapStyles
+                    }"
                     ref="mmap"
                     class="h-100 profile-order-map"
                     v-on:click="setMarkerByClick"
@@ -180,19 +183,20 @@
 </template>
 
 <script>
-import auth from '../auth'
-import gMapsInit from '../store/gmaps-init'
+import auth from '../../auth'
+import gMapsInit from '../../store/gmaps-init'
 import draggable from 'vuedraggable'
 import VueScrollTo from 'vue-scrollto'
-import AddressPoint from '../components/new-order/AddressPoint'
-import PaymentType from '../components/order/PaymentType'
-import PaymentModal from '../components/order/PaymentModal'
-import OrderPacket from '../components/order/OrderPacket'
-import PaymentError from '../components/order/PaymentError'
-import TransportTypes from '../components/order/TransportTypes'
-import OrderSign from '../components/order/OrderSign'
-import generateMarkerIcon from '../mixins/generateMarkerIcon'
-import areaErrorAlert from '../mixins/areaErrorAlert'
+import AddressPoint from '../../components/new-order/AddressPoint'
+import PaymentType from '../../components/new-order/PaymentType'
+import PaymentModal from '../../components/new-order/PaymentModal'
+import OrderPacket from '../../components/new-order/OrderPacket'
+import PaymentError from '../../components/new-order/PaymentError'
+import TransportTypes from '../../components/new-order/TransportTypes'
+import OrderSign from '../../components/new-order/OrderSign'
+import generateMarkerIcon from '../../mixins/generateMarkerIcon'
+import areaErrorAlert from '../../mixins/areaErrorAlert'
+import mapStyles from '../../mixins/mapStyles'
 
 export default {
   name: 'order-block',
@@ -238,7 +242,7 @@ export default {
     draggable,
     PaymentError
   },
-  mixins: [generateMarkerIcon, areaErrorAlert],
+  mixins: [generateMarkerIcon, areaErrorAlert, mapStyles],
   directives: {
     'scroll-to': VueScrollTo
   },
