@@ -214,6 +214,9 @@ export default {
         this.groupPayMethods()
       }).catch(error => {
         this.errorMessage = error.data.message
+        if (error.status === 403) {
+          auth.resetCookie()
+        }
       })
     },
     showCards () {

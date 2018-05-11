@@ -86,9 +86,17 @@ export default {
     }
   },
   resetCookie () {
-    document.cookie = this.user.cookieName + '=0;path=/;domain=.mesto.delivery;'
+    let domainName = document.domain.replace(/^(www\.)/, '').split('.')
+
+    if (domainName.length > 2) {
+      domainName.shift()
+    }
+
+    document.cookie = this.user.cookieName + '=0;path=/;domain=' + domainName.join('.') + ';'
+
+    // document.cookie = this.user.cookieName + '=0;path=/;domain=.mesto.delivery;'
     this.user.authenticated = false
-    window.location.reload()
+    // window.location.reload()
   },
   logout (context, redirect) {
     window.localStorage.setItem('logout-event', 'logout' + Math.random())
