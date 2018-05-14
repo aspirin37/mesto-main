@@ -2,7 +2,6 @@
   <div>
     <form v-on:submit.prevent="sendSms">
       <div class="modal-height-body">
-        <div class="cap__circle"><i class="material-icons">textsms</i></div>
         <p class="text-center">Для подтверждения заказа введите ваш номер телефона, мы пришлём СМС с проверочным кододм</p>
         <div class="row w-100 justify-content-center">
           <div class="col-12 col-md-6">
@@ -24,7 +23,9 @@
         <p class="text-danger text-center">{{errorMessage}}</p>
       </div>
       <div v-if="!isAuth">
-        Используя сервис, вы соглашаетесь с <a href="#" v-on:click.prevent="toggleModal('terms')" target="_blank">пользовательским соглашением</a> и обработкой <a href="#" v-on:click.prevent="toggleModal('privacy')" target="_blank">персональных данных.</a>
+        Используя сервис, вы соглашаетесь с
+        <a href="#" v-on:click.prevent="toggleModal('terms')" target="_blank">пользовательским соглашением</a>
+        и обработкой <a href="#" v-on:click.prevent="toggleModal('privacy')" target="_blank">персональных данных.</a>
       </div>
     </form>
     <modal

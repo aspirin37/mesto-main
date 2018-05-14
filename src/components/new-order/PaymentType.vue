@@ -19,7 +19,7 @@
 
       <!-- Pay types -->
       <div class="mb-4 font-size-null">
-        <label class="check-tabs__label h-100 mr-2 mb-2" v-for="(method, index) in Object.keys(groupedPayMethods)" :key="index">
+        <label class="check-tabs__label h-100 mr-2 mb-2" v-for="(method, index) in Object.keys(groupedPayMethods)" :key="`pay-type-${index}`">
           <input type="radio" class="check-tabs__input" :value="method" name="pay-method" :checked="payType === method" v-model="payType" v-on:change="setMethodIfOne">
           <span class="check-tabs__outer rounded py-3 px-3">
             <payment-method :type="method" class="mb-2"></payment-method>
