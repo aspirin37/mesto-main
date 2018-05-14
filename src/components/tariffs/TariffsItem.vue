@@ -1,8 +1,18 @@
 <template>
   <div class="cursor-pointer rounded-right current-shadow mt-3 py-2 px-4 tariff-title-block" :style="`border-color:${color}`" v-on:click="showTariffinfo">
-    <h3 class="mb-1">{{tariffData.alias || tariffData.name}}</h3>
-    <span class="text-muted">Базовая стоимость</span>
-    <h5>{{basePrice}} руб.</h5>
+    <h5 class="mb-1">{{tariffData.alias || tariffData.name}}</h5>
+    <div class="d-flex justify-content-between">
+      <div>
+        <span class="text-muted">Подача</span>
+        <h3>{{basePrice}} руб.</h3>
+      </div>
+      <div class="text-right" v-if="groupedTariffCases.prices">
+        <span class="text-muted">Каждая точка</span>
+        <h3>+ {{groupedTariffCases.prices[0].cost}} руб.</h3>
+        <!-- <span class="pr-3">{{tariffParams[caseItem.idc_tariff_param]}}</span>
+        <span class="text-nowrap">+ {{caseItem.cost}} руб.</span> -->
+      </div>
+    </div>
     <transition name="fade">
       <div v-if="selected">
         <div class="mt-3 d-flex" v-for="(caseGroup, index) in Object.entries(groupedTariffCases)" :key="`transp-${index}`">
@@ -11,7 +21,7 @@
             <p class="mb-2">{{titles[caseGroup[0]]}}</p>
             <p class="mb-1 d-flex justify-content-between w-100" v-for="(caseItem, index) in caseGroup[1]" :key="`case-${index}`">
               <span class="pr-3">{{tariffParams[caseItem.idc_tariff_param]}}</span>
-              <span class="text-nowrap">+ <b>{{caseItem.cost}}</b> руб.</span>
+              <span class="text-nowrap">+ {{caseItem.cost}} руб.</span>
             </p>
           </div>
         </div>
@@ -31,7 +41,7 @@ export default {
         // Walk
         6: 'Прибытие на первый адрес',
         7: 'За каждую точку',
-        8: 'Адрес за пределами 500 м. от метро',
+        8: 'За пределами 500 м. от метро',
         9: 'до 2 кг',
         10: '2 – 5 кг',
         11: '5 – 10 кг',
@@ -52,10 +62,11 @@ export default {
         4: {base: [12], prices: [13], weight: [14, 15, 16, 17], workWeight: [18, 19, 20]}
       },
       titles: {
-        prices: 'Прибытие на каждый следующий адрес',
+        prices: 'Прибытие на следующий адрес',
         weight: 'Вес',
         workWeight: 'Погрузка, разгрузка, подъем на лифте'
-      }
+      },
+      selected: false
     }
   },
   props: {
@@ -63,8 +74,7 @@ export default {
     color: {
       type: String,
       default: '#f6f6f6'
-    },
-    selected: false
+    }
   },
   computed: {
     tariffCases () {
@@ -123,7 +133,8 @@ export default {
       })
     },
     showTariffinfo () {
-      this.$emit('select', this.selected ? null : this.id)
+      this.selected = !this.selected
+      this.$emit('select', !this.selected ? null : this.id)
     }
   }
 }
