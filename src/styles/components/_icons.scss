@@ -147,3 +147,24 @@
     box-shadow: 0 2px 4px 0 rgba(#000, 0.35);
   }
 }
+
+.tariff-icon{
+  $size: 16px;
+
+  width: $size;
+  min-width: $size;
+  height: $size;
+  margin-top: 0.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: $size $size;
+  &--weight{
+    background-image: url(./assets/icons/dumbbell.svg);
+  }
+  &--prices{
+    background-image: url(./assets/icons/map-marker.svg);
+  }
+  &--workWeight{
+    background-image: url(./assets/icons/worker.svg);
+  }
+}
