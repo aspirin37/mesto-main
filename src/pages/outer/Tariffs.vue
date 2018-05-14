@@ -5,13 +5,25 @@
     </div>
     <hr class="my-0">
     <div class="container py-5">
-      <p class="mb-0 text-xlarge text-muted">Стоимость доставки расчитывается автоматически при совершении заказа на сайте и является окончательной.</p>
-      <p class="text-xlarge text-muted mb-4">Скрытые платежи и абонентская плата отсутствуют.</p>
-      <div class="row">
-        <div class="col-12 col-lg-4" style="min-height: 600px;">
-          <tariffs-item v-for="(tariff, index) in tariffsIds" :key="`tariff-${index}`" class="rounded current-shadow mt-3 p-3" :id="tariff"></tariffs-item>
+      <p class="mb-0 text-xlarge text-muted">
+        Стоимость доставки расчитывается автоматически при совершении заказа на сайте и является окончательной.
+      </p>
+      <p class="text-xlarge text-muted mb-5">
+        Скрытые платежи и абонентская плата отсутствуют.
+      </p>
+      <div class="row align-items-start">
+        <div class="col-12 col-lg-4">
+          <transport-types class="mb-3"></transport-types>
+          <tariffs-item
+            v-for="(tariff, index) in tariffsIds"
+            :key="`tariff-${index}`"
+            :color="colors[index + 1]"
+            :id="tariff"
+            :selected="selectedTariff === tariff"
+            v-on:select="selectedTariff = $event"
+          ></tariffs-item>
         </div>
-        <div class="col-12 col-lg-8 pt-3">
+        <div class="col-12 col-lg-8" style="height: 600px;">
           <div class="profile-order-map relative h-100" v-if="showMap">
             <gmap-map
               class="h-100 profile-order-map rounded overflow-hidden current-shadow"
@@ -38,7 +50,9 @@
               ></gmap-circle>
               <polygons-item
                 v-for="(polygon, index) in polygons"
+                :color="colors[tariffsIds.indexOf(polygon.idt_tariff) + 1]"
                 :id="polygon.idt_poly"
+                :selected="selectedTariff === polygon.idt_tariff"
                 :key="`subway-${index}`"
               ></polygons-item>
             </gmap-map>
@@ -55,6 +69,7 @@ import gMapsInit from '@/store/gmaps-init'
 import mapStyles from '@/mixins/mapStyles'
 import PolygonsItem from '@/components/tariffs/PolygonsItem'
 import TariffsItem from '@/components/tariffs/TariffsItem'
+import TransportTypes from '@/components/new-order/TransportTypes'
 
 export default {
   name: 'tariffs',
@@ -66,13 +81,22 @@ export default {
       polygons: [],
       tariffs: [],
       tariffsIds: [],
-      showMap: false
+      showMap: false,
+      colors: {
+        1: '#512d8a',
+        2: '#2d358a',
+        3: '#2d828a',
+        4: '#287969',
+        5: '#417928'
+      },
+      selectedTariff: null
     }
   },
   components: {
     'GmapMap': gMapsInit.Map,
     PolygonsItem,
-    TariffsItem
+    TariffsItem,
+    TransportTypes
   },
   mixins: [mapStyles],
   beforeMount () {
