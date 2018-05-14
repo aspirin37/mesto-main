@@ -42,7 +42,7 @@ export default {
       }
       this.$store.commit('SET_STATE_VALUE', {options})
       this.$emit('selected', this.orderTransport)
-      this.$store.dispatch('CALC_ORDER_PRICE')
+      // this.$store.dispatch('CALC_ORDER_PRICE')
     }
   }
 }

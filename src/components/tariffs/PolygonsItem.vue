@@ -3,11 +3,11 @@
     :editable="false"
     :path="polygon.points"
     :options="{
-      fillColor: colors[polygon.level],
-      strokeColor: colors[polygon.level],
+      fillColor: color,
+      strokeColor: color,
       strokeOpacity:'1',
-      strokeWeight: '4',
-      fillOpacity: '0.2',
+      strokeWeight: `${selected ? 6 : 2}`,
+      fillOpacity: `${0.2}`,
       zIndex: polygon.level
     }"
   >
@@ -20,21 +20,19 @@ import api from '../../store/api'
 export default {
   data () {
     return {
-      polygon: [],
-      colors: {
-        1: '#417928',
-        2: '#287969',
-        3: '#2d828a',
-        4: '#2d358a',
-        5: '#512d8a'
-      }
+      polygon: []
     }
   },
   props: {
     id: {
       type: Number,
       default: null
-    }
+    },
+    color: {
+      type: String,
+      default: '#f6f6f6'
+    },
+    selected: false
   },
   components: {
   },
