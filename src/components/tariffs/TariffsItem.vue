@@ -21,7 +21,7 @@
             <p class="mb-2">{{titles[caseGroup[0]]}}</p>
             <p class="mb-1 d-flex justify-content-between w-100" v-for="(caseItem, index) in caseGroup[1]" :key="`case-${index}`">
               <span class="pr-3">{{tariffParams[caseItem.idc_tariff_param]}}</span>
-              <span class="text-nowrap">+ {{caseItem.cost}} руб.</span>
+              <span class="text-nowrap">{{caseItem.cost}} руб.</span>
             </p>
           </div>
         </div>
