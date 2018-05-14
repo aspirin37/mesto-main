@@ -19,7 +19,6 @@
             :key="`tariff-${index}`"
             :color="colors[index + 1]"
             :id="tariff"
-            :selected="selectedTariff === tariff"
             v-on:select="selectedTariff = $event"
           ></tariffs-item>
         </div>
@@ -29,7 +28,7 @@
               class="h-100 profile-order-map rounded overflow-hidden current-shadow"
               ref="mmap"
               :center="currentLocation.center"
-              :zoom="9"
+              :zoom="10"
               :options="{
                 styles: mapStyles
               }"
