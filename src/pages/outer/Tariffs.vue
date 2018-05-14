@@ -11,8 +11,8 @@
       <p class="text-xlarge text-muted mb-5">
         Скрытые платежи и абонентская плата отсутствуют.
       </p>
-      <div class="row align-items-start">
-        <div class="col-12 col-lg-4">
+      <div class="d-flex align-items-start flex-wrap flex-sm-nowrap">
+        <div class="w-100 mw-400 pb-4 pr-sm-3 pr-lg-5">
           <transport-types class="mb-3"></transport-types>
           <tariffs-item
             v-for="(tariff, index) in tariffsIds"
@@ -23,7 +23,7 @@
             v-on:select="selectedTariff = $event"
           ></tariffs-item>
         </div>
-        <div class="col-12 col-lg-8" style="height: 600px;">
+        <div class="w-100" style="height: 600px;">
           <div class="profile-order-map relative h-100" v-if="showMap">
             <gmap-map
               class="h-100 profile-order-map rounded overflow-hidden current-shadow"
@@ -84,9 +84,9 @@ export default {
       showMap: false,
       colors: {
         1: '#512d8a',
-        2: '#2d358a',
-        3: '#2d828a',
-        4: '#287969',
+        2: '#c73030',
+        3: '#2b8cca',
+        4: '#2d358a',
         5: '#417928'
       },
       selectedTariff: null
@@ -138,6 +138,7 @@ export default {
       return this.$http.get(api.API_REST_LINK4 + 'common/poly', {params: options}).then(response => {
         this.polygons = response.data.polys
         this.tariffsIds = [...new Set(this.polygons.map(item => item.idt_tariff))].filter(item => item)
+        this.selectedTariff = this.tariffsIds[0]
         setTimeout(() => {
           // Page shaking fix
           this.showMap = true
