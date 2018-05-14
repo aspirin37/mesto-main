@@ -29,7 +29,7 @@
               class="h-100 profile-order-map rounded overflow-hidden current-shadow"
               ref="mmap"
               :center="currentLocation.center"
-              :zoom="10"
+              :zoom="9"
               :options="{
                 styles: mapStyles
               }"
@@ -83,11 +83,11 @@ export default {
       tariffsIds: [],
       showMap: false,
       colors: {
-        1: '#512d8a',
-        2: '#c73030',
+        1: '#417928',
+        2: '#512d8a',
         3: '#2b8cca',
         4: '#2d358a',
-        5: '#417928'
+        5: '#c73030'
       },
       selectedTariff: null
     }

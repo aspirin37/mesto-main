@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-pointer rounded current-shadow mt-3 py-2 px-4 tariff-title-block" :style="`border-color:${color}`" v-on:click="showTariffinfo">
+  <div class="cursor-pointer rounded-right current-shadow mt-3 py-2 px-4 tariff-title-block" :style="`border-color:${color}`" v-on:click="showTariffinfo">
     <h3 class="mb-1">{{tariffData.alias || tariffData.name}}</h3>
     <span class="text-muted">Базовая стоимость</span>
     <h5>{{basePrice}} руб.</h5>
