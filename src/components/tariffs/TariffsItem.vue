@@ -3,7 +3,7 @@
     <h3 class="mb-1">{{tariffData.alias || tariffData.name}}</h3>
     <span class="text-muted">Базовая стоимость</span>
     <h5>{{basePrice}} руб.</h5>
-    <transition name="side-slide">
+    <transition name="fade">
       <div v-if="selected">
         <div class="mt-3 d-flex" v-for="(caseGroup, index) in Object.entries(groupedTariffCases)" :key="`transp-${index}`">
           <span class="mr-3 tariff-icon" :class="`tariff-icon--${caseGroup[0]}`"></span>
