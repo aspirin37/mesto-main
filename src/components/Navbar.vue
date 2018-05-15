@@ -74,7 +74,7 @@
                   <span class="d-block text-overflow small navbar-company__name" v-if="profile.is_company && profile.company">{{profile.company.company_name}}</span>
                 </span>
                 <span class="navbar-user-logo__img" v-if="profile.avatar_path">
-                  <img v-bind:src="profile.avatar_path" alt="user logo">
+                  <img v-bind:src="profile.avatar_path" alt="user">
                 </span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">

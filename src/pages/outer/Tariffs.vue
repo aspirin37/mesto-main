@@ -40,7 +40,7 @@
                   fillColor: '#5E39BA',
                   strokeColor: '#5E39BA',
                   strokeOpacity: '0.8',
-                  strokeWeight: '1',
+                  strokeWeight: '2',
                   fillOpacity: '0.2',
                   zIndex: '9'
                 }"
@@ -99,13 +99,7 @@ export default {
   },
   mixins: [mapStyles],
   beforeMount () {
-    this.getAllPolygons().then(() => {
-      this.getSubway()
-    })
-    gMapsInit.loaded.then(() => {
-      this.windowMaps = window.google.maps
-      this.center = this.currentLocation.center
-    })
+    this.initTariffsPage()
   },
   computed: {
     currentLocation () {
@@ -114,14 +108,27 @@ export default {
   },
   watch: {
     currentLocation () {
+      this.initTariffsPage()
       this.center = this.currentLocation.center
     }
   },
   methods: {
+    initTariffsPage () {
+      this.getAllPolygons().then(() => {
+        this.getSubway()
+      })
+      gMapsInit.loaded.then(() => {
+        this.windowMaps = window.google.maps
+        this.center = this.currentLocation.center
+      })
+    },
     getSubway () {
       let options = {
-        idt_city: 1
+        idt_city: this.currentLocation.id
       }
+
+      this.subway = []
+
       this.$http.get(api.API_REST_LINK2 + 'web/subway', {params: options}).then(response => {
         this.subway = response.data.stations
       }).catch(error => {
@@ -133,6 +140,9 @@ export default {
         limit: 50,
         cities: this.currentLocation.id
       }
+
+      this.polygons = []
+      this.tariffsIds = []
 
       return this.$http.get(api.API_REST_LINK4 + 'common/poly', {params: options}).then(response => {
         this.polygons = response.data.polys
