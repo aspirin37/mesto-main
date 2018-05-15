@@ -34,8 +34,6 @@ export default {
     },
     selected: false
   },
-  components: {
-  },
   mounted () {
     this.getPolygon()
   },
@@ -46,6 +44,9 @@ export default {
       }
       this.$http.get(api.API_REST_LINK4 + 'common/poly', {params: options}).then(response => {
         this.polygon = response.data.poly
+        if (this.polygon.is_city_main) {
+          this.$emit('select', this.polygon.idt_tariff)
+        }
       })
     }
   }

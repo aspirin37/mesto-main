@@ -9,7 +9,7 @@ Vue.use(Vuex)
 
 const state = {
   locations: {
-    1: {id: 1, city: 'Санкт-Петербург', center: {lat: 59.940527, lng: 30.323284}},
+    1: {id: 1, city: 'Санкт-Петербург', center: {lat: 59.939160, lng: 30.316164}},
     2: {id: 2, city: 'Москва', center: {lat: 55.753215, lng: 37.622504}}
   },
   currentLocation: 1,
