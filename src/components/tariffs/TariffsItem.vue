@@ -17,7 +17,7 @@
       </div>
     </div>
     <transition name="fade">
-      <div v-if="selected">
+      <div v-if="selected || currentSelected">
         <div class="mt-3 d-flex" v-for="(caseGroup, index) in Object.entries(groupedTariffCases)" :key="`transp-${index}`">
           <span class="mr-3 tariff-icon" :class="`tariff-icon--${caseGroup[0]}`"></span>
           <div class="w-100">
@@ -77,7 +77,8 @@ export default {
     color: {
       type: String,
       default: '#f6f6f6'
-    }
+    },
+    currentSelected: false
   },
   computed: {
     tariffCases () {
@@ -124,11 +125,7 @@ export default {
     }
   },
   mounted () {
-    this.getTariffData().then(() => {
-      if (this.tariffData.is_city_main) {
-        this.toggleTariffInfo()
-      }
-    })
+    this.getTariffData()
   },
   methods: {
     getTariffData () {

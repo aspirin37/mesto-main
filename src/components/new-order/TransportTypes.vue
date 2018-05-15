@@ -16,7 +16,7 @@
         <img src="../../assets/icons/car-front.svg" alt="" class="mr-2">
         <span>
           <span class="d-block">На авто</span>
-          <span class="text-muted d-block small">от 350 руб.</span>
+          <span class="text-muted d-block small">от 250 руб.</span>
         </span>
       </span>
     </label>
