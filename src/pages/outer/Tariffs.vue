@@ -19,10 +19,11 @@
             :key="`tariff-${index}`"
             :color="colors[index + 1]"
             :id="tariff"
+            :currentSelected="selectedTariff === tariff"
             v-on:select="selectedTariff = $event"
           ></tariffs-item>
         </div>
-        <div class="w-100" style="height: 600px;">
+        <div class="w-100" style="height: 550px;">
           <div class="profile-order-map relative h-100" v-if="showMap">
             <gmap-map
               class="h-100 profile-order-map rounded overflow-hidden current-shadow"
@@ -49,6 +50,7 @@
               ></gmap-circle>
               <polygons-item
                 v-for="(polygon, index) in polygons"
+                v-on:select="selectedTariff = $event"
                 :color="colors[tariffsIds.indexOf(polygon.idt_tariff) + 1]"
                 :id="polygon.idt_poly"
                 :selected="selectedTariff === polygon.idt_tariff"
