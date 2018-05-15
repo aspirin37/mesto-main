@@ -147,7 +147,6 @@ export default {
       return this.$http.get(api.API_REST_LINK4 + 'common/poly', {params: options}).then(response => {
         this.polygons = response.data.polys
         this.tariffsIds = [...new Set(this.polygons.map(item => item.idt_tariff))].filter(item => item)
-        this.selectedTariff = this.tariffsIds[0]
         setTimeout(() => {
           // Page shaking fix
           this.showMap = true
