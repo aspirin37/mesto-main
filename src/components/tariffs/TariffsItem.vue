@@ -125,7 +125,7 @@ export default {
   },
   mounted () {
     this.getTariffData().then(() => {
-      if (this.tariffData.idt_tariff === 1) {
+      if (this.tariffData.is_city_main) {
         this.toggleTariffInfo()
       }
     })
