@@ -6,7 +6,7 @@
         <img src="../../assets/icons/run.svg" alt="" class="mr-2">
         <span>
           <span class="d-block">Пешком</span>
-          <span class="text-muted d-block small">от 250 руб.</span>
+          <span class="text-muted d-block small">от 150 руб.</span>
         </span>
       </span>
     </label>
@@ -16,7 +16,7 @@
         <img src="../../assets/icons/car-front.svg" alt="" class="mr-2">
         <span>
           <span class="d-block">На авто</span>
-          <span class="text-muted d-block small">от 450 руб.</span>
+          <span class="text-muted d-block small">от 350 руб.</span>
         </span>
       </span>
     </label>

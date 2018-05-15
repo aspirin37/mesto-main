@@ -1,16 +1,19 @@
 <template>
-  <div class="cursor-pointer rounded-right current-shadow mt-3 py-2 px-4 tariff-title-block" :style="`border-color:${color}`" v-on:click="showTariffinfo">
-    <h5 class="mb-1">{{tariffData.alias || tariffData.name}}</h5>
+  <div class="cursor-pointer rounded-right current-shadow mt-3 py-2 px-4 tariff-title-block"
+    :style="`border-color:${color}`"
+    v-on:click="toggleTariffInfo"
+  >
+    <h5 class="mb-1 relative select-arrow__outer select-arrow pr-4" :class="{'select-arrow--up' : selected}">
+      {{tariffData.alias || tariffData.name}}
+    </h5>
     <div class="d-flex justify-content-between">
       <div>
         <span class="text-muted">Подача</span>
         <h3>{{basePrice}} руб.</h3>
       </div>
-      <div class="text-right" v-if="groupedTariffCases.prices">
+      <div class="text-right">
         <span class="text-muted">Каждая точка</span>
-        <h3>+ {{groupedTariffCases.prices[0].cost}} руб.</h3>
-        <!-- <span class="pr-3">{{tariffParams[caseItem.idc_tariff_param]}}</span>
-        <span class="text-nowrap">+ {{caseItem.cost}} руб.</span> -->
+        <h3>+ {{pointPrice}} руб.</h3>
       </div>
     </div>
     <transition name="fade">
@@ -58,8 +61,8 @@ export default {
       },
       isTariffSelected: false,
       transportParamsGroups: {
-        1: {base: [6], prices: [7, 8], weight: [9, 10, 11]},
-        4: {base: [12], prices: [13], weight: [14, 15, 16, 17], workWeight: [18, 19, 20]}
+        1: {base: [6], point: [7], prices: [8], weight: [9, 10, 11]},
+        4: {base: [12], point: [13], weight: [14, 15, 16, 17], workWeight: [18, 19, 20]}
       },
       titles: {
         prices: 'Прибытие на следующий адрес',
@@ -106,33 +109,37 @@ export default {
       let allCases = this.groupedAllTariffCases
 
       delete allCases.base
+      delete allCases.point
       return allCases
     },
     basePrice () {
       let result = this.groupedAllTariffCases.base
 
       return (result && result.length) ? result[0].cost : 0
+    },
+    pointPrice () {
+      let result = this.groupedAllTariffCases.point
+
+      return (result && result.length) ? result[0].cost : 0
     }
   },
   mounted () {
-    this.getTariffData()
+    this.getTariffData().then(() => {
+      if (this.tariffData.idt_tariff === 1) {
+        this.toggleTariffInfo()
+      }
+    })
   },
   methods: {
-    getBasePrice () {
-      let result = this.tariffCases.filter(item => {
-        return item.idc_tariff_param === 6
-      })
-      this.basePrice = result ? result[0].cost : 0
-    },
     getTariffData () {
       let options = {
         idt_tariff: this.id
       }
-      this.$http.get(api.API_REST_LINK4 + 'common/tariff', {params: options}).then(response => {
+      return this.$http.get(api.API_REST_LINK4 + 'common/tariff', {params: options}).then(response => {
         this.tariffData = response.data.tariff
       })
     },
-    showTariffinfo () {
+    toggleTariffInfo () {
       this.selected = !this.selected
       this.$emit('select', !this.selected ? null : this.id)
     }

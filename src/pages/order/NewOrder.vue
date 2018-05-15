@@ -65,7 +65,7 @@
             >
               <div class="new-order-nav__item px-0">
                 <img src="../../assets/icons/wallet.svg" alt="wallet">
-                <span v-if="price" class="line-height-one mt-2"><b>{{price}}</b><small class="d-block">руб.</small></span>
+                <span v-if="price" class="line-height-one mt-2 d-block"><b>{{price}}</b><small class="d-block">руб</small></span>
               </div>
             </div>
             <!-- /Price -->
