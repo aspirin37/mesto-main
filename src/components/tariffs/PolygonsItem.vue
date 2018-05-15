@@ -6,7 +6,7 @@
       fillColor: color,
       strokeColor: color,
       strokeOpacity:'1',
-      strokeWeight: `${selected ? 6 : 2}`,
+      strokeWeight: `${selected ? 4 : 2}`,
       fillOpacity: `${0.2}`,
       zIndex: polygon.level
     }"

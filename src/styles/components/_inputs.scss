@@ -118,3 +118,40 @@
     opacity: 0;
   }
 }
+
+$select-arrow-size: 8px;
+.select-arrow{
+  &:hover{
+    &:after{
+      opacity: 0.6;
+    }
+  }
+  &:after{
+    content: '';
+    width: $select-arrow-size;
+    height: $select-arrow-size;
+    background-image: url(./assets/icons/down-arrow.svg);
+    background-size: $select-arrow-size $select-arrow-size;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    transition: transform 0.1s;
+  }
+  &--up{
+    &:after{
+      transform: rotate(-180deg);
+    }
+  }
+  &__outer{
+    &.select-arrow{
+      &:hover{
+        text-decoration: none;
+      }
+      &:after{
+        position: absolute;
+        right: $select-arrow-size;
+        top: 50%;
+        margin-top: -$select-arrow-size/2;
+      }
+    }
+  }
+}
