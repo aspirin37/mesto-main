@@ -1,34 +1,5 @@
-.tariffs-title-mrg{
-  @include media-breakpoint-up(md) {
-    margin-left: 34px;
-    &.status{
-      margin-left: 8px;
-      padding-left: 26px;
-    }
-  }
-}
-
-.tariffs-info-table{
-  margin-top: 30px;
-  &__tr{
-    &:hover{
-      .tariffs-info-table__icon{
-        color: rgba($main-color, 0.8);
-      }
-    }
-  }
-  &__icon{
-    color: rgba(#000, 0.2);
-  }
-  &__text{
-    padding: 3px 10px 10px;
-    &--sm{
-      padding-bottom: 0;
-    }
-    &--price{
-      padding-top: 3px;
-    }
-  }
+.tariff-title-block{
+  border-left: 6px solid $gray-300;
 }
 
 .trg-block{
