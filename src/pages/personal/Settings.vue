@@ -12,8 +12,9 @@
               class="form-group"
               v-on:selected="(submitDisabled = false, userCity = $event.id)"
               optionValue="city"
-              :selectedItem="+currentLocation.id - 1"
-              :linkClass="['form-control']"
+              placeholder="Выбрать город"
+              :selectedItem="userProfile.idt_city ? (+userProfile.idt_city - 1) : null"
+              :linkClass="['form-control link-reset']"
               :options="cities"
             ></v-select>
             <div class="form-group" v-if="userProfile.is_company">

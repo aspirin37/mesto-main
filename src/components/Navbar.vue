@@ -19,6 +19,7 @@
           tag="div"
           class="nav-item relative text-center text-lg-left mx-auto"
           v-on:selected="setNewLocation"
+          v-show="isCityGetted"
           optionValue="city"
           :linkClass="['nav-link pl-0 text-white text-nowrap']"
           :selectedItem="+currentLocation.id - 1"
@@ -168,6 +169,9 @@ export default {
     }
   },
   computed: {
+    isCityGetted () {
+      return this.$store.state.isCityGetted
+    },
     currentLocation () {
       return this.$store.state.locations[this.$store.state.currentLocation]
     },

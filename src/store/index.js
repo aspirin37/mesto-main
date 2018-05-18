@@ -12,7 +12,9 @@ const state = {
     1: {id: 1, city: 'Санкт-Петербург', center: {lat: 59.939160, lng: 30.316164}},
     2: {id: 2, city: 'Москва', center: {lat: 55.753215, lng: 37.622504}}
   },
+
   currentLocation: 1,
+  isCityGetted: false,
   currentCountry: 'ru',
   profile: {},
   phoneMasks: {
@@ -55,6 +57,11 @@ const actions = {
     })
   },
   LOAD_PROFILE ({commit}) {
+    var setCityGetted = () => {
+      let options = { key: 'isCityGetted', value: true }
+
+      commit('SET_STATE_VALUE', {options})
+    }
     Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then(response => {
       let data = response.data
       let city = data.profile.idt_city
@@ -63,12 +70,14 @@ const actions = {
       if (city) {
         let options = { key: 'currentLocation', value: city }
 
-        commit('SET_STATE_VALUE', { options })
+        commit('SET_STATE_VALUE', {options})
       }
+      setCityGetted()
     }).catch(error => {
       if (error.status === 403) {
         auth.resetCookie()
       }
+      setCityGetted()
     })
   },
   GET_CURRENT_CITY ({commit}, cords) {
