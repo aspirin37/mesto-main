@@ -9,7 +9,7 @@
           <form class="order-form-width mb-4">
             <div class="d-flex align-items-center my-1">
               <div class="main-block__img w-25 mr-3 d-lg-none mb-3"><img src="../../assets/courier-window.svg" alt="main" class="mw-100"></div>
-              <h2 class="mb-4 w-100 main-form-text">
+              <h2 class="mb-4 w-100 main-form-text" :class="{'text-white': !isCityGetted}">
                 <span class="mr-1">Сервис</span>
                 <word-slider :words="['умных', 'заботливых', 'быстрых', 'приятных', 'вежливых', 'экономных', 'бережливых']"></word-slider>
                 <br>доставок день в день в <span v-city-name-end="currentLocation.city"></span>
@@ -124,6 +124,9 @@ export default {
     })
   },
   computed: {
+    isCityGetted () {
+      return this.$store.state.isCityGetted
+    },
     currentLocation () {
       return this.$store.state.locations[this.$store.state.currentLocation]
     },

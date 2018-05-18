@@ -84,8 +84,10 @@ export default {
       this.user.token = jwt
       store.dispatch('LOAD_PROFILE')
     } else {
+      let options = { key: 'isCityGetted', value: true }
+
       this.user.authenticated = false
-      store.dispatch('GET_CURRENT_CITY')
+      store.commit('SET_STATE_VALUE', {options})
     }
   },
   resetCookie () {
