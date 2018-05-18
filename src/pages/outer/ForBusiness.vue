@@ -218,7 +218,7 @@
                     <p class="text-danger float-left" v-if="errorMessage">{{errorMessage}}</p>
                   </form>
                   <div v-else>
-                    <p><img src="../../assets/icons/checked.svg" class="mr-2 inline-img vertical-middle" alt="">Мы позвоним!</p>
+                    <p><img src="../../assets/icons/checked.svg" class="mr-2 inline-img align-middle" alt="">Мы позвоним!</p>
                     <button class="btn btn-outline-secondary" v-on:click="messageSended = false">Ok</button>
                   </div>
                 </div>

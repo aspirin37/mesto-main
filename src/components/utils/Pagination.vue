@@ -11,7 +11,7 @@
         <span class="page-link rounded px-3" v-on:click.prevent="toPage(defaultPage - 1)">‹<span class="d-none d-md-inline-block ml-1">Назад</span></span>
       </span>
 
-      <ul class="pagination mb-0 vertical-middle">
+      <ul class="pagination mb-0 align-middle">
         <li class="page-item text-dark" v-bind:class="[{'active' : defaultPage === 0}]" v-if="pages > 1">
           <a href="#" class="page-link" v-on:click.prevent="toPage(0)">1</a>
         </li>

@@ -140,38 +140,6 @@ html{
   }
 }
 
-.page-header-block{
-  padding-top: 40px;
-  padding-bottom: 50px;
-  min-height: 165px;
-  background-color: $main-color;
-  color: #fff;
-  background-image: url(./assets/table.jpg);
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 50% 0;
-  &__title{
-    margin-top: 0;
-  }
-  &__input{
-    border: none;
-    background-color: rgba(#fff, 0.3);
-    @include transition(background-color 0.2s);
-    color: #fff;
-    @include placeholder {
-      color: #fff;
-    }
-    &:focus{
-      background-color: #fff;
-      color: #000;
-    }
-    &--visible{
-      background-color: #fff;
-      color: #000;
-    }
-  }
-}
-
 .base-line-height{
   line-height: 30px;
 }

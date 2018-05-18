@@ -30,7 +30,7 @@
           <ul class="navbar-nav align-items-center">
             <li class="pr-1">
               <router-link tag="a" :to="{name: 'new-order'}" class="btn btn-light btn-sm">
-                <img src="../assets/icons/plus-sm-icon.svg" class="mr-1 vertical-top btn-icon" alt="add">
+                <img src="../assets/icons/plus-sm-icon.svg" class="mr-1 align-top btn-icon" alt="add">
                 <span>Заказать курьера</span>
               </router-link>
             </li>  <!-- v-if="!($route.path === '/')" -->

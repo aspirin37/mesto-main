@@ -60,15 +60,6 @@
   max-width: $modal-xs;
 }
 
-.full-width{
-  width: 100%;
-}
-
-.page-content{
-  margin-top: -30px;
-  box-shadow: 0 0px 2px rgba(#000, 0.2);
-}
-
 .status{
   padding-left: 16px;
   position: relative;
@@ -268,24 +259,6 @@
 }
 .pac-logo:after{
   display: none;
-}
-
-.vertical-top{
-  vertical-align: top;
-}
-
-.vertical-bottom{
-  vertical-align: bottom;
-}
-
-.vertical-middle{
-  vertical-align: middle;
-}
-
-.small-full-width{
-  @include media-breakpoint-down(sm) {
-    width: 100%;
-  }
 }
 
 .current-shadow{

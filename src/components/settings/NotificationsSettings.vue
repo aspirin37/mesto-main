@@ -25,19 +25,19 @@
       <tr class="notifications-table__tr">
         <th><span>Создан новый заказ</span></th>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
         </td>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
         </td>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
@@ -46,19 +46,19 @@
       <tr class="notifications-table__tr">
         <th><span>Смена статуса заказа</span></th>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
         </td>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
         </td>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
@@ -67,19 +67,19 @@
       <tr class="notifications-table__tr">
         <th><span>Изменение данных аккаунта</span></th>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
         </td>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
         </td>
         <td class="text-right">
-          <label class="checker-toggle vertical-middle">
+          <label class="checker-toggle align-middle">
             <input type="checkbox" class="checker-toggle__input">
             <span class="checker-toggle__outer"></span>
           </label>
