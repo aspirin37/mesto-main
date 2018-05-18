@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="mb-3 d-inline-block d-flex align-items-center w-100">
-          <a href="#" v-on:click.prevent="$emit('toggleSign')" class="btn btn-outline-secondary mr-2 btn-lg"><img src="../../assets/icons/login.svg" class="mr-1 vertical-middle half-opacity" alt=""><b>Войти</b></a>
+          <a href="#" v-on:click.prevent="$emit('toggleSign')" class="btn btn-outline-secondary mr-2 btn-lg"><img src="../../assets/icons/login.svg" class="mr-1 align-middle half-opacity" alt=""><b>Войти</b></a>
           <small class="text-muted">Если уже пользовались<br>сервисом</small>
         </div>
       </div>
