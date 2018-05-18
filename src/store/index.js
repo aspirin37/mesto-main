@@ -71,8 +71,8 @@ const actions = {
       }
     })
   },
-  GET_CURRENT_CITY ({commit}) {
-    let options = {lat: 59.939160, lng: 30.316164}
+  GET_CURRENT_CITY ({commit}, cords) {
+    let options = cords || {lat: 59.939160, lng: 30.316164}
 
     Vue.http.get(api.API_REST_LINK4 + 'common/city', {params: options}).then(response => {
       let data = response.data
