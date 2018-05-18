@@ -1,7 +1,14 @@
 <template>
   <div>
     <label class="check-tabs__label" v-for="(type, index) in types" :key="index">
-      <input type="radio" class="check-tabs__input" :value="type.idt_delivery_type" name="delivery-type" :checked="+selectedType === +type.idt_delivery_type" v-on:change="setDeliveryType(type.idt_delivery_type)">
+      <input
+        type="radio"
+        name="delivery-type"
+        class="check-tabs__input"
+        :value="type.idt_delivery_type"
+        :checked="+selectedType === +type.idt_delivery_type"
+        v-on:change="setDeliveryType(type.idt_delivery_type)"
+      >
       <span class="check-tabs__outer rounded mr-2 mb-2 px-2">
         <b class="d-block">{{type.alias}}</b>
       </span>

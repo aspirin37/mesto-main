@@ -5,19 +5,19 @@
         <th><h4>{{$t('notifications.title')}}</h4></th>
         <td class="notifications-table__type text-center">
           <div class="notifications-table__type-block">
-            <img src="../../assets/icons/push-notif.svg" alt="push">
+            <img src="@/assets/icons/push-notif.svg" alt="push">
             <p class="text-muted small">Push</p>
           </div>
         </td>
         <td class="notifications-table__type text-center">
           <div class="notifications-table__type-block">
-            <img src="../../assets/icons/sms-notif.svg" alt="sms">
+            <img src="@/assets/icons/sms-notif.svg" alt="sms">
             <p class="text-muted small">SMS</p>
           </div>
         </td>
         <td class="notifications-table__type text-center">
           <div class="notifications-table__type-block">
-            <img src="../../assets/icons/email-notif.svg" alt="email">
+            <img src="@/assets/icons/email-notif.svg" alt="email">
             <p class="text-muted small">Email</p>
           </div>
         </td>

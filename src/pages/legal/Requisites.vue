@@ -57,16 +57,16 @@
     </div>
     <h4 class="mt-5">Правила оплаты и безопасность платежей, конфиденциальность информации</h4>
     <p>Оплата банковскими картами осуществляется через АО «АЛЬФА-БАНК»</p>
-    <img src="../../assets/icons/logo-alfabank.svg" alt="" class="text-logo bottom-space">
+    <img src="@/assets/icons/logo-alfabank.svg" alt="" class="text-logo bottom-space">
     <p>К оплате принимаются карты VISA и MasterCard.</p>
-    <img src="../../assets/icons/visa.svg" alt="" class="text-logo bottom-space">
-    <img src="../../assets/icons/mastercard.svg" alt="" class="text-logo bottom-space">
+    <img src="@/assets/icons/visa.svg" alt="" class="text-logo bottom-space">
+    <img src="@/assets/icons/mastercard.svg" alt="" class="text-logo bottom-space">
     <p>Услуга оплаты через интернет осуществляется в соответствии с Правилами международных платежных систем Visa и MasterCard на принципах соблюдения конфиденциальности и безопасности совершения платежа, для чего используются самые современные методы проверки, шифрования и передачи данных по закрытым каналам связи. Ввод данных банковской карты осуществляется на защищенной платежной странице АО «АЛЬФА-БАНК».</p>
     <p>На странице для ввода данных банковской карты потребуется ввести номер карты, имя владельца карты, срок действия карты, трёхзначный код безопасности (CVV2 для VISA или CVC2 для MasterCard). Все необходимые данные пропечатаны на самой карте. </p>
     <p>Трёхзначный код безопасности — это три цифры, находящиеся на обратной стороне карты.</p>
     <p>Далее вы будете перенаправлены на страницу Вашего банка для ввода 3DSecure кода, который придет к Вам в СМС. Если 3DSecure код к Вам не пришел, то следует обратится в банк выдавший Вам карту</p>
-    <img src="../../assets/icons/visa-verified.svg" alt="" class="text-logo bottom-space">
-    <img src="../../assets/icons/mastercard-securecode.svg" alt="" class="text-logo bottom-space">
+    <img src="@/assets/icons/visa-verified.svg" alt="" class="text-logo bottom-space">
+    <img src="@/assets/icons/mastercard-securecode.svg" alt="" class="text-logo bottom-space">
     <p>Случаи отказа в совершении платежа:</p>
     <ul>
       <li>банковская карта не предназначена для совершения платежей через интернет, о чем можно узнать, обратившись в Ваш Банк;</li>

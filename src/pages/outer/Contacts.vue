@@ -7,7 +7,7 @@
     <div class="container py-5 text-center">
       <div class="d-inline-flex mx-3 text-left align-items-center mb-3">
         <div class="advant-circle-sm mr-3 relative">
-          <img src="../../assets/icons/phone-color.svg" alt="advantage">
+          <img src="@/assets/icons/phone-color.svg" alt="advantage">
         </div>
         <div>
           <span class="text-muted d-block">По вопросам сотрудничества</span>
@@ -16,7 +16,7 @@
       </div>
       <div class="d-inline-flex mx-3 text-left align-items-center mb-3">
         <div class="advant-circle-sm mr-3 relative">
-          <img src="../../assets/icons/mail-color.svg" alt="advantage">
+          <img src="@/assets/icons/mail-color.svg" alt="advantage">
         </div>
         <div>
           <span class="text-muted d-block">По любым вопросам</span>

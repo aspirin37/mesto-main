@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="d-block mb-3 text-dark">
-      <img src="../../assets/icons/plus-sm-icon.svg" alt="" class="inline-img mr-1 align-middle">
+      <img src="@/assets/icons/plus-sm-icon.svg" alt="" class="inline-img mr-1 align-middle">
       <b>Дополнительные опции</b>
     </p>
     <div class="pl-md-4 mw-400">
