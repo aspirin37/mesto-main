@@ -173,6 +173,7 @@ export default {
             this.center = pos
             this.setAddressData()
           })
+          this.$store.dispatch('GET_CURRENT_CITY', pos)
         }, () => {
           console.log('Geolocation error')
         })

@@ -157,6 +157,7 @@ export default {
           }
           this.center = pos
           this.setMarkerByClick(pos)
+          this.$store.dispatch('GET_CURRENT_CITY', pos)
         }, () => {
           console.log('Geolocation error')
         })
