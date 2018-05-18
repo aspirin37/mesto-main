@@ -12,7 +12,7 @@
               <h2 class="mb-4 w-100 main-form-text">
                 <span class="mr-1">Сервис</span>
                 <word-slider :words="['умных', 'заботливых', 'быстрых', 'приятных', 'вежливых', 'экономных', 'бережливых']"></word-slider>
-                <br>доставок день в день в Санкт-Петербурге
+                <br>доставок день в день в <span v-city-name-end="currentLocation.city"></span>
               </h2>
             </div>
             <div class="form-group relative">
@@ -80,9 +80,10 @@
 import gMapsInit from '@/store/gmaps-init'
 import Autocomplete from '@/components/utils/Autocomplete'
 import TransportTypes from '@/components/new-order/TransportTypes'
+import WordSlider from '@/components/inner/WordSlider'
 import generateMarkerIcon from '@/mixins/generateMarkerIcon'
 import mapStyles from '@/mixins/mapStyles'
-import WordSlider from '@/components/inner/WordSlider'
+import cityNameEnd from '@/directives/cityNameEnd'
 
 export default {
   name: 'order-block',
@@ -111,6 +112,9 @@ export default {
     WordSlider
   },
   mixins: [generateMarkerIcon, mapStyles],
+  directives: {
+    cityNameEnd
+  },
   beforeMount () {
     gMapsInit.loaded.then(() => {
       this.windowMaps = window.google.maps

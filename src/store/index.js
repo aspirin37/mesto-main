@@ -57,8 +57,29 @@ const actions = {
   LOAD_PROFILE ({commit}) {
     Vue.http.get(api.API_REST_LINK2 + 'webclient/profile').then(response => {
       let data = response.data
+      let city = data.profile.idt_city
 
       commit('SET_PROFILE_DATA', { profileData: data.profile })
+      if (city) {
+        let options = { key: 'currentLocation', value: city }
+
+        commit('SET_STATE_VALUE', { options })
+      }
+    }).catch(error => {
+      if (error.status === 403) {
+        auth.resetCookie()
+      }
+    })
+  },
+  GET_CURRENT_CITY ({commit}) {
+    let options = {lat: 59.939160, lng: 30.316164}
+
+    Vue.http.get(api.API_REST_LINK4 + 'common/city', {params: options}).then(response => {
+      let data = response.data
+      let city = data.city.idt_city
+      let options = { key: 'currentLocation', value: city || 1 }
+
+      commit('SET_STATE_VALUE', { options })
     }).catch(error => {
       if (error.status === 403) {
         auth.resetCookie()
