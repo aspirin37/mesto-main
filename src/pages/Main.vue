@@ -1,5 +1,5 @@
 <template>
-  <div class="white-bg">
+  <div class="bg-white">
     <section class="main-block bg-white">
       <div class="container main-block__content">
         <order-block></order-block>

@@ -1,23 +1,34 @@
 <template>
   <div class="page-bottom-space">
-    <div class="bg-white rounded current-shadow p-3 form-group">
-      <div class="row">
+    <div class="bg-white rounded current-shadow px-3 pt-3 form-group">
+      <div class="row align-items-center">
         <div class="col-12 col-lg-4 mb-lg-0">
           <user-avatar></user-avatar>
         </div>
         <div class="col-12 col-lg-8">
-          <form v-on:submit.prevent="updateProfile">
-            <div class="form-group" v-if="userProfile.company && userProfile.company.company_name">
+          <form v-on:submit.prevent="updateProfile" class="mb-3">
+            <v-select
+              tag="div"
+              class="form-group"
+              v-on:selected="(submitDisabled = false, userCity = $event.id)"
+              optionValue="city"
+              :selectedItem="+currentLocation.id - 1"
+              :linkClass="['form-control']"
+              :options="cities"
+            ></v-select>
+            <div class="form-group" v-if="userProfile.is_company">
               <input type="text" class="form-control" placeholder="Название компании" v-model="companyName" v-on:keyup="submitDisabled = false">
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" :placeholder="$t('profile.name')" v-model="firstName" v-on:keyup="submitDisabled = false">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" :placeholder="$t('profile.middle-name')" v-model="userProfile.middle_name" v-on:keyup="submitDisabled = false">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" :placeholder="$t('profile.last-name')" v-model="userProfile.last_name" v-on:keyup="submitDisabled = false">
+            <div class="d-flex">
+              <div class="form-group mr-2 w-50">
+                <input type="text" class="form-control" :placeholder="$t('profile.name')" v-model="firstName" v-on:keyup="submitDisabled = false">
+              </div>
+              <div class="form-group mr-2 w-50">
+                <input type="text" class="form-control" :placeholder="$t('profile.middle-name')" v-model="userProfile.middle_name" v-on:keyup="submitDisabled = false">
+              </div>
+              <div class="form-group w-50">
+                <input type="text" class="form-control" :placeholder="$t('profile.last-name')" v-model="userProfile.last_name" v-on:keyup="submitDisabled = false">
+              </div>
             </div>
             <div class="form-group">
               <input type="email" class="form-control" placeholder="Email" v-model="userProfile.email" v-on:keyup="submitDisabled = false">
@@ -60,6 +71,7 @@ import Modal from '@/components/utils/Modal'
 import subtraction from '@/mixins/subtraction'
 import maskedInput from '@/directives/maskedInput'
 import NotificationsSettings from '@/components/settings/NotificationsSettings'
+import vSelect from '@/components/utils/Select'
 
 export default {
   name: 'profile-settings',
@@ -73,7 +85,8 @@ export default {
       email: '',
       errorMessage: '',
       smsDisabled: false,
-      submitDisabled: true
+      submitDisabled: true,
+      userCity: null
     }
   },
   components: {
@@ -81,9 +94,13 @@ export default {
     NewPassword,
     maskedInput,
     NotificationsSettings,
-    UserAvatar
+    UserAvatar,
+    vSelect
   },
   computed: {
+    currentLocation () {
+      return this.$store.state.locations[this.$store.state.currentLocation]
+    },
     userProfile () {
       let data = this.$store.state.profile
       this.setEditableItems(data)
@@ -94,6 +111,9 @@ export default {
     },
     phone () {
       return this.$store.state.profile.phone
+    },
+    cities () {
+      return Object.values(this.$store.state.locations)
     }
   },
   mounted () {
@@ -125,6 +145,7 @@ export default {
       if (this.userProfile.middle_name) { options.middle_name = this.userProfile.middle_name }
       if (this.userProfile.last_name) { options.last_name = this.userProfile.last_name }
       if (this.userProfile.email) { options.email = this.userProfile.email }
+      if (this.userCity) { options.idt_city = this.userCity }
 
       this.$http.put(api.API_REST_LINK2 + 'webclient/profile', options).then(() => {
         this.errorMessage = ''

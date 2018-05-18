@@ -93,16 +93,19 @@ export default {
       handler: function (oldVal, val) {
         if (JSON.stringify(oldVal) !== JSON.stringify(val)) {
           this.initSelect()
-          this.selectOption(this.options[this.selectedItem])
         }
       },
       deep: true
+    },
+    selectedItem (val, oldVal) {
+      if (val !== oldVal) {
+        this.initSelect()
+      }
     }
   },
   beforeMount () {
     if (this.options.length) {
       this.initSelect()
-      this.selectOption(this.options[this.selectedItem])
     }
   },
   methods: {
@@ -114,6 +117,7 @@ export default {
             : this.selectedOption = this.options[this.selectedItem]
           : ''
         : ''
+      this.selectOption(this.options[this.selectedItem])
     },
     toggle (e) {
       this.show = !this.show
