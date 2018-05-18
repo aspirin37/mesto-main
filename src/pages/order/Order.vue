@@ -23,23 +23,23 @@
                 <repeat-order :orderData="order"></repeat-order>
               </h2>
               <!-- <div class="order-actions" v-bind:class="{'order-actions--active' : showDrop}">
-                <a href="#" class="order-actions__link" v-on:click="showDrop = !showDrop"><img src="../../assets/icons/dots-menu.svg" alt="actions" class=""></a>
+                <a href="#" class="order-actions__link" v-on:click="showDrop = !showDrop"><img src="@/assets/icons/dots-menu.svg" alt="actions" class=""></a>
                 <ul class="order-actions__menu list-unstyled" v-if="showDrop">
                   <li class="relative" tooltip="Что-то пошло не так?" flow="left">
-                    <router-link :to="{ name: 'profile-add-ticket', query: { orderId: order.idt_order, orderNumber: orderNumber }}" title="Что-то пошло не так?"><img src="../../assets/icons/question.svg" alt="actions" class="order-actions__icon"></router-link>
+                    <router-link :to="{ name: 'profile-add-ticket', query: { orderId: order.idt_order, orderNumber: orderNumber }}" title="Что-то пошло не так?"><img src="@/assets/icons/question.svg" alt="actions" class="order-actions__icon"></router-link>
                   </li>
                   <li class="relative" tooltip="Повторить заказ" flow="left">
-                    <a href="#"><img src="../../assets/icons/repeat.svg" alt="actions" class="order-actions__icon" title="Повторить заказ" v-on:click.prevent="toggleModal('repeat')"></a>
+                    <a href="#"><img src="@/assets/icons/repeat.svg" alt="actions" class="order-actions__icon" title="Повторить заказ" v-on:click.prevent="toggleModal('repeat')"></a>
                   </li>
                   <li class="relative" tooltip="Лог заказа" flow="left">
-                    <a href="#"><img src="../../assets/icons/clipboard.svg" alt="actions" class="order-actions__icon" title="Лог заказа"></a>
+                    <a href="#"><img src="@/assets/icons/clipboard.svg" alt="actions" class="order-actions__icon" title="Лог заказа"></a>
                   </li>
                 </ul>
               </div> -->
               <div class="order-icons">
                 <div>
-                  <img src="../../assets/icons/run.svg" alt="run" v-if="order.idc_courier_transport === 1" class="new-order-nav__icon" title="Курьер пешком">
-                  <img src="../../assets/icons/car-front.svg" alt="car" v-else class="new-order-nav__icon" title="Курьер на авто">
+                  <img src="@/assets/icons/run.svg" alt="run" v-if="order.idc_courier_transport === 1" class="new-order-nav__icon" title="Курьер пешком">
+                  <img src="@/assets/icons/car-front.svg" alt="car" v-else class="new-order-nav__icon" title="Курьер на авто">
                 </div>
                 <!-- <a href="#" class="order-icons__icon order-icons__icon--repeat" v-on:click.prevent="toggleModal('repeat')" tooltip="Повторить заказ" flow="down"></a> -->
               </div>
@@ -255,13 +255,13 @@ import Alert from '@/components/utils/Alert'
 import GoBack from '@/components/inner/GoBack'
 import NewPassword from '@/components/sign/NewPassword'
 import Loader from '@/components/utils/Loader'
-import generateMarkerIcon from '@/mixins/generateMarkerIcon'
-import mapStyles from '@/mixins/mapStyles'
 import PaymentModal from '@/components/new-order/PaymentModal'
 import RepeatOrder from '@/components/order/RepeatOrder'
 import FeedbackCourier from '@/components/order/FeedbackCourier'
 import PaymentMethod from '@/components/inner/PaymentMethod'
 import AddressPoint from '@/components/order/AddressPoint'
+import generateMarkerIcon from '@/mixins/generateMarkerIcon'
+import mapStyles from '@/mixins/mapStyles'
 
 export default {
   name: 'profile-order',

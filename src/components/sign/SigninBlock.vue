@@ -56,7 +56,7 @@
 
 <script>
 import auth from '@/auth'
-import NewPassword from './NewPassword'
+import NewPassword from '@/components/sign/NewPassword'
 import maskedInput from '@/directives/maskedInput'
 
 export default {

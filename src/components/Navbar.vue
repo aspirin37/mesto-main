@@ -5,8 +5,8 @@
 
         <!-- Logo -->
         <router-link to="/" class="navbar-brand mr-4">
-          <img src="../assets/logo.svg" alt="logo" class="navbar-logo" v-if="locale === 'ru'">
-          <img src="../assets/logo-en.svg" alt="logo" class="navbar-logo" v-else>
+          <img src="@/assets/logo.svg" alt="logo" class="navbar-logo" v-if="locale === 'ru'">
+          <img src="@/assets/logo-en.svg" alt="logo" class="navbar-logo" v-else>
         </router-link>
         <!-- /Logo -->
 
@@ -30,7 +30,7 @@
           <ul class="navbar-nav align-items-center">
             <li class="pr-1">
               <router-link tag="a" :to="{name: 'new-order'}" class="btn btn-light btn-sm">
-                <img src="../assets/icons/plus-sm-icon.svg" class="mr-1 align-top btn-icon" alt="add">
+                <img src="@/assets/icons/plus-sm-icon.svg" class="mr-1 align-top btn-icon" alt="add">
                 <span>Заказать курьера</span>
               </router-link>
             </li>  <!-- v-if="!($route.path === '/')" -->
@@ -115,8 +115,8 @@
 
 <script>
 import auth from '@/auth'
-import Dropdown from './utils/Dropdown'
-import vSelect from './utils/Select'
+import Dropdown from '@/components/utils/Dropdown'
+import vSelect from '@/components/utils/Select'
 
 export default {
   name: 'navbar',
