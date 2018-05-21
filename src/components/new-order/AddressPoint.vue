@@ -70,7 +70,7 @@
     </div>
 
     <modal
-      modalSize="modal-md"
+      modalSize="modal-sm"
       ref="fave-addresses"
       modalTitle="Избранные адреса"
       :clickedBack="true"
