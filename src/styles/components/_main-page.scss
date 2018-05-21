@@ -171,71 +171,6 @@
   }
 }
 
-.col-list-item{
-  width: 230px;
-  display: inline-block;
-  vertical-align: top;
-  @include media-breakpoint-down(sm) {
-    width: 49%;
-  }
-  img{
-    max-width: 100%;
-  }
-}
-
-.review{
-  &__image{
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    margin-right: 25px;
-    @include media-breakpoint-down(md) {
-      margin-right: 0;
-      width: 80px;
-      height: 80px;
-    }
-    @include media-breakpoint-down(sm) {
-      margin-right: 0;
-      width: 50px;
-      height: 50px;
-    }
-  }
-  &__content{
-    padding-left: 21%;
-    padding-right: 21%;
-    @include media-breakpoint-down(md) {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  }
-  .v-carousel{
-    padding-bottom: 20px;
-    .v-carousel-dots{
-      bottom: 0;
-    }
-    .v-carousel-nav{
-      display: inline-block;
-      background-color: transparent;
-      &.next{
-        @include image-2x('./assets/icons/arrow-right', 'png', 21px, 40px);
-        width: 21px;
-        height: 40px;
-        &:hover{
-          @include image-2x('./assets/icons/arrow-right-color', 'png', 21px, 40px);
-        }
-      }
-      &.prev{
-        @include image-2x('./assets/icons/arrow-left', 'png', 21px, 40px);
-        width: 21px;
-        height: 40px;
-        &:hover{
-          @include image-2x('./assets/icons/arrow-left-color', 'png', 21px, 40px);
-        }
-      }
-    }
-  }
-}
-
 .advant-circle{
   width: 74px;
   height: 74px;
@@ -322,10 +257,10 @@
   }
 }
 
-$anim-circle-time: 3s;
-
 .animated-circle{
+  $anim-circle-time: 3s;
   $how-size: 40px;
+
   width: $how-size;
   height: $how-size;
   border-radius: 50%;

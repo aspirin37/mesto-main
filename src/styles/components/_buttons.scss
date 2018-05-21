@@ -61,8 +61,7 @@
 .fixed-sm-btn{
   $add-btn-size: 46px;
   @include media-breakpoint-down(sm) {
-    @include border-top-radius(50%);
-    @include border-bottom-radius(50%);
+    border-radius: 50%;
     position: fixed;
     bottom: 10%;
     left: 50%;
