@@ -1,13 +1,27 @@
 .order-form-arrow{
-  width: 14px;
-  height: 14px;
+  $size: 1rem;
+
+  width: $size;
+  height: $size;
   position: absolute;
   right: 0;
   top: 0%;
   width: 30px;
   height: 100%;
   background-position: center;
-  @include image-2x('./assets/icons/nav-arrow', 'png', 14px, 14px);
+  background-size: $size $size;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  &:hover{
+    opacity: 1;
+  }
+  &--location{
+    background-image: url('./assets/icons/location-cursor.svg');
+  }
+  &--fave{
+    background-image: url('./assets/icons/star-color.svg');
+    right: $size*1.5;
+  }
 }
 
 .order-form-width{

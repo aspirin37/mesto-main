@@ -14,7 +14,7 @@
               <autocomplete
                 v-else
                 placehldr="Адрес"
-                :classNames="['form-control', `${errors.has('address') ? 'border-danger' : ''}`, {'border-success' : address.length}]"
+                :classNames="['form-control pr-5', `${errors.has('address') ? 'border-danger' : ''}`, {'border-success' : address.length}]"
                 v-model="address"
                 :value="currentAddress.address"
                 :windowMaps="windowMaps"
@@ -22,7 +22,8 @@
               ></autocomplete>
               <input type="hidden" v-model="address" name="address" v-validate="'required'">
               <!-- data-vv-validate-on="none" -->
-              <a href="#" v-on:click.prevent="getUserLocation" class="order-form-arrow" title="Мое местоположение"></a>
+              <a href="#" v-on:click.prevent="toggleModal('fave-addresses')" class="order-form-arrow order-form-arrow--fave" title="Избранные адреса" v-if="isAuth"></a>
+              <a href="#" v-on:click.prevent="getUserLocation" class="order-form-arrow order-form-arrow--location" title="Мое местоположение"></a>
             </div>
           </div>
           <div class="col-12 col-sm-4 mb-2 pl-sm-2">
@@ -67,12 +68,27 @@
       </div> -->
       <address-actions :step="step" v-if="false"></address-actions>
     </div>
+
+    <modal
+      modalSize="modal-md"
+      ref="fave-addresses"
+      modalTitle="Избранные адреса"
+      :clickedBack="true"
+    >
+      <div slot="modalBody">
+        <fave-addresses :clickableAddr="true" v-on:selected="setAddressFromFave"></fave-addresses>
+      </div>
+    </modal>
+
   </div>
 </template>
 
 <script>
-import Autocomplete from '@/components/utils/Autocomplete'
+import auth from '@/auth'
 import gMapsInit from '@/store/gmaps-init'
+import Autocomplete from '@/components/utils/Autocomplete'
+import Modal from '@/components/utils/Modal'
+import FaveAddresses from '@/components/fave/FaveAddresses'
 import AddressTime from './AddressTime'
 import AddressActions from './AddressActions'
 import areaErrorAlert from '@/mixins/areaErrorAlert'
@@ -103,7 +119,9 @@ export default {
   components: {
     Autocomplete,
     AddressTime,
-    AddressActions
+    AddressActions,
+    Modal,
+    FaveAddresses
   },
   directives: {
     maskedInput
@@ -127,6 +145,9 @@ export default {
     })
   },
   computed: {
+    isAuth () {
+      return auth.user.authenticated
+    },
     currentPhoneMask () {
       return this.$store.state.phoneMasks[this.$store.state.currentCountry]
     },
@@ -150,6 +171,9 @@ export default {
     }
   },
   methods: {
+    toggleModal (id) {
+      this.$refs[id].newIsOpen = !this.$refs[id].newIsOpen
+    },
     setCurrentValues (data = {}) {
       this.lat = data.lat || ''
       this.lng = data.lng || ''
@@ -179,6 +203,14 @@ export default {
       } else {
         console.log('Browser doesn\'t support Geolocation')
       }
+    },
+    setAddressFromFave (event) {
+      console.log(event)
+      this.lat = event.lat
+      this.lng = event.lng
+      this.address = event.address
+      this.setAddressData()
+      this.toggleModal('fave-addresses')
     },
     getAddress (newmarker) {
       return new Promise(resolve => {
