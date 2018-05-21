@@ -128,7 +128,7 @@ export default {
       menuLinks: [
         {title: 'history', name: 'order-history'},
         {title: 'cards', name: 'profile-payment'},
-        // {title: 'fave', name: 'profile-fave'},
+        {title: 'fave', name: 'profile-fave'},
         {title: 'support', name: 'profile-support'},
         {title: 'profile', name: 'profile-settings'}
       ]
