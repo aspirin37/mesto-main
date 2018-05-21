@@ -89,19 +89,13 @@
 }
 
 .modal-content{
-  @include box-shadow(none);
+  box-shadow: none;
   border: none;
-  @include border-top-radius(4px);
-  @include border-bottom-radius(4px);
-  @include media-breakpoint-down(sm) {
-    @include border-top-radius(0);
-    @include border-bottom-radius(0);
-    min-height: 100vh;
-  }
 }
 
 .modal-dialog{
   @include media-breakpoint-down(sm) {
+    padding: 2px;
     margin: 0;
   }
 }
