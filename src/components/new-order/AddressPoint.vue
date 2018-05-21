@@ -51,16 +51,14 @@
           </div>
         </div>
       </form>
-      <transition name="fade">
-        <a href="#"
-          class="p-2 bg-white rounded-circle current-shadow d-inline-block address-point-remove line-height-one cursor-pointer"
-          title="Удалить"
-          v-on:click.prevent="removeAddress"
-          v-if="Object.keys(addresses).length > 2"
-        >
-          <img src="@/assets/icons/close-del-gray.svg" alt="X">
-        </a>
-      </transition>
+      <a href="#"
+        class="p-2 bg-white rounded-circle current-shadow d-inline-block address-point-remove line-height-one cursor-pointer"
+        title="Удалить"
+        v-on:click.prevent="removeAddress"
+        v-if="Object.keys(addresses).length > 2"
+      >
+        <img src="@/assets/icons/close-del-gray.svg" alt="X">
+      </a>
       <!-- <div class="order-1 order-md-2 mb-2 ml-auto">
         <button type="button" class="btn btn-default px-3" v-on:click.prevent="removeAddress" :disabled="Object.keys(addresses).length <= 2">
           <img src="@/assets/icons/close-del-gray.svg" alt="X">
