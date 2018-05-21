@@ -52,43 +52,6 @@
   }
 }
 
-.main-block-baner{
-  height: 356px;
-  &__clr{
-    color: lighten($green, 10%);
-    text-decoration: underline;
-  }
-  &__bg{
-    margin-top: 96px;
-    background-color: mix($main-color, $main-color-2);
-    color: #fff;
-    width: 300px;
-    padding: 30px 40px 20px;
-    font-size: 36px;
-    line-height: 1.2;
-    @include border-top-radius(30px);
-    @include border-bottom-radius(30px);
-    &:before{
-      content: '';
-      @include image-2x('./assets/icons/a-bnr-point', 'png', 138px, 190px);
-      width: 138px;
-      height: 190px;
-      position: absolute;
-      left: -84px;
-      top: -96px;
-    }
-    &:after{
-      content: '';
-      @include image-2x('./assets/icons/b-bnr-point', 'png', 53px, 74px);
-      width: 53px;
-      height: 74px;
-      position: absolute;
-      right: -10px;
-      bottom: -26px;
-    }
-  }
-}
-
 .apt-link{
   line-height: 30px;
   border-bottom: 1px dashed $blue;
