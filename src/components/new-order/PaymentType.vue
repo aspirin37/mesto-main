@@ -105,6 +105,7 @@
             <b class="d-block">{{userProfile.company.company_name}}</b>
             <span class="mr-2 d-md-block">Баланс: <b v-thousands="userProfile.company.balance"></b> руб.</span>
             <span class="mr-2 d-md-block">Лимит: <b v-thousands="userProfile.company.balance_limit"></b> руб.</span>
+            <balance-request v-if="userProfile.company.balance <= 0"></balance-request>
           </p>
         </transition>
         <!-- /Balance -->
@@ -130,6 +131,7 @@ import api from '@/store/api'
 import auth from '@/auth'
 import CardItem from './CardItem'
 import AddCard from '@/components/payment/AddCard'
+import BalanceRequest from '@/components/payment/BalanceRequest'
 import Loader from '@/components/utils/Loader'
 import PaymentAddress from './PaymentAddress'
 import PaymentMethod from '@/components/inner/PaymentMethod'
@@ -200,7 +202,8 @@ export default {
     AddCard,
     Loader,
     PaymentAddress,
-    PaymentMethod
+    PaymentMethod,
+    BalanceRequest
   },
   mounted () {
     this.getPayMethods().then(() => {
