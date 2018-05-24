@@ -6,7 +6,7 @@
       :disabled="disabled"
       @keyup.esc="show = false"
     >
-      {{selectedOption || 'Выбрать'}}
+      {{selectedOption || placeholder}}
     </a>
     <transition name="drop">
       <ul :class="['dropdown-menu show', dropdownClass]" v-if="show">
@@ -23,7 +23,7 @@
       :disabled="disabled"
       @keyup.esc="show = false"
     >
-      {{selectedOption || 'Выбрать'}}
+      {{selectedOption || placeholder}}
     </a>
     <transition name="drop">
       <ul :class="['dropdown-menu show', dropdownClass]" v-if="show">
@@ -86,6 +86,10 @@ export default {
         return []
       }
     },
+    placeholder: {
+      type: String,
+      default: 'Выбрать'
+    },
     selectedItem: null
   },
   watch: {
@@ -93,27 +97,33 @@ export default {
       handler: function (oldVal, val) {
         if (JSON.stringify(oldVal) !== JSON.stringify(val)) {
           this.initSelect()
-          this.selectOption(this.options[this.selectedItem])
         }
       },
       deep: true
+    },
+    selectedItem (val, oldVal) {
+      if (val !== oldVal) {
+        this.initSelect()
+      }
     }
   },
   beforeMount () {
     if (this.options.length) {
       this.initSelect()
-      this.selectOption(this.options[this.selectedItem])
     }
   },
   methods: {
     initSelect () {
       this.selectedOption = this.options
-        ? this.selectedItem !== null
+        ? (this.selectedItem !== undefined && this.selectedItem !== null)
           ? this.optionValue
             ? this.selectedOption = this.options[this.selectedItem][this.optionValue]
             : this.selectedOption = this.options[this.selectedItem]
           : ''
         : ''
+      if (this.selectedItem) {
+        this.selectOption(this.options[this.selectedItem])
+      }
     },
     toggle (e) {
       this.show = !this.show
