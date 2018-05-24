@@ -117,8 +117,8 @@ export default {
 
       this.subway = []
 
-      this.$http.get(api.API_REST_LINK2 + 'web/subway', {params: options}).then(response => {
-        this.subway = response.data.stations
+      this.$http.get(api.API_REST_LINK4 + 'common/subway', {params: options}).then(response => {
+        this.subway = response.data.subways
       }).catch(error => {
         this.errorMessage = error.data.message
       })
