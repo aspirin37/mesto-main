@@ -40,14 +40,24 @@ html{
 }
 
 .arrow-down{
+  $arrow-size: 8px;
+  padding-right: 12px;
+  position: relative;
   &:after{
     content: '';
-    width: 9px;
-    height: 5px;
-    vertical-align: middle;
-    margin-left: 5px;
+    width: $arrow-size;
+    height: $arrow-size;
+    right: 0;
+    top: 50%;
+    margin-top: -$arrow-size/2;
     display: inline-block;
-    @include image-2x('./assets/icons/arrow-down', 'png', 9px, 5px);
+    vertical-align: middle;
+    margin-left: $arrow-size/2;
+    background-image: url(./assets/icons/down-arrow.svg);
+    background-size: $arrow-size $arrow-size;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    transition: transform 0.1s;
   }
   &--up{
     &:after{
@@ -65,10 +75,6 @@ html{
       right: 10px;
     }
   }
-}
-
-.white-bg{
-  background-color: #fff;
 }
 
 .minh-100{

@@ -27,6 +27,7 @@ export default {
   getCookie (name) {
     let value = '; ' + document.cookie
     let parts = value.split('; ' + name + '=')
+
     if (parts.length === 2) {
       return parts.pop().split(';').shift()
     }
@@ -77,12 +78,16 @@ export default {
   },
   checkAuth () {
     let jwt = this.getCookie(this.user.cookieName)
+
     if (jwt && +jwt !== 0) {
       this.user.authenticated = true
       this.user.token = jwt
       store.dispatch('LOAD_PROFILE')
     } else {
+      let options = { key: 'isCityGetted', value: true }
+
       this.user.authenticated = false
+      store.commit('SET_STATE_VALUE', {options})
     }
   },
   resetCookie () {
@@ -93,8 +98,6 @@ export default {
     }
 
     document.cookie = this.user.cookieName + '=0;path=/;domain=' + domainName.join('.') + ';'
-
-    // document.cookie = this.user.cookieName + '=0;path=/;domain=.mesto.delivery;'
     this.user.authenticated = false
     // window.location.reload()
   },

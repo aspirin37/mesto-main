@@ -9,10 +9,10 @@
           <form class="order-form-width mb-4">
             <div class="d-flex align-items-center my-1">
               <div class="main-block__img w-25 mr-3 d-lg-none mb-3"><img src="../../assets/courier-window.svg" alt="main" class="mw-100"></div>
-              <h2 class="mb-4 w-100 main-form-text">
+              <h2 class="mb-4 w-100 main-form-text" :class="{'text-white': !isCityGetted}">
                 <span class="mr-1">Сервис</span>
                 <word-slider :words="['умных', 'заботливых', 'быстрых', 'приятных', 'вежливых', 'экономных', 'бережливых']"></word-slider>
-                <br>доставок день в день в Санкт-Петербурге
+                <br>доставок день в день в <span v-city-name-end="currentLocation.city"></span>
               </h2>
             </div>
             <div class="form-group relative">
@@ -80,9 +80,10 @@
 import gMapsInit from '@/store/gmaps-init'
 import Autocomplete from '@/components/utils/Autocomplete'
 import TransportTypes from '@/components/new-order/TransportTypes'
+import WordSlider from '@/components/inner/WordSlider'
 import generateMarkerIcon from '@/mixins/generateMarkerIcon'
 import mapStyles from '@/mixins/mapStyles'
-import WordSlider from '@/components/inner/WordSlider'
+import cityNameEnd from '@/directives/cityNameEnd'
 
 export default {
   name: 'order-block',
@@ -111,6 +112,9 @@ export default {
     WordSlider
   },
   mixins: [generateMarkerIcon, mapStyles],
+  directives: {
+    cityNameEnd
+  },
   beforeMount () {
     gMapsInit.loaded.then(() => {
       this.windowMaps = window.google.maps
@@ -120,6 +124,9 @@ export default {
     })
   },
   computed: {
+    isCityGetted () {
+      return this.$store.state.isCityGetted
+    },
     currentLocation () {
       return this.$store.state.locations[this.$store.state.currentLocation]
     },
@@ -153,6 +160,7 @@ export default {
           }
           this.center = pos
           this.setMarkerByClick(pos)
+          this.$store.dispatch('GET_CURRENT_CITY', pos)
         }, () => {
           console.log('Geolocation error')
         })
