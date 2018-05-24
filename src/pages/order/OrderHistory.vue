@@ -41,7 +41,11 @@
     <!-- /Filter -->
 
     <!-- Cap -->
-    <p class="text-muted" v-if="count">Найдено <span v-thousands="count"></span> заказов на сумму <span v-thousands="sum"></span> руб.</p>
+    <p class="text-muted" v-if="count">
+      <span v-thousands="count"></span>
+      <span v-word-ending="[['заказ', 'заказа', 'заказов'], count]"></span>
+      на сумму <span v-thousands="sum"></span> руб.
+    </p>
     <div class="bg-white rounded current-shadow p-3 widget--min-height relative" v-if="!count && !showLoader">
       <div class="text-center cap">
         <div class="cap__noresults ml-auto mr-auto"></div>
