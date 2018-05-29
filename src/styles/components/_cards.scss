@@ -1,7 +1,6 @@
 .card{
   background-color: $gray-200;
-  @include border-top-radius($border-radius-lg);
-  @include border-bottom-radius($border-radius-lg);
+  border-radius: $border-radius-lg;
   @include current-shadow;
   border: none;
   display: inline-block;
@@ -39,8 +38,7 @@
     z-index: 3;
     right: 0;
     bottom: 0;
-    @include border-top-radius($border-radius-lg);
-    @include border-bottom-radius($border-radius-lg);
+    border-radius: $border-radius-lg;
     @include current-shadow;
     &:before{
       content: '';
@@ -70,8 +68,7 @@
     top: 50px;
     border: 2px solid $red;
     display: inline-block;
-    @include border-left-radius(50%);
-    @include border-right-radius(50%);
+    border-radius: 50%;
     @include current-shadow;
     background-color: $gray-600;
     overflow: hidden;
@@ -202,8 +199,7 @@ a.small-card{
 .small-card{
   width: 180px;
   height: 86px;
-  @include border-top-radius($border-radius-base);
-  @include border-bottom-radius($border-radius-base);
+  border-radius: $border-radius-base;
   @include current-shadow;
   padding: 45px 15px 18px;
   padding-top: 3.2em;
@@ -318,8 +314,7 @@ a.small-card{
     display: block;
     padding: 12px;
     cursor: pointer;
-    @include border-top-radius($border-radius-base);
-    @include border-bottom-radius($border-radius-base);
+    border-radius: $border-radius-base;
     position: relative;
     border: 1px solid $gray-400;
     width: 100%;
@@ -331,8 +326,7 @@ a.small-card{
       width: 18px;
       height: 18px;
       background-color: $gray-100;
-      @include border-top-radius(50%);
-      @include border-bottom-radius(50%);
+      border-radius: 50%;
       box-shadow: inset 0 0 0 1px $gray-400;
       display: none;
       position: absolute;

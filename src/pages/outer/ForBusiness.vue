@@ -34,7 +34,7 @@
         <div class="row mt-5">
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/distance.svg" alt="advantage">
+              <img src="@/assets/icons/distance.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Контроль</p>
@@ -42,7 +42,7 @@
           </div>
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/wall-clock.svg" alt="advantage">
+              <img src="@/assets/icons/wall-clock.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Скорость</p>
@@ -50,7 +50,7 @@
           </div>
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/bank-safe-box.svg" alt="advantage">
+              <img src="@/assets/icons/bank-safe-box.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Безопасность</p>
@@ -105,7 +105,7 @@
         <div class="row mt-5">
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/database.svg" alt="advantage">
+              <img src="@/assets/icons/database.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Интеграция</p>
@@ -113,7 +113,7 @@
           </div>
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/send-letter.svg" alt="advantage">
+              <img src="@/assets/icons/send-letter.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Доставка «Почтой России»</p>
@@ -121,7 +121,7 @@
           </div>
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/money.svg" alt="advantage">
+              <img src="@/assets/icons/money.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Прием денег</p>
@@ -166,7 +166,7 @@
         <div class="row mt-5 mb-5 justify-content-center">
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/verification-window.svg" alt="advantage">
+              <img src="@/assets/icons/verification-window.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Общий личный кабинет</p>
@@ -174,7 +174,7 @@
           </div>
           <div class="col-12 col-sm-4 col-md-4 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../../assets/icons/user-doc.svg" alt="advantage">
+              <img src="@/assets/icons/user-doc.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">По доверенности</p>
@@ -186,7 +186,7 @@
             <div class="col-12 col-sm-6 col-md-5 col-lg-4">
               <div class="d-flex mb-5 align-items-center">
                 <div class="advant-circle-sm mr-3 relative">
-                  <img src="../../assets/icons/phone-color.svg" alt="advantage">
+                  <img src="@/assets/icons/phone-color.svg" alt="advantage">
                 </div>
                 <div>
                   <p class="mb-0 text-large"><b>Звоните</b></p>
@@ -195,7 +195,7 @@
               </div>
               <div class="d-flex mb-5 align-items-center">
                 <div class="advant-circle-sm mr-3 relative">
-                  <img src="../../assets/icons/mail-color.svg" alt="advantage">
+                  <img src="@/assets/icons/mail-color.svg" alt="advantage">
                 </div>
                 <div>
                   <p class="mb-0 text-large"><b>Пишите</b></p>
@@ -206,7 +206,7 @@
             <div class="col-12 col-sm-6 col-md-5 col-lg-4">
               <div class="d-flex mb-3 align-items-top">
                 <div class="advant-circle-sm mr-3 relative">
-                  <img src="../../assets/icons/phone-incoming.svg" alt="advantage">
+                  <img src="@/assets/icons/phone-incoming.svg" alt="advantage">
                 </div>
                 <div>
                   <p class="mb-3 text-large mt-2"><b>Заказать звонок</b></p>
@@ -218,14 +218,14 @@
                     <p class="text-danger float-left" v-if="errorMessage">{{errorMessage}}</p>
                   </form>
                   <div v-else>
-                    <p><img src="../../assets/icons/checked.svg" class="mr-2 inline-img vertical-middle" alt="">Мы позвоним!</p>
+                    <p><img src="@/assets/icons/checked.svg" class="mr-2 inline-img align-middle" alt="">Мы позвоним!</p>
                     <button class="btn btn-outline-secondary" v-on:click="messageSended = false">Ok</button>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-2 col-lg-4">
-              <img src="../../assets/courier-window.svg" alt="main" class="mw-100 d-none d-md-block call-form-image mx-auto">
+              <img src="@/assets/courier-window.svg" alt="main" class="mw-100 d-none d-md-block call-form-image mx-auto">
             </div>
           </div>
         </div>

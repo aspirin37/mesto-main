@@ -8,8 +8,8 @@
       v-on:input="setAddressTime($event)"
       v-on:opened="getMinTime"
     ></datepicker>
-    <img src="../../assets/icons/calendar.svg" alt="" class="input-icon input-icon--right half-opacity" v-if="!currentTime">
-    <img src="../../assets/icons/close-del-gray.svg"
+    <img src="@/assets/icons/calendar.svg" alt="" class="input-icon input-icon--right half-opacity" v-if="!currentTime">
+    <img src="@/assets/icons/close-del-gray.svg"
       v-on:click.prevent="removeAddressTime"
       v-else
       alt="del"

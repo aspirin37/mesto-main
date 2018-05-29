@@ -1,6 +1,6 @@
 <template>
   <a href="#" title="Повторить заказ" class="font-size-null align-middle d-inline-block" v-on:click.prevent="repeatOrder">
-    <img src="../../assets/icons/repeat-refresh.svg" alt="repeat">
+    <img src="@/assets/icons/repeat-refresh.svg" alt="repeat">
   </a>
 </template>
 

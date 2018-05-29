@@ -1,13 +1,27 @@
 .order-form-arrow{
-  width: 14px;
-  height: 14px;
+  $size: 1rem;
+
+  width: $size;
+  height: $size;
   position: absolute;
   right: 0;
   top: 0%;
   width: 30px;
   height: 100%;
   background-position: center;
-  @include image-2x('./assets/icons/nav-arrow', 'png', 14px, 14px);
+  background-size: $size $size;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  &:hover{
+    opacity: 1;
+  }
+  &--location{
+    background-image: url('./assets/icons/location-cursor.svg');
+  }
+  &--fave{
+    background-image: url('./assets/icons/star-color.svg');
+    right: $size*1.5;
+  }
 }
 
 .order-form-width{
@@ -349,4 +363,109 @@ $class-slug: doc-type-size;
     left: 10px;
     top: 100%;
   }
+}
+
+.order-photos{
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 0;
+  &__item{
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    width: 40px;
+    transition: box-shadow 0.1s;
+    &--md{
+      width: 60px;
+      height: 60px;
+    }
+    &:hover{
+      box-shadow: 0 0 0 2px $main-color;
+    }
+    img{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      min-height: 100%;
+      min-width: 100%;
+      max-height: 200%;
+      max-width: 200%;
+    }
+  }
+}
+
+.address-marker{
+  $marker-size: 24px;
+
+  width: $marker-size;
+  height: $marker-size;
+  line-height: 1.5;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #4e719f;
+  border: 2px solid #4e719f;
+  color: #fff;
+  font-weight: 600;
+  &:hover{
+    color: #fff;
+    text-decoration: none;
+  }
+  &:focus{
+    text-decoration: none;
+  }
+  &--disabled{
+    opacity: 0.5;
+  }
+  &--active{
+    background-color: #fff;
+    color: #4e719f;
+    opacity: 1;
+    &:hover{
+      color: #4e719f;
+      text-decoration: none;
+    }
+  }
+  &--first{
+    background-color: $green;
+    border-color: $green;
+    &.address-marker--active{
+      background-color: #fff;
+      color: $green;
+      &:hover{
+        color: $green;
+      }
+    }
+  }
+  &--last{
+    background-color: $mesto-color;
+    border-color: $mesto-color;
+    &.address-marker--active{
+      background-color: #fff;
+      color: $mesto-color;
+      &:hover{
+        color: $mesto-color;
+      }
+    }
+  }
+}
+
+.address-point-title{
+  position: absolute;
+  left: -20px;
+  top: 5px;
+  z-index: 999;
+  @include media-breakpoint-down(sm) {
+    left: -2px;
+    top: -2px;
+  }
+}
+
+.address-point-remove{
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  z-index: 999;
 }

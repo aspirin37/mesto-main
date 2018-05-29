@@ -1,10 +1,10 @@
 <template>
   <div class="mb-2">
     <p class="d-block mb-2">
-      <img src="../../assets/icons/insurance.svg" alt="" class="inline-img mr-1 align-middle">
+      <img src="@/assets/icons/insurance.svg" alt="" class="inline-img mr-1 align-middle">
       <b>Застраховать</b> <span class="text-muted">(за 1% от оценочной стоимости)</span>
       <a href="#" class="ml-3" v-on:click.prevent="removeOrderInsurance" title="Очистить">
-        <img src="../../assets/icons/close-del.svg" alt="X" v-if="orderCostDeclare">
+        <img src="@/assets/icons/close-del.svg" alt="X" v-if="orderCostDeclare">
       </a>
     </p>
     <div class="mb-4 mw-400 d-flex flex-wrap align-items-center justify-content-between">
