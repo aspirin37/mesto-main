@@ -1,10 +1,10 @@
 <template>
   <div>
     <p class="d-block mb-2">
-      <img src="../../assets/icons/comment.svg" alt="" class="inline-img mr-1 align-middle">
+      <img src="@/assets/icons/comment.svg" alt="" class="inline-img mr-1 align-middle">
       <b>Комментарий к заказу</b>
       <a href="#" class="ml-3" v-if="orderComment" v-on:click.prevent="removeOrderComment" title="Очистить">
-        <img src="../../assets/icons/close-del.svg" alt="X">
+        <img src="@/assets/icons/close-del.svg" alt="X">
       </a>
     </p>
     <div class="mb-4 pl-md-4">

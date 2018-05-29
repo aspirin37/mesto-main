@@ -29,14 +29,14 @@
         <label class="check-tabs__label h-100 mr-2 mb-2" v-if="!groupedPayMethods[2]">
           <input type="radio" class="check-tabs__input" value="2" name="pay-method" :checked="payType === 2" v-model="payType" v-on:change="emitPayType">
           <span class="check-tabs__outer rounded py-3 px-3">
-            <img src="../../assets/icons/fin-card-gray.svg" alt="" class="mb-2">
+            <img src="@/assets/icons/fin-card-gray.svg" alt="" class="mb-2">
             <b class="d-block">Банковская карта</b>
           </span>
         </label>
         <label class="check-tabs__label h-100 mr-2 mb-2" v-if="Object.keys(groupedPayMethods).indexOf('4', '5') === -1 && !isCompany">
           <input type="radio" class="check-tabs__input" value="0" name="pay-method" :checked="payType === 0" v-model="payType" v-on:change="emitPayType">
           <span class="check-tabs__outer rounded py-3 px-3">
-            <img src="../../assets/icons/file-doc.svg" alt="" class="mb-2">
+            <img src="@/assets/icons/file-doc.svg" alt="" class="mb-2">
             <b class="d-block">Безналичная оплата</b>
           </span>
         </label>
@@ -91,9 +91,9 @@
             </div>
             <p class="text-center text-muted small mw-400 mx-auto">Оплата работает через «Альфа-Банк», защищена сертификатом SSL и соответствует стандартам безопасности PCI DSS</p>
             <div class="text-center">
-              <img src="../../assets/icons/visa-verified.svg" alt="" class="mx-3 payment-window-logos">
-              <img src="../../assets/icons/mastercard-securecode.svg" alt="" class="mx-3 payment-window-logos">
-              <img src="../../assets/icons/logo-alfabank.svg" alt="" class="mx-3 payment-window-logos">
+              <img src="@/assets/icons/visa-verified.svg" alt="" class="mx-3 payment-window-logos">
+              <img src="@/assets/icons/mastercard-securecode.svg" alt="" class="mx-3 payment-window-logos">
+              <img src="@/assets/icons/logo-alfabank.svg" alt="" class="mx-3 payment-window-logos">
             </div>
           </div>
         </transition>
@@ -105,6 +105,7 @@
             <b class="d-block">{{userProfile.company.company_name}}</b>
             <span class="mr-2 d-md-block">Баланс: <b v-thousands="userProfile.company.balance"></b> руб.</span>
             <span class="mr-2 d-md-block">Лимит: <b v-thousands="userProfile.company.balance_limit"></b> руб.</span>
+            <balance-request v-if="userProfile.company.balance <= 0"></balance-request>
           </p>
         </transition>
         <!-- /Balance -->
@@ -130,6 +131,7 @@ import api from '@/store/api'
 import auth from '@/auth'
 import CardItem from './CardItem'
 import AddCard from '@/components/payment/AddCard'
+import BalanceRequest from '@/components/payment/BalanceRequest'
 import Loader from '@/components/utils/Loader'
 import PaymentAddress from './PaymentAddress'
 import PaymentMethod from '@/components/inner/PaymentMethod'
@@ -200,7 +202,8 @@ export default {
     AddCard,
     Loader,
     PaymentAddress,
-    PaymentMethod
+    PaymentMethod,
+    BalanceRequest
   },
   mounted () {
     this.getPayMethods().then(() => {

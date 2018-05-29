@@ -1,5 +1,5 @@
 <template>
-  <div class="white-bg">
+  <div class="bg-white">
     <section class="main-block bg-white">
       <div class="container main-block__content">
         <order-block></order-block>
@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../assets/icons/distance.svg" alt="advantage">
+              <img src="@/assets/icons/distance.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Онлайн-трекинг</p>
@@ -19,7 +19,7 @@
           </div>
           <div class="col-12 col-sm-6 col-md-3 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../assets/icons/fin-card.svg" alt="advantage">
+              <img src="@/assets/icons/fin-card.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">Удобно платить</p>
@@ -27,7 +27,7 @@
           </div>
           <div class="col-12 col-sm-6 col-md-3 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../assets/icons/wall-clock.svg" alt="advantage">
+              <img src="@/assets/icons/wall-clock.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">60 минут</p>
@@ -35,7 +35,7 @@
           </div>
           <div class="col-12 col-sm-6 col-md-3 text-center mb-5">
             <div class="advant-circle mx-auto mb-4 relative">
-              <img src="../assets/icons/bank-safe-box.svg" alt="advantage">
+              <img src="@/assets/icons/bank-safe-box.svg" alt="advantage">
               <span class="styled-circle-bg d-inline-block rounded-circle"></span>
             </div>
             <p class="mb-2 pt-2 h3">100% безопасно</p>
@@ -71,7 +71,7 @@
               <a v-bind:href="appleLink" class="micon micon--appstore" target="_top"></a>
             </div>
             <div class="col-12 col-md-7 order-1 order-md-2">
-              <img src="../assets/devices.png" alt="" class="mw-100 mb-3">
+              <img src="@/assets/devices.png" alt="" class="mw-100 mb-3">
             </div>
           </div>
         </div>
@@ -89,34 +89,34 @@
         <div class="d-flex justify-content-center flex-wrap">
           <div class="text-center px-2 courier-col mb-4">
             <div class="img-100 rounded-circle mx-auto mb-2">
-              <img src="../assets/test.jpg" alt="courier" class="mw-100">
+              <img src="@/assets/test.jpg" alt="courier" class="mw-100">
             </div>
             <p class="mb-1"><b>Никита</b></p>
             <small class="text-muted d-block mb-2"><b>141</b> счастливый получатель</small>
             <div class="courier-rating px-2 py-1 d-inline-flex align-items-center">
-              <img src="../assets/icons/star-orange.svg" class="courier-rating__star mr-2" alt="star">
+              <img src="@/assets/icons/star-orange.svg" class="courier-rating__star mr-2" alt="star">
               <b>4,8</b><span class="courier-rating__divider"></span><small>42 оценки</small>
             </div>
           </div>
           <div class="text-center px-2 courier-col mb-4 courier-best">
             <div class="img-100 rounded-circle mx-auto mb-2">
-              <img src="../assets/test.jpg" alt="courier" class="mw-100">
+              <img src="@/assets/test.jpg" alt="courier" class="mw-100">
             </div>
             <p class="mb-1"><b>Павел</b></p>
             <small class="text-muted d-block mb-2"><b>242</b> безупречных доставки</small>
             <div class="courier-rating px-2 py-1 d-inline-flex align-items-center">
-              <img src="../assets/icons/star-orange.svg" class="courier-rating__star mr-2" alt="star">
+              <img src="@/assets/icons/star-orange.svg" class="courier-rating__star mr-2" alt="star">
               <b>4,9</b><span class="courier-rating__divider"></span><small>42 оценки</small>
             </div>
           </div>
           <div class="text-center px-2 courier-col mb-4">
             <div class="img-100 rounded-circle mx-auto mb-2">
-              <img src="../assets/test.jpg" alt="courier" class="mw-100">
+              <img src="@/assets/test.jpg" alt="courier" class="mw-100">
             </div>
             <p class="mb-1"><b>Кирилл</b></p>
             <small class="text-muted d-block mb-2"><b>77</b> вовремя доставленных посылок</small>
             <div class="courier-rating px-2 py-1 d-inline-flex align-items-center">
-              <img src="../assets/icons/star-orange.svg" class="courier-rating__star mr-2" alt="star">
+              <img src="@/assets/icons/star-orange.svg" class="courier-rating__star mr-2" alt="star">
               <b>4,7</b><span class="courier-rating__divider"></span><small>42 оценки</small>
             </div>
           </div>
@@ -135,7 +135,7 @@
             <div class="row align-items-center mt-3">
               <div class="col-12 col-md-6 text-center mb-5">
                 <div class="advant-circle mx-auto mb-4 relative">
-                  <img src="../assets/icons/pre-presenter.svg" alt="advantage">
+                  <img src="@/assets/icons/pre-presenter.svg" alt="advantage">
                   <span class="styled-circle-bg d-inline-block rounded-circle"></span>
                 </div>
                 <h3 class="mb-3">Курьеры для юрлиц</h3>
@@ -144,7 +144,7 @@
               </div>
               <div class="col-12 col-md-6 text-center mb-5">
                 <div class="advant-circle mx-auto mb-4 relative">
-                  <img src="../assets/icons/db-settings.svg" alt="advantage">
+                  <img src="@/assets/icons/db-settings.svg" alt="advantage">
                   <span class="styled-circle-bg d-inline-block rounded-circle"></span>
                 </div>
                 <h3 class="mb-3">Интеграция с бизнесом</h3>
@@ -157,16 +157,16 @@
         <h3 class="mb-3 text-center">Нашим сервисом уже пользуются</h3>
         <div class="font-size-null text-center bg-light rounded p-4">
           <div class="text-center partners-block__item">
-            <img src="../assets/lartech.svg" alt="">
+            <img src="@/assets/lartech.svg" alt="">
           </div>
           <div class="text-center partners-block__item">
-            <img src="../assets/energosbit.svg" alt="">
+            <img src="@/assets/energosbit.svg" alt="">
           </div>
           <div class="text-center partners-block__item">
-            <img src="../assets/petrofort.png" alt="">
+            <img src="@/assets/petrofort.png" alt="">
           </div>
           <div class="text-center partners-block__item">
-            <a href="https://fin.team" target="_blank"><img src="../assets/finteam-logo.svg" alt=""></a>
+            <a href="https://fin.team" target="_blank"><img src="@/assets/finteam-logo.svg" alt=""></a>
           </div>
         </div>
       </div>

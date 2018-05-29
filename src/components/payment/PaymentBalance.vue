@@ -4,28 +4,12 @@
     <b class="d-block">{{userProfile.company.company_name}}</b>
     <span class="mr-2 d-md-block">Баланс: <b v-thousands="userProfile.company.balance"></b> руб.</span>
     <span class="mr-2 d-md-block">Лимит: <b v-thousands="userProfile.company.balance_limit"></b> руб.</span>
-    <button class="btn btn-theme mt-3" v-on:click="toggleModal('get-bill')" v-if="!messageSended">Запросить пополнение</button>
-    <span class="border border-success p-3 rounded mt-3 d-inline-block" v-else>Запрошено пополнение баланса</span>
-
-    <modal
-      modalSize="modal-xs"
-      modalTitle="Запросить пополнение баланса"
-      ref="get-bill"
-    >
-      <div slot="modalBody">
-        <div class="form-group">
-          <input type="number" class="form-control input-number-reset" min="0" maxlength="7" placeholder="Сумма, руб" v-model="sum">
-        </div>
-        <button class="btn btn-theme w-100" v-on:click="sendBackCall" :disabled="!sum">Запросить</button>
-      </div>
-    </modal>
-
+    <balance-request></balance-request>
   </div>
 </template>
 
 <script>
-import Modal from '@/components/utils/Modal'
-import api from '@/store/api'
+import BalanceRequest from './BalanceRequest'
 
 export default {
   name: 'payment-balance',
@@ -41,13 +25,11 @@ export default {
         altInputClass: '',
         dateFormat: 'U',
         utc: true
-      },
-      sum: '',
-      messageSended: false
+      }
     }
   },
   components: {
-    Modal
+    BalanceRequest
   },
   computed: {
     userProfile () {
@@ -58,9 +40,6 @@ export default {
     }
   },
   methods: {
-    toggleModal (id) {
-      this.$refs[id].newIsOpen = !this.$refs[id].newIsOpen
-    },
     getByDateRange (e) {
       let datesArray = e.split(' ')
       this.dateFrom = datesArray[0]
@@ -68,19 +47,6 @@ export default {
       if (datesArray.length > 1) {
         this.reloadOrders()
       }
-    },
-    sendBackCall () {
-      let fullName = this.userProfile.company.company_name + `${this.userProfile.name ? ' (' + this.userProfile.name + ')' : ''}`
-      let options = {
-        name: fullName,
-        text: `Пожалуйста, пополните мне баланс на сумму ${this.sum} руб.`,
-        phone: this.userProfile.phone_format
-      }
-      if (this.userProfile.email) { options.email = this.userProfile.email }
-      this.$http.post(api.API_REST_LINK2 + 'web/feedbackForm', options).then(response => {
-        this.messageSended = true
-        this.toggleModal('get-bill')
-      })
     }
   }
 }

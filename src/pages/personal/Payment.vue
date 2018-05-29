@@ -14,7 +14,7 @@
         v-if="cardsLength"
         v-for="(card, index) in userCards"
         v-on:deleteCard="confirmDelete(card)"
-        :pan="card.pan"
+        :info="card"
         :key="index"
         :animate="index === animatedCard"
         class="mr-3"

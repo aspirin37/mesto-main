@@ -15,9 +15,9 @@
     </form>
     <p class="text-center text-muted small mw-400 mx-auto">Оплата работает через «Альфа-Банк», защищена сертификатом SSL и соответствует стандартам безопасности PCI DSS</p>
     <div class="text-center mb-4">
-      <img src="../../assets/icons/visa-verified.svg" alt="" class="mx-1 mx-lg-3 payment-window-logos">
-      <img src="../../assets/icons/mastercard-securecode.svg" alt="" class="mx-1 mx-lg-3 payment-window-logos">
-      <img src="../../assets/icons/logo-alfabank.svg" alt="" class="mx-1 mx-lg-3 payment-window-logos">
+      <img src="@/assets/icons/visa-verified.svg" alt="" class="mx-1 mx-lg-3 payment-window-logos">
+      <img src="@/assets/icons/mastercard-securecode.svg" alt="" class="mx-1 mx-lg-3 payment-window-logos">
+      <img src="@/assets/icons/logo-alfabank.svg" alt="" class="mx-1 mx-lg-3 payment-window-logos">
     </div>
   </div>
 </template>

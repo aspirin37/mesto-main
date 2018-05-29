@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="d-block mb-2">
-      <img src="../../assets/icons/photo.svg" alt="" class="inline-img mr-2 align-middle">
+      <img src="@/assets/icons/photo.svg" alt="" class="inline-img mr-2 align-middle">
       <b>Фото посылки</b>
     </p>
     <div class="pl-md-4">
@@ -29,7 +29,7 @@
           :thumbClasses="['d-inline-block', 'relative', 'mr-3']"
           :linkClasses="['order-photos__item order-photos__item--md']"
           :index="index"
-        ><a href="#" class="pic-delete" v-on:click.prevent="removeImage(index)"><img src="../../assets/icons/close-del.svg" alt="X"></a>
+        ><a href="#" class="pic-delete" v-on:click.prevent="removeImage(index)"><img src="@/assets/icons/close-del.svg" alt="X"></a>
         </thumbnail>
       </thumbnails-outer>
     </div>

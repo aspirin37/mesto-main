@@ -11,7 +11,7 @@
         <span class="page-link rounded px-3" v-on:click.prevent="toPage(defaultPage - 1)">‹<span class="d-none d-md-inline-block ml-1">Назад</span></span>
       </span>
 
-      <ul class="pagination mb-0 vertical-middle">
+      <ul class="pagination mb-0 align-middle">
         <li class="page-item text-dark" v-bind:class="[{'active' : defaultPage === 0}]" v-if="pages > 1">
           <a href="#" class="page-link" v-on:click.prevent="toPage(0)">1</a>
         </li>
@@ -89,13 +89,13 @@ export default {
   },
   mounted () {
     if (this.pushQuery) {
-      this.toPage(+this.$route.query.page - 1 || 0)
+      this.toPage(+this.$route.query.page - 1 || 0, null, false)
     } else {
-      this.toPage(0)
+      this.toPage(0, null, false)
     }
   },
   methods: {
-    toPage (index, push) {
+    toPage (index, push, scrollTop = true) {
       if (this.pushQuery && +index > 0) {
         this.setQuery({page: +index + 1})
       } else if (this.pushQuery) {
@@ -106,7 +106,9 @@ export default {
         this.emitPushPage(index)
       } else {
         this.emitChangePage(index)
-        window.scrollTo(0, 0)
+        if (scrollTop) {
+          window.scrollTo(0, 0)
+        }
       }
     },
     setQuery (val) {

@@ -41,7 +41,11 @@
     <!-- /Filter -->
 
     <!-- Cap -->
-    <p class="text-muted" v-if="count">Найдено <span v-thousands="count"></span> заказов на сумму <span v-thousands="sum"></span> руб.</p>
+    <p class="text-muted" v-if="count">
+      <span v-thousands="count"></span>
+      <span v-word-ending="[['заказ', 'заказа', 'заказов'], count]"></span>
+      на сумму <span v-thousands="sum"></span> руб.
+    </p>
     <div class="bg-white rounded current-shadow p-3 widget--min-height relative" v-if="!count && !showLoader">
       <div class="text-center cap">
         <div class="cap__noresults ml-auto mr-auto"></div>
@@ -77,8 +81,8 @@
                   </div>
                   <div class="d-lg-none float-right text-right clearfix">
                     <div class="text-large">
-                      <img src="../../assets/icons/credit-card.svg" alt="" v-if="item.idt_pay_method" class="order-table-pay-type">
-                      <img src="../../assets/icons/funds.svg" alt="" v-else class="order-table-pay-type">
+                      <img src="@/assets/icons/credit-card.svg" alt="" v-if="item.idt_pay_method" class="order-table-pay-type">
+                      <img src="@/assets/icons/funds.svg" alt="" v-else class="order-table-pay-type">
                       {{item.cost}} руб.
                     </div>
                     <span class="small text-muted d-block">({{item.is_already_payed ? 'Оплачен' : 'Не оплачен'}})</span>
