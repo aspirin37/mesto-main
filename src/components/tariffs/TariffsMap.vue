@@ -19,7 +19,8 @@
           :center="currentLocation.center"
           :zoom="10"
           :options="{
-            styles: mapStyles
+            styles: mapStyles,
+            mapTypeControl: false
           }"
         >
           <gmap-circle

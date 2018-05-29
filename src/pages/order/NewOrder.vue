@@ -148,7 +148,8 @@
                     :center="center.lat ? center : currentCenter"
                     :zoom="11"
                     :options="{
-                      styles: mapStyles
+                      styles: mapStyles,
+                      mapTypeControl: false
                     }"
                     ref="mmap"
                     class="h-100 profile-order-map"
