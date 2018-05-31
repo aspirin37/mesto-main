@@ -78,7 +78,7 @@
                   v-for="(card, index) in groupedPayMethods[2]"
                   :pan="card.alias || ''"
                   :cardDescr="card.type_name"
-                  :checked="card.is_default"
+                  :isChecked="card.is_default"
                   :key="index"
                   v-on:onChange="payMethod = card.idt_pay_method"
                 ></card-item>
@@ -192,9 +192,11 @@ export default {
     }
   },
   watch: {
-    payMethod (val) {
+    payMethod (val, oldVal) {
       this.$emit('methodsSetted', val)
-      this.validatePayMethod()
+      if (val && oldVal) {
+        this.validatePayMethod()
+      }
     }
   },
   components: {
@@ -246,6 +248,7 @@ export default {
     },
     validatePayMethod () {
       let thisTypeMethods = this.groupedPayMethods[this.payType]
+
       for (let i in thisTypeMethods) {
         if (thisTypeMethods[i]['idt_pay_method'] === this.payMethod) {
           this.cardError = false

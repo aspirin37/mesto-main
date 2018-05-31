@@ -10,7 +10,7 @@
           :key="index"
           :pan="card.alias || ''"
           :cardDescr="card.type_name"
-          :checked="card.is_default"
+          :isChecked="card.is_default"
           v-on:onChange="setPaymentCard(card.idt_pay_method)"
         ></card-item>
       </ul>
