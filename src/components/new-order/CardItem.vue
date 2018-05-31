@@ -2,7 +2,7 @@
   <li>
     <label class="card-list-item relative mb-2">
       <div class="card-list-item__type card-type" v-bind:class="['card-type--' + (pan.length > 1 ? cardType : '')]"></div>
-      <input type="radio" name="card-item" class="card-list-item__input" v-on:change="onChange" :checked="checked">
+      <input type="radio" name="card-item" class="card-list-item__input" v-on:change="onChange" :checked="isChecked">
       <span class="card-list-item__info">
         {{pan || cardDescr}}
       </span>
@@ -28,12 +28,16 @@ export default {
       type: String,
       default: ''
     },
-    checked: Boolean
+    isChecked: {
+      type: Boolean,
+      default: false
+    }
   },
   mounted () {
     this.checkCardType(this.pan)
-    if (this.checked) {
-      this.$emit('onChange')
+    console.log(this.isChecked)
+    if (this.isChecked) {
+      this.onChange()
     }
   },
   methods: {
