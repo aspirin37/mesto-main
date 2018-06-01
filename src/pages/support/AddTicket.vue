@@ -22,7 +22,7 @@
           <div class="col-12 col-md-8 col-lg-5">
             <form v-on:submit.prevent="addTicket">
               <div class="form-group">
-                <v-select
+                <u-select
                   :options="types"
                   :linkClass="['w-100', 'link-reset', 'form-control']"
                   :outerClass="['inline-block', 'w-100']"
@@ -31,7 +31,7 @@
                   :tag="'div'"
                   v-on:selected="setTicketType"
                   selectedItem="0"
-                ></v-select>
+                ></u-select>
                 <!-- <select type="text" class="form-control" v-model="ticketType">
                   <option :value="index" v-for="(option, index) in types">{{option}}</option>
                 </select> -->
@@ -56,7 +56,6 @@
 <script>
 import api from '../../store/api'
 import dtFormat from '../../directives/formatDateTime'
-import vSelect from '../../components/utils/Select'
 import Loader from '../../components/utils/Loader'
 
 export default {
@@ -89,7 +88,6 @@ export default {
     }
   },
   components: {
-    vSelect,
     Loader
   },
   directives: {

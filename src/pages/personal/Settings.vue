@@ -7,16 +7,16 @@
         </div>
         <div class="col-12 col-lg-8">
           <form v-on:submit.prevent="updateProfile" class="mb-3">
-            <v-select
-              tag="div"
+            <u-select
               class="form-group"
               v-on:selected="(submitDisabled = false, userCity = $event.id)"
               optionValue="city"
               placeholder="Выбрать город"
               :selectedItem="userProfile.idt_city ? (+userProfile.idt_city - 1) : null"
               :linkClass="['form-control link-reset']"
+              :dropdownClass="['w-100']"
               :options="cities"
-            ></v-select>
+            ></u-select>
             <div class="form-group" v-if="userProfile.is_company">
               <input type="text" class="form-control" placeholder="Название компании" v-model="companyName" v-on:keyup="submitDisabled = false">
             </div>
@@ -72,7 +72,6 @@ import Modal from '@/components/utils/Modal'
 import subtraction from '@/mixins/subtraction'
 import maskedInput from '@/directives/maskedInput'
 import NotificationsSettings from '@/components/settings/NotificationsSettings'
-import vSelect from '@/components/utils/Select'
 
 export default {
   name: 'profile-settings',
@@ -95,8 +94,7 @@ export default {
     NewPassword,
     maskedInput,
     NotificationsSettings,
-    UserAvatar,
-    vSelect
+    UserAvatar
   },
   computed: {
     currentLocation () {

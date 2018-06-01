@@ -35,7 +35,6 @@ export default {
   },
   mounted () {
     this.checkCardType(this.pan)
-    console.log(this.isChecked)
     if (this.isChecked) {
       this.onChange()
     }
