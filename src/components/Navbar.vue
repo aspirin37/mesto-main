@@ -21,7 +21,7 @@
           v-show="isCityGetted"
           optionValue="city"
           :linkClass="['nav-link', 'pl-0', 'text-white', 'text-nowrap']"
-          :itemClass="['text-nowrap']"
+          :itemClass="['text-nowrap', 'dropdown-item']"
           :selectedItem="+currentLocation.id - 1"
           :options="cities"
         ></u-select>
