@@ -15,16 +15,16 @@
         <!-- /Logo -->
 
         <!-- City -->
-        <v-select
-          tag="div"
-          class="nav-item relative text-center text-lg-left mx-auto"
+        <u-select
+          class="nav-item relative text-center text-lg-left mx-auto w-auto"
           v-on:selected="setNewLocation"
           v-show="isCityGetted"
           optionValue="city"
-          :linkClass="['nav-link pl-0 text-white text-nowrap']"
+          :linkClass="['nav-link', 'pl-0', 'text-white', 'text-nowrap']"
+          :itemClass="['text-nowrap']"
           :selectedItem="+currentLocation.id - 1"
           :options="cities"
-        ></v-select>
+        ></u-select>
         <!-- /City -->
 
         <!-- Mobile avatar -->
@@ -150,7 +150,6 @@
 <script>
 import auth from '@/auth'
 import Dropdown from '@/components/utils/Dropdown'
-import vSelect from '@/components/utils/Select'
 
 export default {
   name: 'navbar',
@@ -197,8 +196,7 @@ export default {
     }
   },
   components: {
-    Dropdown,
-    vSelect
+    Dropdown
   },
   methods: {
     logout () {

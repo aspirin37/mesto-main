@@ -8,23 +8,22 @@
           <input type="text" class="form-control form-control-sm" v-model="numberForFilter" placeholder="Номер заказа" v-on:keyup="reloadOrders()">
         </div>
         <div class="col-12 col-sm d-flex flex-nowrap mb-3">
-          <v-select
-            class="text-nowrap"
+          <u-select
+            class="text-nowrap d-inline-block w-auto"
             :options="filterStatuses"
             :optionValue="'value'"
-            :outerClass="['d-inline-block']"
-            :dropdownClass="['dropdown-menu-right dropdown-menu-sm-fixed']"
+            :dropdownClass="['dropdown-menu-sm-fixed']"
             :tag="'div'"
             v-on:selected="getByStatus"
             selectedItem="0"
             ref="statusSelect"
-          ></v-select>
+          ></u-select>
         </div>
         <div class="col-12 col-sm text-nowrap mb-3">
           <a href="#" v-on:click="clearFilter" tooltip="Очистить" flow="left" class="mr-2 link-reset" v-if="dateFrom">&#10006;</a>
           <datepicker :options="fpOptions"
             placeholder="За все время"
-            class="datepicker-link"
+            class="datepicker-link text-dark"
             v-on:input="getByDateRange"
             ref="rangeSelect"
           ></datepicker>
@@ -139,7 +138,6 @@ import api from '@/store/api'
 import Pagination from '@/components/utils/Pagination'
 import Loader from '@/components/utils/Loader'
 import Datepicker from '@/components/utils/Datepicker'
-import vSelect from '@/components/utils/Select'
 import PaymentMethod from '@/components/inner/PaymentMethod'
 
 export default {
@@ -183,7 +181,6 @@ export default {
     Pagination,
     Loader,
     Datepicker,
-    vSelect,
     PaymentMethod
   },
   computed: {

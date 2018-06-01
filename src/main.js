@@ -4,6 +4,7 @@ import Vue from 'vue'
 import wordEnding from 'word-ending'
 import VueAlert from './plugins/alert'
 import VeeValidate from 'vee-validate'
+import uSelect from 'u-select'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -14,6 +15,7 @@ import MaskedInput from './directives/maskedInput'
 import { directive as onClickOutside } from 'vue-on-click-outside'
 auth.checkAuth()
 
+Vue.use(uSelect)
 Vue.use(VueAlert)
 Vue.use(VeeValidate)
 Vue.directive('on-click-outside', onClickOutside)
