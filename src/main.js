@@ -12,9 +12,11 @@ import language from './store/language'
 import auth from './auth'
 import thousands from './directives/thousands'
 import MaskedInput from './directives/maskedInput'
+import uThumbnail from 'u-thumbnail'
 import { directive as onClickOutside } from 'vue-on-click-outside'
 auth.checkAuth()
 
+Vue.use(uThumbnail)
 Vue.use(uSelect)
 Vue.use(VueAlert)
 Vue.use(VeeValidate)

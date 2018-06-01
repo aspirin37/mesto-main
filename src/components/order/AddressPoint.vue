@@ -19,7 +19,7 @@
       <span class="d-block px-2 mt-2 border-left border-success small" v-if="address.description">«{{address.description}}»</span>
 
       <div v-if="address.photosClient && address.photosClient.length" class="mt-2">
-        <thumbnails-outer class="d-inline-block mr-2">
+        <thumbnail-outer class="d-inline-block mr-2">
           <thumbnail
             v-for="(pic, index) in address.photosClient"
             :key="index"
@@ -30,10 +30,10 @@
             :index="index"
             title="Фото клиента"
           ></thumbnail>
-        </thumbnails-outer>
+        </thumbnail-outer>
       </div>
       <div v-if="address.photosCourier && address.photosCourier.length" class="mt-2">
-        <thumbnails-outer class="d-inline-block mr-2">
+        <thumbnail-outer class="d-inline-block mr-2">
           <thumbnail
             v-for="(pic, index) in address.photosCourier"
             :key="index"
@@ -44,16 +44,13 @@
             :index="index"
             title="Фото курьера"
           ></thumbnail>
-        </thumbnails-outer>
+        </thumbnail-outer>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Thumbnail from '@/components/utils/Thumbnail'
-import ThumbnailsOuter from '@/components/utils/ThumbnailsOuter'
-
 export default {
   name: 'address-point',
   data () {
@@ -69,10 +66,6 @@ export default {
     index: null,
     length: null,
     payed: false
-  },
-  components: {
-    Thumbnail,
-    ThumbnailsOuter
   },
   methods: {
     toggleActive () {

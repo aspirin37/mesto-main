@@ -19,9 +19,8 @@
       >
         <input type="file" accept="image/*" class="upload-pic__input" v-on:change="uploadPhoto">
       </label>
-      <thumbnails-outer>
+      <thumbnail-outer>
         <thumbnail
-          v-if="previews[index]"
           v-for="(pic, index) in previews"
           :key="index"
           :img="pic"
@@ -31,15 +30,12 @@
           :index="index"
         ><a href="#" class="pic-delete" v-on:click.prevent="removeImage(index)"><img src="@/assets/icons/close-del.svg" alt="X"></a>
         </thumbnail>
-      </thumbnails-outer>
+      </thumbnail-outer>
     </div>
   </div>
 </template>
 
 <script>
-import Thumbnail from '@/components/utils/Thumbnail'
-import ThumbnailsOuter from '@/components/utils/ThumbnailsOuter'
-
 export default {
   name: 'order-photos',
   data () {
@@ -51,10 +47,6 @@ export default {
   },
   props: {
     outerOnDragged: false
-  },
-  components: {
-    Thumbnail,
-    ThumbnailsOuter
   },
   methods: {
     setDragEnd () {
