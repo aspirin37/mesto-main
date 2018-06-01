@@ -73,6 +73,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "u-select": "0.0.9",
+    "u-thumbnail": "0.0.1",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
     "vee-validate": "^2.0.6",
