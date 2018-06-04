@@ -21,7 +21,7 @@
         <div class="mt-3 d-flex" v-for="(caseGroup, index) in Object.entries(groupedTariffCases)" :key="`transp-${index}`">
           <span class="mr-3 tariff-icon" :class="`tariff-icon--${caseGroup[0]}`"></span>
           <div class="w-100">
-            <p class="mb-2">{{titles[caseGroup[0]]}}</p>
+            <p class="mb-2" v-if="caseGroup[0] !== 'prices'">{{titles[caseGroup[0]]}}</p>
             <p class="mb-1 d-flex justify-content-between w-100" v-for="(caseItem, index) in caseGroup[1]" :key="`case-${index}`">
               <span class="pr-3">{{tariffParams[caseItem.idc_tariff_param]}}</span>
               <span class="text-nowrap">{{caseItem.cost}} руб.</span>
