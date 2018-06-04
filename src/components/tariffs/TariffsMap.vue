@@ -27,11 +27,11 @@
             v-for="(m, index) in subway"
             :key="`zone-${index}`"
             :options="{
-              fillColor: '#5E39BA',
-              strokeColor: '#5E39BA',
-              strokeOpacity: '0.8',
+              fillColor: '#666666',
+              strokeColor: '#666666',
+              strokeOpacity: '0.5',
               strokeWeight: '2',
-              fillOpacity: '0.2',
+              fillOpacity: '0',
               zIndex: '9'
             }"
             :center="{lat: +m.lat, lng: +m.lng}"
