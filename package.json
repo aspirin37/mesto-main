@@ -72,7 +72,7 @@
     "shelljs": "^0.7.6",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "u-select": "0.0.9",
+    "u-select": "0.0.12",
     "u-thumbnail": "0.0.1",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",

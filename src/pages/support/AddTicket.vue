@@ -25,10 +25,9 @@
                 <u-select
                   :options="types"
                   :linkClass="['w-100', 'link-reset', 'form-control']"
-                  :outerClass="['inline-block', 'w-100']"
                   :optionValue="'value'"
                   :dropdownClass="['w-100']"
-                  :tag="'div'"
+                  :popperOptions="{positionFixed: false}"
                   v-on:selected="setTicketType"
                   selectedItem="0"
                 ></u-select>

@@ -14,7 +14,6 @@
               placeholder="Выбрать город"
               :selectedItem="userProfile.idt_city ? (+userProfile.idt_city - 1) : null"
               :linkClass="['form-control link-reset']"
-              :dropdownClass="['w-100']"
               :options="cities"
             ></u-select>
             <div class="form-group" v-if="userProfile.is_company">
