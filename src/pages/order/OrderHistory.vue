@@ -12,7 +12,6 @@
             class="text-nowrap d-inline-block w-auto"
             :options="filterStatuses"
             :optionValue="'value'"
-            :dropdownClass="['dropdown-menu-sm-fixed']"
             :tag="'div'"
             v-on:selected="getByStatus"
             selectedItem="0"

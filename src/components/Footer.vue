@@ -1,25 +1,6 @@
 <template>
   <footer class="footer pt-4 pt-md-5 pb-4">
     <div class="container">
-      <!-- <div class="row justify-content-between flex-lg-nowrap">
-        <div class="col-12 col-sm-12 col-md col-xl-8 text-center text-sm-left d-none d-md-block mb-3 mb-lg-0">
-          <span class="mr-2">© 2016 &ndash; {{ year }} {{$t('title')}}</span>
-          <a href="mailto:support@mesto.delivery">support@mesto.delivery</a>
-          <div>
-            <span class="d-none d-lg-block d-xl-inline-block">{{$t('footer-text')}}.</span>
-            <router-link to="/agreement">{{$t('agreement')}}</router-link> /
-            <router-link to="/confidential">{{$t('confidential')}}</router-link>
-            <router-link to="/requisites" class="mr-2">{{$t('requisites')}}</router-link>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-auto col-xl text-center text-sm-left text-nowrap mb-2">
-          <a v-bind:href="googleLink" class="footer__icon micon micon--gplay mr-3" target="_top"></a>
-          <a v-bind:href="appleLink" class="footer__icon micon micon--appstore" target="_top"></a>
-        </div>
-        <div class="col-12 col-sm-6 col-md-auto col-xl text-center text-sm-right d-none d-sm-block">
-          <a href="http://a3technology.ru/" target="_blank" class="madeby text-secondary small">Made by <span class="text-nowrap"><br>A3 Technology</span></a>
-        </div>
-      </div> -->
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
         <div class="pr-4 pr-lg-5 mb-3">
           <p class="mb-2">Сервис</p>
@@ -36,7 +17,7 @@
         <div class="pr-4 pr-lg-5 mb-3">
           <a :href="`tel:${phone}`" class="d-block mb-2 text-nowrap"><img src="../assets/icons/phone-footer.svg" class="mr-2 footer__icon" alt="phone">{{phone}}</a>
           <a href="#" class="d-block mb-2 text-nowrap" v-on:click.prevent="toggleModal('back-call')"><img src="../assets/icons/comment-footer.svg" class="mr-2 footer__icon" alt="message">Задать вопрос</a>
-          <a href="tel:hi@mesto.delivery" class="d-block mb-2 text-nowrap"><img src="../assets/icons/mail-footer.svg" class="mr-2 footer__icon" alt="mail">hi@mesto.delivery</a>
+          <a href="mailto:hi@mesto.delivery" class="d-block mb-2 text-nowrap"><img src="../assets/icons/mail-footer.svg" class="mr-2 footer__icon" alt="mail">hi@mesto.delivery</a>
         </div>
         <div class="pr-4 pr-lg-5 mb-3">
           <p class="mb-2">Время работы</p>
