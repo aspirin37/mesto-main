@@ -58,34 +58,55 @@ export default {
       e.preventDefault()
       let file = e.target.files[0] || e.dataTransfer.files[0]
 
-      this.files.push(file)
-      this.getPreviews()
-      this.setOrderPhotos()
-    },
-    getPreviews () {
-      this.previews = []
-      let pushPreview = (index) => {
-        let reader = new window.FileReader()
-
-        reader.readAsDataURL(this.files[index])
-
-        reader.onload = (e) => {
-          this.previews.push(e.target.result)
-        }
-      }
-      if (this.files.length) {
-        for (let i = 0; i < this.files.length; i++) {
-          pushPreview(i)
-        }
-      }
+      this.resizeImage(file).then(response => {
+        this.files.push(response)
+        this.setOrderPhotos()
+      })
     },
     removeImage (index) {
       this.files.splice(index, 1)
-      this.getPreviews()
+      this.previews.splice(index, 1)
       this.setOrderPhotos()
     },
     setOrderPhotos () {
       this.$store.commit('SET_ORDER_PHOTOS', this.files)
+    },
+    resizeImage (file) {
+      return new Promise((resolve, reject) => {
+        let reader = new window.FileReader()
+
+        reader.readAsDataURL(file)
+
+        reader.onload = (e) => {
+          let img = new Image()
+          let getRatio = (width, height) => {
+            let requiredSize = 1000
+            let largeSide = width > height ? width : height
+            let ratio = largeSide / requiredSize
+
+            return ratio < 1 ? 1 : ratio
+          }
+
+          img.src = e.target.result
+          img.onload = () => {
+            let canvas = document.createElement('canvas')
+            let ctx = canvas.getContext('2d')
+            let ratio = getRatio(img.width, img.height)
+
+            canvas.width = img.width / ratio
+            canvas.height = img.height / ratio
+            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height)
+
+            // get previews
+            let dataurl = canvas.toDataURL(file.type)
+            this.previews.push(dataurl)
+
+            canvas.toBlob((blob) => {
+              resolve(blob)
+            })
+          }
+        }
+      })
     }
   }
 }

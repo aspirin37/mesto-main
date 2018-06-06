@@ -324,7 +324,7 @@ export default {
 
       for (let i in this.orderPhotos) {
         let file = this.orderPhotos[i]
-        let extention = file.name.split('.').pop()
+        let extention = file.type
 
         options.append('photo[]', file, `imageFilename${i}.${extention || '.jpg'}`)
       }
