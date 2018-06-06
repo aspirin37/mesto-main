@@ -189,7 +189,7 @@ export default {
       }
 
       this.$store.commit('SET_ORDER_ADDRESS', {options})
-      this.$router.push({path: '/new-order'})
+      this.$router.push({path: '/order'})
     },
     getAddress (newmarker) {
       this.geocoder.geocode({ 'location': newmarker }, (results, status) => {

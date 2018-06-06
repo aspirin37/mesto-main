@@ -54,7 +54,8 @@ var router = new Router({
   history: true,
   routes: [
     { path: '/', name: 'main-page', component: MainPage },
-    { path: '/new-order', name: 'new-order', component: NewOrder },
+    { path: '/new-order', redirect: {name: 'new-order'} },
+    { path: '/order', name: 'new-order', component: NewOrder },
     { path: '/about', name: 'About', component: About },
     { path: '/tariffs', name: 'Tariffs', component: Tariffs },
     { path: '/for-couriers', name: 'for-couriers', component: ForCuriers },
