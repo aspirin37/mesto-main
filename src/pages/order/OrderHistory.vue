@@ -70,7 +70,13 @@
             </tr>
           </thead>
           <tbody>
-            <router-link :to="{name: 'profile-order', query: { id: item.idt_order }}" v-for="(item, index) in orders" tag="tr" class="cursor-pointer d-block d-lg-table-row" :key="index">
+            <router-link
+              :to="{name: 'profile-order', query: { id: item.idt_order }}"
+              v-for="(item, index) in orders"
+              tag="tr"
+              class="cursor-pointer d-block d-lg-table-row"
+              :key="index"
+            >
               <td class="d-block d-lg-table-cell">
                 <router-link :to="{name: 'profile-order', query: { id: item.idt_order }}" class="pl-lg-2 mr-3 small-orders-table__number d-none d-lg-table-cell">{{item.order_number}}</router-link>
                 <div class="d-inline-block w-100 d-lg-none">

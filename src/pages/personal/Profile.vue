@@ -63,7 +63,7 @@ export default {
     return {
       paths: {
         '/settings': 'Настроки',
-        '/new-order': 'Новый заказ',
+        '/order': 'Новый заказ',
         '/orders': 'Заказы',
         '/payment': 'Платежные карты',
         '/fave': 'Избранное',
